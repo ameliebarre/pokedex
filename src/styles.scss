@@ -1,2 +1,13 @@
 @import "imports";
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Work sans', Arial, sans-serif;
+  line-height: 1;
+  font-size: 13px;
+}
