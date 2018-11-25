@@ -6,9 +6,5 @@ export const PUBLIC_ROUTES: Routes = [
   {
     path: 'signin',
     component: LoginComponent
-  },
-  {
-    path: 'home',
-    component: HomeComponent
   }
 ];

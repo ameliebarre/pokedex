@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+
 import { PublicComponent } from './layouts/public/public.component';
 import { PUBLIC_ROUTES } from './layouts/public/public.routes';
 import { SecureComponent } from './layouts/secure/secure.component';
 import { SECURE_ROUTES } from './layouts/secure/secure.routes';
+import { AuthGuard } from './shared/guard/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -20,12 +21,14 @@ const routes: Routes = [
   {
     path: '',
     component: SecureComponent,
+    canActivate: [AuthGuard],
     children: SECURE_ROUTES
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
