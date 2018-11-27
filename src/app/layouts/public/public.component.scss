@@ -4,5 +4,7 @@
   background-color: $main-red;
 }
 
-.public-section{
+// Override form error text color
+::ng-deep .text-danger {
+  color: darken($main-red, 45%) !important;
 }

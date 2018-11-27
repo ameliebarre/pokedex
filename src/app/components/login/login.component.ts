@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
@@ -8,20 +10,48 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  public mail: string;
-  public password: string;
+  email: string;
+  password: string;
+  submitted = false;
+  loginForm: FormGroup;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
+    this.setLoginForm();
   }
 
-  submit() {
-    console.log('Submit login form');
+  // convenience getter for easy access to form fields
+  get form() {
+    return this.loginForm.controls;
+  }
 
-    this.authService.login(this.mail, this.password).subscribe((result) => {
+  setLoginForm() {
+    this.loginForm = this.fb.group({
+      email: [this.email, Validators.required],
+      password: [this.email, Validators.required]
+    });
+  }
+
+  onSubmit() {
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    this.email = this.loginForm.controls['email'].value;
+    this.password = this.loginForm.controls['password'].value;
+
+    console.log(this.email);
+    console.log(this.password);
+
+    this.authService.login(this.email, this.password).subscribe((result) => {
       console.log(result);
     });
   }

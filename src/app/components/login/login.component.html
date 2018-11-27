@@ -2,14 +2,20 @@
   <div class="row">
     <div class="vertical-align-center d-flex align-items-center">
       <div class="form-container col-lg-4">
-        <form (submit)="submit()">
+        <form (submit)="onSubmit()" [formGroup]="loginForm">
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" class="form-control" [(ngModel)]="mail" autocomplete="off" [ngModelOptions]="{standalone: true}" />
+            <input type="email" id="email" class="form-control" formControlName="email" />
+            <div *ngIf="submitted && form['email'].errors">
+              <div class="text-danger mt-2" *ngIf="form['email'].invalid">L'email est obligatoire</div>
+            </div>
           </div>
           <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" class="form-control" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" />
+            <input type="password" id="password" class="form-control" formControlName="password" />
+            <div *ngIf="submitted && form['password'].errors">
+              <div class="text-danger mt-2" *ngIf="form['password'].invalid">Le mot de passe est obligatoire</div>
+            </div>
           </div>
           <button type="submit" class="btn submit col-lg-4 d-lg-block m-lg-auto">Me connecter</button>
         </form>
