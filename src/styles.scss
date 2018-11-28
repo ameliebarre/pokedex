@@ -11,3 +11,20 @@ body {
   line-height: 1;
   font-size: 13px;
 }
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    color: black;
+  }
+}
+
+li {
+  list-style: none;
+}

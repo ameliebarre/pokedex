@@ -2,10 +2,11 @@
   <div class="row">
     <div class="vertical-align-center d-flex align-items-center">
       <div class="form-container col-lg-4">
+        <h1 class="app-icon">My Pokedex</h1>
         <form (submit)="onSubmit()" [formGroup]="loginForm">
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" class="form-control" formControlName="email" />
+            <input type="email" id="email" class="form-control" formControlName="email" autocomplete="off" />
             <div *ngIf="submitted && form['email'].errors">
               <div class="text-danger mt-2" *ngIf="form['email'].invalid">L'email est obligatoire</div>
             </div>
@@ -17,7 +18,11 @@
               <div class="text-danger mt-2" *ngIf="form['password'].invalid">Le mot de passe est obligatoire</div>
             </div>
           </div>
-          <button type="submit" class="btn submit col-lg-4 d-lg-block m-lg-auto">Me connecter</button>
+          <div class="form-group">
+            <a class="forgot-password" routerLink="/forgot-password">Mot de passe perdu ?</a>
+            <p class="signup-message">Pas encore membre de <strong>MyPokedex</strong> ? Viens <a routerLink="/signup">t'inscrire.</a></p>
+            <button type="submit" class="btn submit col-lg-5 d-lg-block m-lg-auto">Me connecter</button>
+          </div>
         </form>
       </div>
     </div>

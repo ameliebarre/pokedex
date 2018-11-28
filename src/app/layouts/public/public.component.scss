@@ -8,3 +8,72 @@
 ::ng-deep .text-danger {
   color: darken($main-red, 45%) !important;
 }
+
+/** Form **/
+::ng-deep .vertical-align-center {
+  height:100vh;
+  width: 100%;
+
+  &:before {
+    content: " ";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
+
+  .form-container {
+    margin: 0 auto;
+
+    .app-icon {
+      background: url('../../../assets/images/pokeball.svg') center center no-repeat;
+      height: 45px;
+      text-indent: -99999px;
+      display: block;
+      margin-bottom: 30px;
+    }
+
+    form {
+      label {
+        text-transform: uppercase;
+        color: white;
+        font-size: 13px;
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 500;
+      }
+
+      input {
+        font-family: 'Work sans', Arial, sans-serif;
+        color: black;
+        outline: none;
+        border: 1px solid transparent;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .signup-message {
+        color: black;
+        text-align: center;
+        display: block;
+        margin-bottom: 15px;
+
+        a {
+          color: darken($main-red, 25%) !important;
+        }
+      }
+
+      .forgot-password {
+        text-align: center;
+        display: block;
+        margin-bottom: 15px;
+
+        &:hover {
+          color: darken($main-red, 35%) !important;
+        }
+      }
+
+      .submit {
+        @include login-button($main-red, white);
+      }
+    }
+  }
+}
