@@ -11,6 +11,7 @@ import { PublicComponent } from './layouts/public/public.component';
 import { SecureComponent } from './layouts/secure/secure.component';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from './shared/shared.module';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SharedModule } from './shared/shared.module';
     LoginComponent,
     PublicComponent,
     SecureComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

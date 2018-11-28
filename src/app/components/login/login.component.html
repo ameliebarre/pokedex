@@ -9,6 +9,7 @@
             <input type="email" id="email" class="form-control" formControlName="email" autocomplete="off" />
             <div *ngIf="submitted && form['email'].errors">
               <div class="text-danger mt-2" *ngIf="form['email'].invalid">L'email est obligatoire</div>
+              <div class="text-danger mt-2" *ngIf="form['email'].email">Veuillez respecter le format de l'email</div>
             </div>
           </div>
           <div class="form-group">
@@ -20,7 +21,7 @@
           </div>
           <div class="form-group">
             <a class="forgot-password" routerLink="/forgot-password">Mot de passe perdu ?</a>
-            <p class="signup-message">Pas encore membre de <strong>MyPokedex</strong> ? Viens <a routerLink="/signup">t'inscrire.</a></p>
+            <p class="signup-message">Pas encore membre de <strong>MyPokedex</strong> ? Viens <a routerLink="/signup">t'inscrire</a>.</p>
             <button type="submit" class="btn submit col-lg-5 d-lg-block m-lg-auto">Me connecter</button>
           </div>
         </form>
