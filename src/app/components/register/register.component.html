@@ -34,6 +34,9 @@
               <div *ngIf="form['confirmPassword'].mustMatch">Les mots de passe doivent correspondre.</div>
             </div>
           </div>
+          <div *ngIf="errorMessage">
+            <p class="text-danger">{{ errorMessage }}</p>
+          </div>
           <div class="form-group">
             <p class="signup-message">Déjà membre de <strong>MyPokedex</strong> ? <a routerLink="/signin">Connexion</a></p>
             <button type="submit" class="btn submit col-lg-5 d-lg-block m-lg-auto">Je m'inscris</button>

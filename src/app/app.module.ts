@@ -1,16 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
-
 import { AppRoutingModule } from './app-routing.module';
+import { ToastrModule } from 'ng6-toastr-notifications';
+
+import { SharedModule } from './shared/shared.module';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { PublicComponent } from './layouts/public/public.component';
 import { SecureComponent } from './layouts/secure/secure.component';
 import { HomeComponent } from './components/home/home.component';
-import { SharedModule } from './shared/shared.module';
 import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
@@ -24,6 +27,7 @@ import { RegisterComponent } from './components/register/register.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
@@ -33,7 +37,8 @@ import { RegisterComponent } from './components/register/register.component';
         whitelistedDomains: ['localhost:4200']
       }
     }),
-    RouterModule
+    RouterModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 import { AuthService } from '../../shared/services/auth.service';
-import {MustMatch} from '../../shared/helpers/must-match.validators';
+import { MustMatch } from '../../shared/helpers/must-match.validators';
 
 @Component({
   selector: 'app-register',
@@ -17,10 +20,13 @@ export class RegisterComponent implements OnInit {
   confirmPassword: string;
   submitted = false;
   registerForm: FormGroup;
+  errorMessage: string;
 
   constructor(
     private authService: AuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrManager,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -50,6 +56,20 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
+
+    this.name = this.registerForm.controls['name'].value;
+    this.email = this.registerForm.controls['email'].value;
+    this.password = this.registerForm.controls['password'].value;
+
+    this.authService.register(this.name, this.email, this.password).subscribe(
+      (res: any) => {
+        this.toastr.successToastr('Merci de votre inscription, vous pouvez désormais vous connecter', '', { position: 'bottom-right' });
+        this.router.navigate(['/signin']);
+      }, (error: HttpErrorResponse) => {
+        console.log(error);
+        this.errorMessage = error.error.message;
+      }
+    );
   }
 
 }
