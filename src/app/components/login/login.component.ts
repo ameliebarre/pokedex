@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../../shared/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -48,11 +50,14 @@ export class LoginComponent implements OnInit {
     this.email = this.loginForm.controls['email'].value;
     this.password = this.loginForm.controls['password'].value;
 
-    console.log(this.email);
-    console.log(this.password);
-
-    this.authService.login(this.email, this.password).subscribe((result) => {
-      console.log(result);
-    });
+    this.authService.login(this.email, this.password).subscribe(
+      (user) => {
+        if (user) {
+          location.pathname = '/home'; // Navigate + Reload to home
+        }
+      }, (error) => {
+        console.log(error);
+      }
+    );
   }
 }
