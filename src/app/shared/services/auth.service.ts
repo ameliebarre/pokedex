@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 
 import { User } from '../models/user.model';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,10 @@ export class AuthService {
     this.headers.append('Content-Type', 'application/json');
 
     this.helper = new JwtHelperService();
+  }
+
+  register(name: string, email: string, password: string): Observable<any> {
+    return this.http.post<any>(environment.apiUrl + '/register', { name: name, email: email, password: password });
   }
 
   login(email: string, password: string) {
