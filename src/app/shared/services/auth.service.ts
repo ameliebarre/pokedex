@@ -29,6 +29,7 @@ export class AuthService {
   }
 
   storeUserData(authResult: any) {
+    localStorage.setItem('expires_at', authResult.expiresAt);
     localStorage.setItem('token', authResult.token);
     localStorage.setItem('user', JSON.stringify({ name: authResult.user.name, email: authResult.user.email }));
   }
