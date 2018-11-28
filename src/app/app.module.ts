@@ -25,7 +25,12 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    JwtModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4200']
+      }
+    }),
     RouterModule
   ],
   providers: [],
@@ -34,3 +39,7 @@ import { SharedModule } from './shared/shared.module';
   ]
 })
 export class AppModule { }
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}

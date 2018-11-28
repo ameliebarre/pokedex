@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../shared/services/auth.service';
-import {Router} from '@angular/router';
+import { User } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -51,8 +52,9 @@ export class LoginComponent implements OnInit {
     this.password = this.loginForm.controls['password'].value;
 
     this.authService.login(this.email, this.password).subscribe(
-      (user) => {
-        if (user) {
+      (res: any) => {
+        if (res) {
+          this.authService.storeUserData(res);
           location.pathname = '/home'; // Navigate + Reload to home
         }
       }, (error) => {
