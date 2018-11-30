@@ -6,6 +6,7 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 
 import { AuthService } from '../../shared/services/auth.service';
 import { MustMatch } from '../../shared/helpers/must-match.validators';
+import { RegistrationValidator } from '../../shared/validators/registration.validators';
 
 @Component({
   selector: 'app-register',
@@ -39,13 +40,14 @@ export class RegisterComponent implements OnInit {
   }
 
   setRegisterForm() {
+
     this.registerForm = this.fb.group({
       name: [this.name, Validators.required],
       email: [this.email, Validators.compose([Validators.required, Validators.email])],
       password: [this.password, Validators.required],
       confirmPassword: [this.confirmPassword, Validators.required],
     }, {
-      validators: MustMatch('password', 'confirmPassword')
+      validator: RegistrationValidator.matchPassword
     });
   }
 

@@ -30,8 +30,8 @@
             <label for="confirm-password">Confirmation du mot de passe</label>
             <input type="password" id="confirm-password" class="form-control" formControlName="confirmPassword" />
             <div *ngIf="submitted && form['confirmPassword'].errors">
-              <div class="text-danger mt-2" *ngIf="form['confirmPassword'].invalid">La confirmation du mot de passe est obligatoire</div>
-              <div *ngIf="form['confirmPassword'].mustMatch">Les mots de passe doivent correspondre.</div>
+              <div class="text-danger mt-2" *ngIf="form['confirmPassword'].hasError('required')">La confirmation du mot de passe est obligatoire</div>
+              <div class="text-danger mt-2" *ngIf="form['confirmPassword'].hasError('mismatch')">Les mots de passe doivent correspondre</div>
             </div>
           </div>
           <div *ngIf="errorMessage">
