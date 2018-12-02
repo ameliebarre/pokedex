@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
 
 import { AuthService } from '../../shared/services/auth.service';
-import { MustMatch } from '../../shared/helpers/must-match.validators';
 import { RegistrationValidator } from '../../shared/validators/registration.validators';
 
 @Component({
