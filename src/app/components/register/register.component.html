@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="vertical-align-center d-flex align-items-center">
+      <div class="form-container col-lg-4">
+        <h1 class="app-icon">My Pokedex</h1>
+        <form (submit)="onSubmit()" [formGroup]="registerForm">
+          <div class="form-group">
+            <label for="name">Nom d'utilisateur</label>
+            <input type="text" id="name" class="form-control" formControlName="name" autocomplete="off" />
+            <div *ngIf="submitted && form['name'].errors">
+              <div class="text-danger mt-2" *ngIf="form['name'].invalid">Le nom est obligatoire</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email" autocomplete="off" />
+            <div *ngIf="submitted && form['email'].errors">
+              <div class="text-danger mt-2" *ngIf="form['email'].invalid">L'email est obligatoire</div>
+              <div class="text-danger mt-2" *ngIf="form['email'].email">Veuillez respecter le format de l'email</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" class="form-control" formControlName="password" />
+            <div *ngIf="submitted && form['password'].errors">
+              <div class="text-danger mt-2" *ngIf="form['password'].invalid">Le mot de passe est obligatoire</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirmation du mot de passe</label>
+            <input type="password" id="confirm-password" class="form-control" formControlName="confirmPassword" />
+            <div *ngIf="submitted && form['confirmPassword'].errors">
+              <div class="text-danger mt-2" *ngIf="form['confirmPassword'].hasError('required')">La confirmation du mot de passe est obligatoire</div>
+              <div class="text-danger mt-2" *ngIf="form['confirmPassword'].hasError('mismatch')">Les mots de passe doivent correspondre</div>
+            </div>
+          </div>
+          <div *ngIf="errorMessage">
+            <p class="text-danger">{{ errorMessage }}</p>
+          </div>
+          <div class="form-group">
+            <p class="signup-message">Déjà membre de <strong>MyPokedex</strong> ? <a routerLink="/signin">Connexion</a></p>
+            <button type="submit" class="btn submit col-lg-5 d-lg-block m-lg-auto">Je m'inscris</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

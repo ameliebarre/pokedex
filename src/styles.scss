@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import "imports";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Work sans', Arial, sans-serif;
+  line-height: 1;
+  font-size: 13px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    color: black;
+  }
+}
+
+li {
+  list-style: none;
+}
