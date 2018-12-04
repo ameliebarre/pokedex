@@ -1,5 +1,5 @@
 @mixin login-button($bg, $color) {
-  background: darken($bg, 18%);
+  background: darken($bg, 22%);
   color: $color;
   border-radius: 0;
   border-color: transparent;
@@ -17,6 +17,6 @@
 
   &:active {
     border-color: transparent;
-    background-color: darken($bg, 22%);
+    background-color: darken($bg, 26%);
   }
 }
