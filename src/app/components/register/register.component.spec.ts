@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { RouterTestingModule } from '@angular/router/testing';
 
+import { RegisterComponent } from './register.component';
 import { AuthService } from '../../shared/services/auth.service';
 
 describe('RegisterComponent', () => {
