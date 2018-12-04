@@ -8,7 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthService } from '../../shared/services/auth.service';
 
-fdescribe('RegisterComponent', () => {
+describe('RegisterComponent', () => {
   let comp: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
   let authService: AuthService;

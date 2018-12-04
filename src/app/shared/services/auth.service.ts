@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../../environments/environment';
-import { map } from 'rxjs/operators';
 
-import { User } from '../models/user.model';
 import {Observable} from 'rxjs';
 
 @Injectable({
