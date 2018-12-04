@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   password: string;
   submitted = false;
   loginForm: FormGroup;
+  errorMessage: string;
 
   constructor(
     private authService: AuthService,
@@ -24,9 +25,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.authService.isUserLoggedIn()) {
+    /*if (this.authService.isUserLoggedIn()) {
       this.router.navigate(['home']);
-    }
+    }*/
 
     this.setLoginForm();
   }
@@ -62,6 +63,9 @@ export class LoginComponent implements OnInit {
           location.pathname = '/home'; // Navigate + Reload to home
         }
       }, (error) => {
+        if (error.error.message === 'USER_NOT_FOUND') {
+          this.errorMessage = 'L\'adresse mail ou le mot de passe ne semblent pas exister.';
+        }
         console.log(error);
       }
     );

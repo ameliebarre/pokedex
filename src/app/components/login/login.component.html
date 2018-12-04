@@ -19,6 +19,9 @@
               <div class="text-danger mt-2" *ngIf="form['password'].invalid">Le mot de passe est obligatoire</div>
             </div>
           </div>
+          <div *ngIf="errorMessage" class="form-group form-errors">
+            {{ errorMessage }}
+          </div>
           <div class="form-group">
             <a class="forgot-password" routerLink="/forgot-password">Mot de passe perdu ?</a>
             <p class="signup-message">Pas encore membre de <strong>MyPokedex</strong> ? Viens <a routerLink="/signup">t'inscrire</a>.</p>

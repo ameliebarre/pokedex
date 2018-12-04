@@ -9,6 +9,13 @@
   color: darken($main-red, 45%) !important;
 }
 
+::ng-deep .form-errors {
+  color: white!important;
+  background: #bd0b08;
+  padding: 10px;
+  text-align: center;
+}
+
 /** Form **/
 ::ng-deep .vertical-align-center {
   height:100vh;
