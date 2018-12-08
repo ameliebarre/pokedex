@@ -15,7 +15,6 @@ import { PublicComponent } from './layouts/public/public.component';
 import { SecureComponent } from './layouts/secure/secure.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { HeaderComponent } from './components/header/header.component';
     PublicComponent,
     SecureComponent,
     HomeComponent,
-    RegisterComponent,
-    HeaderComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
