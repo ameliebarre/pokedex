@@ -28,3 +28,12 @@ a {
 li {
   list-style: none;
 }
+
+/* Fonts */
+
+@font-face {
+    font-family: 'pokemonGB';
+    src: url('./assets/fonts/pokemon_GB.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}

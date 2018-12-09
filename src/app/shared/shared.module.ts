@@ -14,7 +14,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
   exports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFontAwesomeModule
   ]
 })
 export class SharedModule { }
