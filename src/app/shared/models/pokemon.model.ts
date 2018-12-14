@@ -1,5 +1,5 @@
 export class Pokemon {
-  id: number;
+  _id: number;
   name: string;
   slug: string;
   national_number: string;
@@ -21,12 +21,12 @@ export class Pokemon {
   evolution_way: string;
 
   constructor (obj?: any) {
-    this.id = obj && Number(obj.id) || null;
+    this._id = obj && Number(obj._id) || null;
     this.name = obj && obj.name || null;
     this.national_number = obj && obj.national_number || null;
     this.johto_number = obj && obj.johto_number || null;
     this.description = obj && obj.description || null;
-    this.sex = (obj && obj.sex && Array.isArray(obj.sex)) || [];
+    this.sex = obj && obj.sex || [];
     this.generation = obj && obj.generation || null;
     this.height = obj && obj.height || null;
     this.weight = obj && obj.weight || null;

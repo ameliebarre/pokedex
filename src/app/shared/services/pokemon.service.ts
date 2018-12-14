@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { map, catchError } from 'rxjs/operators';
+
+import { Pokemon } from '../models/pokemon.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +12,15 @@ import {Observable} from 'rxjs';
 export class PokemonService {
 
   private headers: Headers;
+  apiUrl = environment.apiUrl;
 
   constructor(
     private http: HttpClient,
   ) {
-    this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
   }
-  
+
+  getAllPokemons(): Observable<Pokemon[]> {
+    return this.http.get<Pokemon[]>('http://localhost:4500/api/pokemons');
+  }
+
 }

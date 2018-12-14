@@ -33,6 +33,7 @@
     "express": "^4.16.4",
     "font-awesome": "^4.7.0",
     "jasmine": "^3.3.0",
+    "moment": "^2.23.0",
     "ng6-toastr-notifications": "^1.0.4",
     "path": "^0.12.7",
     "popper.js": "^1.14.6",
