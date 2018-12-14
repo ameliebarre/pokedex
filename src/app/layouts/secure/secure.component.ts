@@ -9,8 +9,6 @@ export class SecureComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    // Check if user is loggedin
-  }
+  ngOnInit() { }
 
 }

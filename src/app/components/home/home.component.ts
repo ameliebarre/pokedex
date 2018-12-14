@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { PokemonService } from '../../shared/services/pokemon.service';
 import { Pokemon } from '../../shared/models/pokemon.model';
+import {AuthService} from '../../shared/services/auth.service';
+import {HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +18,8 @@ export class HomeComponent implements OnInit {
   pokemons: Pokemon[] = [];
 
   constructor(
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -24,10 +27,10 @@ export class HomeComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.token = localStorage.getItem('token');
 
-    this.getpokemons();
+    this.getPokemons();
   }
 
-  getpokemons() {
+  getPokemons() {
     this.pokemonService.getAllPokemons().subscribe((pokemons: Pokemon[]) => {
       this.pokemons = pokemons;
       console.log(this.pokemons);

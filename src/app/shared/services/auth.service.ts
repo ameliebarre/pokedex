@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import { tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -31,15 +31,14 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http.post(environment.authUrl + '/login', { email: email, password: password })
       .pipe(
-        map((res) => {
-          this.storeUserData(res);
+        tap((req) => {
+          this.storeUserData(req);
         })
       );
   }
 
   storeUserData(authResult: any) {
     const expireDate = moment(authResult.expiresAt).format('YYYY-MM-DDTHH:mm:ssZ');
-    console.log(expireDate);
 
     localStorage.setItem('expires_at', expireDate);
     localStorage.setItem('token', authResult.token);
@@ -64,9 +63,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-
+    localStorage.clear();
     location.pathname = '/signin';
   }
 }
