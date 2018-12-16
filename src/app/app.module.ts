@@ -18,6 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { TrainerComponent } from './components/trainer/trainer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     SecureComponent,
     HomeComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    TrainerComponent
   ],
   imports: [
     BrowserModule,
