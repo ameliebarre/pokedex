@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.email, this.password).subscribe(
       (res: any) => {
         if (res) {
-          // this.authService.storeUserData(res);
           location.pathname = '/home'; // Navigate + Reload to home
         }
       }, (error) => {

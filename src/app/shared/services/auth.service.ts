@@ -32,6 +32,7 @@ export class AuthService {
     return this.http.post(environment.authUrl + '/login', { email: email, password: password })
       .pipe(
         tap((req) => {
+          console.log(req);
           this.storeUserData(req);
         })
       );
@@ -50,11 +51,15 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('user'));
   }
 
-  getToken() {
+  getToken(): string {
     return localStorage.getItem('token');
   }
 
-  isUserLoggedIn() {
+  isNew() {
+    return localStorage.getItem('isNew') === 'true' ? true : false;
+  }
+
+  isUserLoggedIn(): boolean {
     const token = this.getToken();
     if (!token) {
       return false;

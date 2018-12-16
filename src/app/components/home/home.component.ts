@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   user: any[] = [];
   token: string;
+  isNew: boolean;
 
   pokemons: Pokemon[] = [];
 
@@ -28,6 +29,9 @@ export class HomeComponent implements OnInit {
     this.token = localStorage.getItem('token');
 
     this.getPokemons();
+
+    // Check if it's the first time in the app for the user
+    this.getStatus();
   }
 
   getPokemons() {
@@ -35,6 +39,10 @@ export class HomeComponent implements OnInit {
       this.pokemons = pokemons;
       console.log(this.pokemons);
     });
+  }
+
+  getStatus() {
+    this.isNew = this.authService.isNew();
   }
 
 }
