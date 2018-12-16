@@ -41,6 +41,7 @@ export class AuthService {
     const expireDate = moment(authResult.expiresAt).format('YYYY-MM-DDTHH:mm:ssZ');
 
     localStorage.setItem('expires_at', expireDate);
+    localStorage.setItem('isNew', authResult.isNew);
     localStorage.setItem('token', authResult.token);
     localStorage.setItem('user', JSON.stringify({ name: authResult.user.name, email: authResult.user.email }));
   }

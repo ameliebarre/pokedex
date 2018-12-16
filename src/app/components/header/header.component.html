@@ -1,10 +1,9 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="banner navbar">
-      <div *ngIf="user" class="col-md-2 float-right mt-3">
-        <h3>{{ user.name }}</h3>
-        <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>
-      </div>
-    </div>
+<nav class="navbar">
+  <a class="navbar-brand mr-auto">
+    <img src="../../../assets/images/buttons.svg" />
+  </a>
+  <div class="form-inline">
+    <p class="mr-3">{{ user?.name }}</p>
+    <button class="btn my-2 my-sm-0 logout" type="submit" (click)="logout()">Déconnexion</button>
   </div>
-</div>
+</nav>

@@ -20,7 +20,14 @@ export class PokemonService {
   }
 
   getAllPokemons(): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>('http://localhost:4500/api/pokemons');
+    return this.http.get<Pokemon[]>('http://localhost:4500/api/pokemons')
+      .pipe(
+        map((response: Pokemon[]) => {
+          return response.map((pokemon: Pokemon) => {
+            return new Pokemon(pokemon);
+          });
+        })
+      );
   }
 
 }
