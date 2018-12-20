@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { TrainerComponent } from './components/trainer/trainer.component';
+import { IntroModule } from './modules/intro/intro.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TrainerComponent } from './components/trainer/trainer.component';
       }
     }),
     RouterModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    IntroModule
   ],
   providers: [
     AuthService,
