@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { TrainerComponent } from './components/trainer/trainer.component';
+import { IntroComponent } from './layouts/intro/intro.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TrainerComponent } from './components/trainer/trainer.component';
     HomeComponent,
     RegisterComponent,
     HeaderComponent,
-    TrainerComponent
+    TrainerComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,

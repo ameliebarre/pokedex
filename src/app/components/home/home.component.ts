@@ -37,12 +37,12 @@ export class HomeComponent implements OnInit {
   getPokemons() {
     this.pokemonService.getAllPokemons().subscribe((pokemons: Pokemon[]) => {
       this.pokemons = pokemons;
-      console.log(this.pokemons);
     });
   }
 
   getStatus() {
-    this.isNew = this.authService.isNew();
+    this.isNew = this.authService.isFirstTime();
+    console.log(this.isNew);
   }
 
 }

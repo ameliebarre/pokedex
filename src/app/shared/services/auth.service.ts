@@ -42,7 +42,7 @@ export class AuthService {
     const expireDate = moment(authResult.expiresAt).format('YYYY-MM-DDTHH:mm:ssZ');
 
     localStorage.setItem('expires_at', expireDate);
-    localStorage.setItem('isNew', authResult.isNew);
+    localStorage.setItem('isFirstTime', authResult.isFirstTime);
     localStorage.setItem('token', authResult.token);
     localStorage.setItem('user', JSON.stringify({ name: authResult.user.name, email: authResult.user.email }));
   }
@@ -55,8 +55,8 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  isNew() {
-    return localStorage.getItem('isNew') === 'true' ? true : false;
+  isFirstTime() {
+    return localStorage.getItem('isFirstTime') === 'true' ? true : false;
   }
 
   isUserLoggedIn(): boolean {
