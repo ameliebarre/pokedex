@@ -2,8 +2,22 @@
   <a class="navbar-brand mr-auto">
     <img src="../../../assets/images/buttons.svg" />
   </a>
-  <div class="form-inline">
+  <div class="col text-right">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn dropdown-button" id="dropdownBasic" ngbDropdownToggle>{{ user?.name }}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu mt-1">
+        <button class="dropdown-item">Mon profil</button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item">Mes Pokemons</button>
+        <button class="dropdown-item">Mes jeux</button>
+        <button class="dropdown-item">Mes badges</button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item"(click)="logout()">Déconnexion</button>
+      </div>
+    </div>
+  </div>
+  <!--<div class="form-inline">
     <p class="mr-3">{{ user?.name }}</p>
     <button class="btn my-2 my-sm-0 logout" type="submit" (click)="logout()">Déconnexion</button>
-  </div>
+  </div>-->
 </nav>

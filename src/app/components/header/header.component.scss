@@ -4,24 +4,30 @@
 .navbar {
   background: $main-red;
 
-  p {
-    color: white;
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 16px;
-  }
+  .dropdown {
+    .dropdown-button {
+      background: transparent;
+      color: white;
+      font-size: 18px;
 
-  .logout {
-    background-image: url('../../../assets/images/logout.svg');
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-position-x: center;
-    background-position-y: center;
-    background-size: 100%;
-    width: 30px;
-    text-indent: -99999px;
+      &:focus {
+        box-shadow: inherit;
+      }
+    }
 
-    &:focus {
-      box-shadow: none;
+    .dropdown-menu {
+      left: auto !important;
+      border-top: none;
+      border-left: 1px solid rgba(0, 0, 0, 0.15);
+      border-right: 1px solid rgba(0, 0, 0, 0.15);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      right: 0;
+      width: 200px;
+
+      button {
+        cursor: pointer;
+      }
     }
   }
+
 }
