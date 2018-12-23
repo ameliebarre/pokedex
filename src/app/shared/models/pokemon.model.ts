@@ -1,3 +1,6 @@
+import * as _ from 'lodash';
+import { Type } from './type.model';
+
 export class Pokemon {
   _id: string;
   name: string;
@@ -17,6 +20,7 @@ export class Pokemon {
   speed: number;
   evolution: Pokemon;
   evolution_way: string;
+  types: Type[] = [];
 
   constructor (obj?: any) {
     this._id = obj && obj._id || null;
@@ -37,5 +41,6 @@ export class Pokemon {
     this.speed = obj && Number(obj.speed) || null;
     this.evolution = obj && obj.evolution || null;
     this.evolution_way = obj && obj.evolution_way || null;
+    this.types = obj && obj.types || [];
   }
 }

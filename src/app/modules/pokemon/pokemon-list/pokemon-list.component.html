@@ -6,11 +6,12 @@
         <figcaption>
           <span class="number">{{ pokemon?.national_number }}</span>
           <h4 class="name">{{ pokemon?.name }}</h4>
-          <div class="types">
-            <ul>
-              <li ngFor="let type of pokemon.type">
-              </li>
-            </ul>
+          <ul class="types">
+            <li *ngFor="let type of pokemon.types"></li>
+          </ul>
+          <div class="actions">
+            <a href="#"><img src="../../../../assets/images/pokeball-icon.svg" width="20"/></a>
+            <a href="#"><img src="../../../../assets/images/like.svg" width="20"/></a>
           </div>
         </figcaption>
       </figure>
