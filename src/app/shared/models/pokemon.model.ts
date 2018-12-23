@@ -15,8 +15,6 @@ export class Pokemon {
   sp_attack: number;
   sp_defense: number;
   speed: number;
-  thumb: string;
-  image: string;
   evolution: Pokemon;
   evolution_way: string;
 
@@ -37,8 +35,6 @@ export class Pokemon {
     this.sp_attack = obj && Number(obj.sp_attack) || null;
     this.sp_defense = obj && Number(obj.sp_defense) || null;
     this.speed = obj && Number(obj.speed) || null;
-    this.thumb = obj && obj.thumb || null;
-    this.image = obj && obj.image || null;
     this.evolution = obj && obj.evolution || null;
     this.evolution_way = obj && obj.evolution_way || null;
   }

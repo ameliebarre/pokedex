@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ng6-toastr-notifications';
 
-import { SharedModule } from './shared/shared.module';
+import { AuthService } from './shared/services/auth.service';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -16,9 +16,11 @@ import { SecureComponent } from './layouts/secure/secure.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
-import { AuthService } from './shared/services/auth.service';
-import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { TrainerComponent } from './components/trainer/trainer.component';
+
+import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
+import { PokemonModule } from './modules/pokemon/pokemon.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { TrainerComponent } from './components/trainer/trainer.component';
     HomeComponent,
     RegisterComponent,
     HeaderComponent,
-    TrainerComponent
+    TrainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { TrainerComponent } from './components/trainer/trainer.component';
       }
     }),
     RouterModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    PokemonModule
   ],
   providers: [
     AuthService,
@@ -54,6 +57,7 @@ import { TrainerComponent } from './components/trainer/trainer.component';
       multi: true
     }
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
   bootstrap: [
     AppComponent
   ]

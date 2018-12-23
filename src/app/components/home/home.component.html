@@ -17,17 +17,5 @@
 </div>
 
 <ng-template #pokemonsList>
-  <div class="container" id="pokemons-list">
-    <div class="row">
-      <div *ngFor="let pokemon of pokemons" class="pokemon col-md-2">
-        <figure>
-          <img class="thumb" src="../../../assets/images/pokemons/thumb/{{ pokemon.slug }}.png" alt="{{ pokemon.name }}"/>
-          <figcaption>
-            <span class="number">{{ pokemon?.national_number }}</span>
-            <h4 class="name">{{ pokemon?.name }}</h4>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </div>
+  <app-pokemon-list></app-pokemon-list>
 </ng-template>
