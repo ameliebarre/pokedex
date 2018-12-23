@@ -6,6 +6,12 @@
 
   .pokemon {
     figure {
+      background: #999;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      padding: 10px;
+      position: relative;
+
       .thumb {
         width: 100%;
       }
