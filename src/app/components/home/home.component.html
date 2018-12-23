@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="isNew; else pokemons">
+<div class="container-fluid" *ngIf="isNew; else pokemonsList">
   <div class="row">
     <div class="intro offset-md-4 col-md-4">
       <img src="../../../assets/images/player.svg" alt="trainer" />
@@ -16,6 +16,18 @@
   </div>
 </div>
 
-<ng-template #pokemons>
-  Coucou
+<ng-template #pokemonsList>
+  <div class="container" id="pokemons-list">
+    <div class="row">
+      <div *ngFor="let pokemon of pokemons" class="pokemon col-md-2">
+        <figure>
+          <img class="thumb" src="../../../assets/images/pokemons/thumb/{{ pokemon.slug }}.png" alt="{{ pokemon.name }}"/>
+          <figcaption>
+            <span class="number">{{ pokemon?.national_number }}</span>
+            <h4 class="name">{{ pokemon?.name }}</h4>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
 </ng-template>

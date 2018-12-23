@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   isNew: boolean;
 
   pokemons: Pokemon[] = [];
+  source: string;
 
   constructor(
     private pokemonService: PokemonService,
@@ -35,8 +36,9 @@ export class HomeComponent implements OnInit {
   }
 
   getPokemons() {
-    this.pokemonService.getAllPokemons().subscribe((pokemons: Pokemon[]) => {
-      this.pokemons = pokemons;
+    this.pokemonService.getAllPokemons().subscribe((data: Pokemon[]) => {
+      this.pokemons = data;
+      console.log(this.pokemons);
     });
   }
 
