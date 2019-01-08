@@ -1,0 +1,56 @@
+@import '../../../../assets/sass/mixins';
+@import '../../../../assets/sass/variables';
+
+#pokemons-list {
+  margin-top: 50px;
+
+  .pokemon {
+    figure {
+      background: #F5F4F4;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      padding: 10px;
+      position: relative;
+      display: table;
+      width: 100%;
+
+      .thumb {
+        width: 100%;
+      }
+
+      figcaption {
+        margin-top: 15px;
+        text-align: center;
+
+        .number {
+          background: $number-tag;
+          border-radius: 24px;
+          color: white;
+          margin-bottom: 5px;
+          padding: 3px 9px;
+          display: inline-block;
+        }
+
+        .name {
+          font-family: 'Montserrat', Arial, sans-serif;
+          font-size: 14px;
+        }
+
+        .actions {
+          position: absolute;
+          bottom: -22px;
+          left: 28px;
+
+          a {
+            float: left;
+            background: #DFDFDF;
+            margin-right: 5px;
+            margin-left: 5px;
+            padding: 10px;
+            border-radius: 25px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 @import "imports";
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "~bootstrap/dist/css/bootstrap.css";
 
 * {
   padding: 0;
@@ -14,6 +14,10 @@ body {
 
 h1, h2, h3, h4 {
   font-family: 'Montserrat', Arial, sans-serif;
+}
+
+p {
+  margin: 0 !important;
 }
 
 a {

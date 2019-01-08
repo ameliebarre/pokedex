@@ -1,0 +1,51 @@
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/variables';
+
+.intro {
+  margin-top: 100px;
+
+  img {
+    width: 55px;
+    margin: 0 auto 30px;
+    display: block;
+  }
+
+  h3 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 23px;
+    text-transform: uppercase;
+    color: $main-red;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  p {
+    text-align: justify;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .next-step {
+    margin-top: 30px;
+    display: block;
+    text-align: center;
+    color: black;
+
+    img {
+      display: block;
+      width: 35px;
+      margin: 0 auto;
+    }
+
+    span {
+      margin-top: 15px;
+      display: inline-block;
+      font-size: 18px;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

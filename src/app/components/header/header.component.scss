@@ -1,0 +1,33 @@
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/variables';
+
+.navbar {
+  background: $main-red;
+
+  .dropdown {
+    .dropdown-button {
+      background: transparent;
+      color: white;
+      font-size: 18px;
+
+      &:focus {
+        box-shadow: inherit;
+      }
+    }
+
+    .dropdown-menu {
+      left: auto !important;
+      border-top: none;
+      border-left: 1px solid rgba(0, 0, 0, 0.15);
+      border-right: 1px solid rgba(0, 0, 0, 0.15);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      right: 0;
+      width: 200px;
+
+      button {
+        cursor: pointer;
+      }
+    }
+  }
+
+}

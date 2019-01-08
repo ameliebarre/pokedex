@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../shared/services/auth.service';
+
+import { Pokemon } from '../../shared/models/pokemon.model';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   user: any[] = [];
   token: string;
+  isNew: boolean;
 
   constructor(
     private authService: AuthService
@@ -19,6 +22,13 @@ export class HomeComponent implements OnInit {
 
     this.user = JSON.parse(localStorage.getItem('user'));
     this.token = localStorage.getItem('token');
+
+    // Check if it's the first time in the app for the user
+    this.getStatus();
+  }
+
+  getStatus() {
+    this.isNew = this.authService.isFirstTime();
   }
 
 }
