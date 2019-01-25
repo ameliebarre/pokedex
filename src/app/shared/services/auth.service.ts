@@ -32,7 +32,6 @@ export class AuthService {
     return this.http.post(environment.authUrl + '/login', { email: email, password: password })
       .pipe(
         tap((req) => {
-          console.log(req);
           this.storeUserData(req);
         })
       );
@@ -42,9 +41,8 @@ export class AuthService {
     const expireDate = moment(authResult.expiresAt).format('YYYY-MM-DDTHH:mm:ssZ');
 
     localStorage.setItem('expires_at', expireDate);
-    localStorage.setItem('isFirstTime', authResult.isFirstTime);
     localStorage.setItem('token', authResult.token);
-    localStorage.setItem('user', JSON.stringify({ name: authResult.user.name, email: authResult.user.email }));
+    localStorage.setItem('user', JSON.stringify({ id: authResult.user._id, name: authResult.user.name, email: authResult.user.email, isFirstTime: authResult.user.isFirstTime }));
   }
 
   getSession() {
@@ -56,7 +54,8 @@ export class AuthService {
   }
 
   isFirstTime() {
-    return localStorage.getItem('isFirstTime') === 'true' ? true : false;
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.isFirstTime === true ? true : false;
   }
 
   isUserLoggedIn(): boolean {
