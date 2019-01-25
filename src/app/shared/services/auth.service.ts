@@ -42,7 +42,12 @@ export class AuthService {
 
     localStorage.setItem('expires_at', expireDate);
     localStorage.setItem('token', authResult.token);
-    localStorage.setItem('user', JSON.stringify({ id: authResult.user._id, name: authResult.user.name, email: authResult.user.email, isFirstTime: authResult.user.isFirstTime }));
+    localStorage.setItem('user', JSON.stringify({
+      id: authResult.user._id,
+      name: authResult.user.name,
+      email: authResult.user.email,
+      isFirstTime: authResult.user.isFirstTime
+    }));
   }
 
   getSession() {
