@@ -3,6 +3,7 @@ export class User {
   name: string;
   password: string;
   email: string;
+  permissions: any[];
   token: string;
 
   constructor(obj?: any) {
@@ -10,6 +11,7 @@ export class User {
     this.name = obj && obj.name || null;
     this.password = obj && obj.password || null;
     this.email = obj && obj.email || null;
+    this.permissions = obj && obj.permissions || [];
     this.token = obj && obj.token || null;
   }
 }
