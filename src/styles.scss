@@ -38,3 +38,12 @@ button {
     outline: none;
   }
 }
+
+form {
+  input {
+    &:focus {
+      border-color: #999 !important;
+      box-shadow: none !important;
+    }
+  }
+}
