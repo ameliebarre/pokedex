@@ -8,11 +8,11 @@
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu mt-1">
         <a [routerLink]="['/profile/infos']" routerLinkActive="router-link-active"  class="dropdown-item">Mon profil</a>
         <div class="dropdown-divider"></div>
-        <button class="dropdown-item">Mes Pokemons</button>
-        <button class="dropdown-item">Mes jeux</button>
-        <button class="dropdown-item">Mes badges</button>
+        <a class="dropdown-item">Mes Pokemons</a>
+        <a class="dropdown-item">Mes jeux</a>
+        <a class="dropdown-item">Mes badges</a>
         <div class="dropdown-divider"></div>
-        <button class="dropdown-item"(click)="logout()">Déconnexion</button>
+        <a class="dropdown-item"(click)="logout()">Déconnexion</a>
       </div>
     </div>
   </div>

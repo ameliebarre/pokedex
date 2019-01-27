@@ -9,6 +9,8 @@
       background: transparent;
       color: white;
       font-size: 18px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 200;
 
       &:focus {
         box-shadow: inherit;
@@ -23,6 +25,17 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.15);
       right: 0;
       width: 200px;
+
+      .dropdown-item {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 200;
+
+        &:hover {
+          font-weight: bold;
+          background: inherit;
+          cursor: pointer;
+        }
+      }
 
       button {
         cursor: pointer;

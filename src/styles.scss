@@ -32,3 +32,9 @@ a {
 li {
   list-style: none;
 }
+
+button {
+  &:focus {
+    outline: none;
+  }
+}
