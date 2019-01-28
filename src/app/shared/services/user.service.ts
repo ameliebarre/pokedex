@@ -15,7 +15,7 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  public getProfile(id: number): Observable<User> {
+  public getProfile(id: string): Observable<User> {
     return this.http.get<User>(environment.apiUrl + '/profile/' + id)
       .pipe(
         tap((user: User) => {

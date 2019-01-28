@@ -1,17 +1,33 @@
+import {Pokemon} from './pokemon.model';
+
 export class User {
-  id: number;
+  _id: string;
+  username: string;
   name: string;
+  firstname: string;
+  birthdate: string;
+  city: string;
+  isFirstTime: boolean;
   password: string;
   email: string;
   permissions: any[];
   token: string;
+  pokemons: Pokemon[];
+  trainer: any;
 
   constructor(obj?: any) {
-    this.id = obj && Number(obj.id) || null;
+    this._id = obj && obj._id || null;
+    this.username = obj && obj.username || null;
     this.name = obj && obj.name || null;
+    this.firstname = obj && obj.firstname || null;
+    this.birthdate = obj && obj.birthdate || null;
+    this.city = obj && obj.city || null;
+    this.isFirstTime = obj && obj.isFirstTime || false;
     this.password = obj && obj.password || null;
     this.email = obj && obj.email || null;
     this.permissions = obj && obj.permissions || [];
     this.token = obj && obj.token || null;
+    this.pokemons = obj && obj.pokemons || [];
+    this.trainer = obj && obj.trainer || false;
   }
 }

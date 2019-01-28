@@ -4,7 +4,7 @@ import { UserInformationsComponent } from './user-informations/user-informations
 
 const routes: Routes = [
   {
-    path: 'infos',
+    path: ':id',
     component: UserInformationsComponent
   }
 ];

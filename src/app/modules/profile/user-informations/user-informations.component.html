@@ -9,10 +9,20 @@
           <img src="../../../../assets/images/no-trainer.svg" />
           <button type="button">Choisir un dresseur</button>
         </div>
-        <form class="col-md-7">
+        <form class="col-md-7" [formGroup]="userForm">
           <div class="form-group">
-            <label for="email">Adresse mail</label>
-            <input type="email" class="form-control" id="email" >
+            <div class="form-group">
+              <label for="username">Nom d'utilisateur</label>
+              <input type="email" class="form-control" id="username" formControlName="username" />
+            </div>
+            <div class="form-group">
+              <label for="email">Adresse mail</label>
+              <input type="email" class="form-control" id="email" formControlName="email" />
+            </div>
+            <div class="form-group">
+              <label for="email">Adresse mail</label>
+              <input type="email" class="form-control" id="email" formControlName="email" />
+            </div>
           </div>
         </form>
       </div>

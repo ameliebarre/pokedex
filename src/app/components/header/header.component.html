@@ -6,7 +6,7 @@
     <div ngbDropdown class="d-inline-block">
       <button class="btn dropdown-button" id="dropdownBasic" ngbDropdownToggle>{{ user?.name }}</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu mt-1">
-        <a [routerLink]="['/profile/infos']" routerLinkActive="router-link-active"  class="dropdown-item">Mon profil</a>
+        <a [routerLink]="['/profile/', user?.id]" routerLinkActive="router-link-active"  class="dropdown-item">Mon profil</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item">Mes Pokemons</a>
         <a class="dropdown-item">Mes jeux</a>
