@@ -4,7 +4,7 @@
   </a>
   <div class="col text-right">
     <div ngbDropdown class="d-inline-block">
-      <button class="btn dropdown-button" id="dropdownBasic" ngbDropdownToggle>{{ user?.name }}</button>
+      <button class="btn dropdown-button" id="dropdownBasic" ngbDropdownToggle>{{ user?.username }}</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu mt-1">
         <a [routerLink]="['/profile/', user?.id]" routerLinkActive="router-link-active"  class="dropdown-item">Mon profil</a>
         <div class="dropdown-divider"></div>

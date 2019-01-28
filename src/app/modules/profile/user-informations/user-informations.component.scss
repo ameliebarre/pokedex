@@ -38,5 +38,27 @@
         cursor: pointer;
       }
     }
+
+    form {
+      fieldset {
+        margin-bottom: 25px;
+
+        legend {
+          text-transform: uppercase;
+          font-family: 'Montserrat', Arial, sans-serif;
+          font-size: 12px;
+          color: $form-legend;
+          padding-bottom: 10px;
+          margin-bottom: 18px;
+          border-bottom: 1px solid $form-legend-border;
+        }
+
+        label {
+          .mandatory {
+            color: $main-red;
+          }
+        }
+      }
+    }
   }
 }

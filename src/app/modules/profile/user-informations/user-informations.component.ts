@@ -37,10 +37,10 @@ export class UserInformationsComponent implements OnInit {
   }
 
   setUserForm() {
-    console.log(this.profile.name);
     this.userForm = this.fb.group({
-      username: [this.profile.name, Validators.required],
+      username: [this.profile.username, Validators.required],
       email: [this.profile.email, Validators.required],
+      password: [this.profile.password, Validators.required],
       name: [this.profile.name],
       firstname: [this.profile.firstname],
       birthdate: [this.profile.birthdate],
