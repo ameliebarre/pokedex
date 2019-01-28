@@ -27,6 +27,8 @@ export class UserInformationsComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user'));
     this.profile = new User(user);
 
+    console.log(this.profile);
+
     // Check if user is admin
     const index = this.profile.permissions.indexOf('ADMIN');
     if (index !== -1) {
@@ -44,6 +46,10 @@ export class UserInformationsComponent implements OnInit {
       name: [this.profile.name],
       firstname: [this.profile.firstname],
       birthdate: [this.profile.birthdate],
+      sex: [this.profile.sex],
+      city: [this.profile.city],
+      zipcode: [this.profile.zipcode],
+      country: [this.profile.country],
     });
 
     this.userForm.controls['email'].disable(); // Disable email field (no change allowed)

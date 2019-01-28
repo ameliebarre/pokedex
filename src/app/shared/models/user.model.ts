@@ -7,6 +7,10 @@ export class User {
   firstname: string;
   birthdate: string;
   city: string;
+  zipcode: number;
+  country: string;
+  sex: string;
+  phone: number;
   isFirstTime: boolean;
   password: string;
   email: string;
@@ -22,6 +26,10 @@ export class User {
     this.firstname = obj && obj.firstname || null;
     this.birthdate = obj && obj.birthdate || null;
     this.city = obj && obj.city || null;
+    this.zipcode = obj && obj.zipcode || null;
+    this.country = obj && obj.country || 'France';
+    this.sex = obj && obj.sex || null;
+    this.phone = obj && obj.phone || null;
     this.isFirstTime = obj && obj.isFirstTime || false;
     this.password = obj && obj.password || null;
     this.email = obj && obj.email || null;
