@@ -40,6 +40,7 @@
     }
 
     form {
+      margin-bottom: 25px;
       fieldset {
         margin-bottom: 25px;
 
@@ -58,6 +59,9 @@
             color: $main-red;
           }
         }
+      }
+      .submit-button {
+        @include submit-button($main-red, white);
       }
     }
   }

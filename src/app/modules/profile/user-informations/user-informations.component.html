@@ -1,60 +1,91 @@
 <div id="profile" class="container">
   <div class="row">
+
     <div class="col-md-12">
       <h3>Mon profil <span class="is-admin" *ngIf="isAdmin">Administrateur</span></h3>
-      <hr />
-
-      <div class="user-informations row">
-        <div class="no-trainer col-md-4">
-          <img src="../../../../assets/images/no-trainer.svg" />
-          <button type="button">Choisir un dresseur</button>
-        </div>
-        <form class="col-md-7" [formGroup]="userForm">
-          <fieldset>
-            <legend>Identifiants</legend>
-            <div class="form-group">
-              <label for="username">Nom d'utilisateur <span class="mandatory">*</span></label>
-              <input type="text" class="form-control" id="username" formControlName="username" />
-            </div>
-            <div class="form-group">
-              <label for="password">Mot de passe</label>
-              <input type="password" class="form-control" id="password" formControlName="password" />
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Informations personnelles</legend>
-            <div class="form-group">
-              <label for="name">Nom</label>
-              <input type="text" class="form-control" id="name" formControlName="name" />
-            </div>
-            <div class="form-group">
-              <label for="firstname">Prénom</label>
-              <input type="text" class="form-control" id="firstname" formControlName="firstname" />
-            </div>
-            <div class="form-group">
-              <label for="email">Adresse mail <span class="mandatory">*</span></label>
-              <input type="email" class="form-control" id="email" formControlName="email" />
-            </div>
-            <div class="form-group">
-              <label class="pr-3">Sexe</label>
-              <input type="radio" value="male" name="gender" formControlName="sex"> Homme
-              <input type="radio" value="female" name="gender" formControlName="sex"> Femme
-            </div>
-            <div class="form-group">
-              <label for="city">Ville</label>
-              <input type="text" class="form-control" id="city" formControlName="city" />
-            </div>
-            <div class="form-group">
-              <label for="zipcode">Ville</label>
-              <input type="text" class="form-control" id="zipcode" formControlName="zipcode" />
-            </div>
-            <div class="form-group">
-              <label for="country">Ville</label>
-              <input type="text" class="form-control" id="country" formControlName="country" />
-            </div>
-          </fieldset>
-        </form>
-      </div>
     </div>
+
+    <ngb-tabset class="col-md-12">
+      <ngb-tab title="Informations">
+        <ng-template ngbTabContent>
+          <div class="user-informations row mt-3">
+            <div class="no-trainer col-md-5">
+              <img src="../../../../assets/images/no-trainer.svg" />
+              <button type="button">Choisir un dresseur</button>
+            </div>
+            <form class="col-md-6" [formGroup]="userForm">
+              <fieldset>
+                <legend>Identifiants</legend>
+                <div class="form-group">
+                  <label for="username">Nom d'utilisateur <span class="mandatory">*</span></label>
+                  <input type="text" class="form-control" id="username" formControlName="username" />
+                </div>
+                <div class="form-group">
+                  <label for="password">Mot de passe</label>
+                  <input type="password" class="form-control" id="password" formControlName="password" />
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Informations personnelles</legend>
+                <div class="form-group">
+                  <label for="name">Nom</label>
+                  <input type="text" class="form-control" id="name" formControlName="name" />
+                </div>
+                <div class="form-group">
+                  <label for="firstname">Prénom</label>
+                  <input type="text" class="form-control" id="firstname" formControlName="firstname" />
+                </div>
+                <div class="form-group">
+                  <label for="email">Adresse mail <span class="mandatory">*</span></label>
+                  <input type="email" class="form-control" id="email" formControlName="email" />
+                </div>
+                <div class="form-group">
+                  <label class="pr-3">Sexe</label>
+                  <div class="icheck-material-red">
+                    <input type="radio" id="male" value="male" formControlName="sex" />
+                    <label for="male">Homme</label>
+                  </div>
+                  <div class="icheck-material-red">
+                    <input type="radio" id="female" value="female" formControlName="sex" />
+                    <label for="female">Femme</label>
+                  </div>
+                  <!--<input type="radio" value="male" formControlName="sex"> Homme
+                  <input type="radio" value="female" formControlName="sex"> Femme-->
+                </div>
+                <div class="form-group">
+                  <label for="city">Ville</label>
+                  <input type="text" class="form-control" id="city" formControlName="city" />
+                </div>
+                <div class="form-group">
+                  <label for="zipcode">Code postal</label>
+                  <input type="text" class="form-control" id="zipcode" formControlName="zipcode" />
+                </div>
+                <div class="form-group">
+                  <label for="country">Pays</label>
+                  <input type="text" class="form-control" id="country" formControlName="country" />
+                </div>
+              </fieldset>
+              <input type="submit" class="btn btn-primary submit-button col-md-3" value="Modifier" />
+            </form>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab>
+        <ng-template ngbTabTitle><b>Fancy</b> title</ng-template>
+        <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+          <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
+            craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl
+            cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
+            yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
+            shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero
+            sint qui sapiente accusamus tattooed echo park.</p>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Disabled" [disabled]="true">
+        <ng-template ngbTabContent>
+          <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
   </div>
 </div>
