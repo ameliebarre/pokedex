@@ -13,7 +13,7 @@
               <img src="../../../../assets/images/no-trainer.svg" />
               <button type="button">Choisir un dresseur</button>
             </div>
-            <form class="col-md-6" [formGroup]="userForm">
+            <form class="col-md-6" (ngSubmit)="save()" [formGroup]="userForm">
               <fieldset>
                 <legend>Identifiants</legend>
                 <div class="form-group">
@@ -40,6 +40,10 @@
                   <input type="email" class="form-control" id="email" formControlName="email" />
                 </div>
                 <div class="form-group">
+                  <label for="birthdate">Date de naissance</label>
+                  <input type="text" class="form-control" id="birthdate" formControlName="birthdate" />
+                </div>
+                <div class="form-group">
                   <label class="pr-3">Sexe</label>
                   <div class="icheck-material-red">
                     <input type="radio" id="male" value="male" formControlName="sex" />
@@ -49,6 +53,10 @@
                     <input type="radio" id="female" value="female" formControlName="sex" />
                     <label for="female">Femme</label>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label for="birthdate">Mobile</label>
+                  <input type="text" class="form-control" id="phone" formControlName="phone" />
                 </div>
                 <div class="form-group">
                   <label for="city">Ville</label>

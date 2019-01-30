@@ -15,12 +15,7 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  public getProfile(id: string): Observable<User> {
-    return this.http.get<User>(environment.apiUrl + '/profile/' + id)
-      .pipe(
-        tap((user: User) => {
-          return new User(user);
-        })
-      );
+  public udateProfile(user: User): Observable<User> {
+    return this.http.put<User>(environment.apiUrl + '/profile/' + user._id, user);
   }
 }

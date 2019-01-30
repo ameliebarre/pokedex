@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrManager } from 'ng6-toastr-notifications';
+import * as CryptoJS from 'crypto-js';
 
 import { User } from '../../../shared/models/user.model';
 import { UserService } from '../../../shared/services/user.service';
@@ -20,14 +21,14 @@ export class UserInformationsComponent implements OnInit {
   public userForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private userService: UserService,
+    private fb: FormBuilder,
+    private toastr: ToastrManager
   ) { }
 
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('user'));
     this.profile = new User(user);
-
-    console.log(this.profile);
 
     // Check if user is admin
     const index = this.profile.permissions.indexOf('ADMIN');
@@ -40,6 +41,7 @@ export class UserInformationsComponent implements OnInit {
 
   setUserForm() {
     this.userForm = this.fb.group({
+      _id: [this.profile._id],
       username: [this.profile.username, Validators.required],
       email: [this.profile.email, Validators.required],
       password: [this.profile.password, Validators.required],
@@ -49,10 +51,27 @@ export class UserInformationsComponent implements OnInit {
       sex: [this.profile.sex],
       city: [this.profile.city],
       zipcode: [this.profile.zipcode],
+      phone: [this.profile.phone],
       country: [this.profile.country],
+      trainer: [this.profile.trainer],
+      pokemons: [this.profile.pokemons],
     });
 
     this.userForm.controls['email'].disable(); // Disable email field (no change allowed)
+  }
+
+  save() {
+
+    this.profile = this.userForm.value;
+    this.profile['_id'] = this.profile._id;
+
+    this.userService.udateProfile(this.profile).subscribe((user: User) => {
+      console.log('passe ici');
+      this.toastr.successToastr('Les modifications ont bien été prise en compte', '', { position: 'bottom-right' });
+    }, (error: HttpErrorResponse) => {
+      console.log('passe là');
+      this.toastr.errorToastr('La modification de votre profil a échoué', '', { position: 'bottom-right' });
+    });
   }
 
 }
