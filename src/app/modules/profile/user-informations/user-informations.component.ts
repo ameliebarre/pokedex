@@ -59,7 +59,6 @@ export class UserInformationsComponent implements OnInit {
   }
 
   save() {
-
     this.profile = this.userForm.value;
 
     localStorage.setItem('user', JSON.stringify(this.profile)); // Set new user data in local storage
