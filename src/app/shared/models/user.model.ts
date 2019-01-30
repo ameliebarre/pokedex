@@ -1,4 +1,4 @@
-import {Pokemon} from './pokemon.model';
+import { Pokemon } from './pokemon.model';
 
 export class User {
   _id: string;
