@@ -56,18 +56,20 @@ export class UserInformationsComponent implements OnInit {
       trainer: [this.profile.trainer],
       pokemons: [this.profile.pokemons],
     });
-
-    this.userForm.controls['email'].disable(); // Disable email field (no change allowed)
   }
 
   save() {
 
     this.profile = this.userForm.value;
-    this.profile['_id'] = this.profile._id;
+
+    localStorage.setItem('user', JSON.stringify(this.profile)); // Set new user data in local storage
 
     this.userService.udateProfile(this.profile).subscribe((user: User) => {
-      console.log('passe ici');
       this.toastr.successToastr('Les modifications ont bien été prise en compte', '', { position: 'bottom-right' });
+      setTimeout(function(){
+        window.location.reload(); // Reload page
+      }, 1000);
+
     }, (error: HttpErrorResponse) => {
       console.log('passe là');
       this.toastr.errorToastr('La modification de votre profil a échoué', '', { position: 'bottom-right' });
