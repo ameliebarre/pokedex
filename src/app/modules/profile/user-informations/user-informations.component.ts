@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrManager } from 'ng6-toastr-notifications';
-import * as CryptoJS from 'crypto-js';
 
 import { User } from '../../../shared/models/user.model';
 import { UserService } from '../../../shared/services/user.service';
+import { Trainer } from '../../../shared/models/trainer';
+import { TrainerService } from '../../../shared/services/trainer.service';
 
 @Component({
   selector: 'app-user-informations',
@@ -16,12 +17,16 @@ export class UserInformationsComponent implements OnInit {
 
   public profile: User;
   public isAdmin: boolean;
+  public trainers: Trainer[] = [];
+  public trainer: Trainer;
+  public selectedTrainer: Trainer;
 
   // Form
   public userForm: FormGroup;
 
   constructor(
     private userService: UserService,
+    private trainerService: TrainerService,
     private fb: FormBuilder,
     private toastr: ToastrManager
   ) { }
@@ -37,6 +42,8 @@ export class UserInformationsComponent implements OnInit {
     }
 
     this.setUserForm();
+
+    this.getAllTrainers();
   }
 
   setUserForm() {
@@ -70,9 +77,21 @@ export class UserInformationsComponent implements OnInit {
       }, 1000);
 
     }, (error: HttpErrorResponse) => {
-      console.log('passe là');
       this.toastr.errorToastr('La modification de votre profil a échoué', '', { position: 'bottom-right' });
     });
+  }
+
+  getAllTrainers() {
+    this.trainerService.getTrainers().subscribe((trainers: Trainer[]) => {
+      this.trainers = trainers;
+    }, (error: HttpErrorResponse) => {
+      console.log(error.message);
+    });
+  }
+
+  chooseTrainer(trainer: Trainer): void {
+    this.selectedTrainer = trainer;
+    this.profile.trainer = new Trainer(trainer);
   }
 
 }

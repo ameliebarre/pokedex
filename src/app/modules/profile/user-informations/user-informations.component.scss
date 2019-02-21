@@ -26,6 +26,10 @@
 
     .nav-link {
       font-size: 15px;
+
+      &:hover {
+        border: 1px solid transparent;
+      }
     }
 
     .nav-link.active,
@@ -80,6 +84,19 @@
       }
       .submit-button {
         @include submit-button($main-red, white);
+      }
+    }
+  }
+
+  .trainers {
+    .trainer {
+      img {
+        cursor: pointer;
+        width: 100%;
+      }
+
+      img.active {
+        border: 6px solid #ddd;
       }
     }
   }
