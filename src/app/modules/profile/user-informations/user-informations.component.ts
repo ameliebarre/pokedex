@@ -60,7 +60,6 @@ export class UserInformationsComponent implements OnInit {
       zipcode: [this.profile.zipcode],
       phone: [this.profile.phone],
       country: [this.profile.country],
-      trainer: [this.profile.trainer],
       pokemons: [this.profile.pokemons],
     });
   }
@@ -72,7 +71,7 @@ export class UserInformationsComponent implements OnInit {
 
     this.userService.udateProfile(this.profile).subscribe((user: User) => {
       this.toastr.successToastr('Les modifications ont bien été prise en compte', '', { position: 'bottom-right' });
-      setTimeout(function(){
+      setTimeout(function() {
         window.location.reload(); // Reload page
       }, 1000);
 
