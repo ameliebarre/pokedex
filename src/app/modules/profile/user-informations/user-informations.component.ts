@@ -44,6 +44,8 @@ export class UserInformationsComponent implements OnInit {
     this.setUserForm();
 
     this.getAllTrainers();
+
+    console.log(this.profile);
   }
 
   setUserForm() {
@@ -64,7 +66,7 @@ export class UserInformationsComponent implements OnInit {
     });
   }
 
-  save() {
+  updateProfile() {
     this.profile = this.userForm.value;
 
     localStorage.setItem('user', JSON.stringify(this.profile)); // Set new user data in local storage
@@ -91,6 +93,24 @@ export class UserInformationsComponent implements OnInit {
   chooseTrainer(trainer: Trainer): void {
     this.selectedTrainer = trainer;
     this.profile.trainer = new Trainer(trainer);
+  }
+
+  updateTrainer(): void {
+
+    if (!this.selectedTrainer) {
+      this.toastr.errorToastr('Vous n\'avez pas sélectionné de dresseur Pokemon.', '', { position: 'bottom-right' });
+    } else {
+      // Assign the selected trainer to the profile
+      this.profile.trainer = this.selectedTrainer;
+
+      localStorage.setItem('user', JSON.stringify(this.profile)); // Set new user data in local storage
+
+      this.userService.updateProfileTrainer(this.profile, this.selectedTrainer).subscribe((user: User) => {
+        this.toastr.successToastr('Les modifications ont bien été prise en compte', '', { position: 'bottom-right' });
+      }, (error: HttpErrorResponse) => {
+        console.log(error.message);
+      });
+    }
   }
 
 }

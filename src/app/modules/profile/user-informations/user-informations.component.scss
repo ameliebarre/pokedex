@@ -99,5 +99,11 @@
         border: 6px solid #ddd;
       }
     }
+
+    button {
+      @include submit-button($main-red, white);
+      cursor: pointer;
+      margin: 30px auto;
+    }
   }
 }

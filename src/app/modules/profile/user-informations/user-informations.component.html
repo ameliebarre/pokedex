@@ -9,11 +9,17 @@
       <ngb-tab title="Informations">
         <ng-template ngbTabContent>
           <div class="user-informations row mt-3">
-            <div class="no-trainer col-md-5">
+            <div class="no-trainer col-md-4" *ngIf="profile.trainer.length === 0; else trainerInfo">
               <img src="../../../../assets/images/no-trainer.svg" />
               <button type="button">Choisir un dresseur</button>
             </div>
-            <form class="col-md-6" (ngSubmit)="save()" [formGroup]="userForm">
+            <ng-template #trainerInfo>
+              <div class="col-md-4">
+                <img src="../../../../assets/images/trainers/{{ profile.trainer.slug }}.png" />
+              </div>
+            </ng-template>
+
+            <form class="col-md-7" (ngSubmit)="updateProfile()" [formGroup]="userForm">
               <fieldset>
                 <legend>Identifiants</legend>
                 <div class="form-group">
@@ -83,6 +89,7 @@
             <div class="trainer col-md-3" *ngFor="let trainer of trainers;" (click)="chooseTrainer(trainer)">
               <img #trainerImg src="../../../../assets/images/trainers/{{ trainer.slug }}.png" [class.active]="selectedTrainer === trainer">
             </div>
+            <button type="submit" (click)="updateTrainer()">Choisir</button>
           </div>
         </ng-template>
       </ngb-tab>
