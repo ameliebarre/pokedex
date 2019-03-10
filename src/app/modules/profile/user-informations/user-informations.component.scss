@@ -107,3 +107,26 @@
     }
   }
 }
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-body {
+  text-align: center;
+  font-weight: lighter;
+  width: 90%;
+  font-size: 20px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  border-top: none;
+
+  button {
+    @include submit-button($main-red, white);
+  }
+}
+
+

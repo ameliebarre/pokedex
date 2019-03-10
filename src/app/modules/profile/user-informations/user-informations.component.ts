@@ -7,6 +7,7 @@ import { User } from '../../../shared/models/user.model';
 import { UserService } from '../../../shared/services/user.service';
 import { Trainer } from '../../../shared/models/trainer';
 import { TrainerService } from '../../../shared/services/trainer.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-informations',
@@ -21,6 +22,8 @@ export class UserInformationsComponent implements OnInit {
   public trainer: Trainer;
   public selectedTrainer: Trainer;
 
+  closeResult: string;
+
   // Form
   public userForm: FormGroup;
 
@@ -28,7 +31,8 @@ export class UserInformationsComponent implements OnInit {
     private userService: UserService,
     private trainerService: TrainerService,
     private fb: FormBuilder,
-    private toastr: ToastrManager
+    private toastr: ToastrManager,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -90,27 +94,26 @@ export class UserInformationsComponent implements OnInit {
     });
   }
 
-  chooseTrainer(trainer: Trainer): void {
+  chooseTrainer(trainer: Trainer, content): void {
     this.selectedTrainer = trainer;
-    this.profile.trainer = new Trainer(trainer);
+
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      // this.profile.trainer = new Trainer(trainer);
+      this.updateTrainer();
+    });
   }
 
   updateTrainer(): void {
-
-    if (!this.selectedTrainer) {
-      this.toastr.errorToastr('Vous n\'avez pas sélectionné de dresseur Pokemon.', '', { position: 'bottom-right' });
-    } else {
       // Assign the selected trainer to the profile
       this.profile.trainer = this.selectedTrainer;
 
       localStorage.setItem('user', JSON.stringify(this.profile)); // Set new user data in local storage
 
-      this.userService.updateProfileTrainer(this.profile, this.selectedTrainer).subscribe((user: User) => {
+      this.userService.updateProfileTrainer(this.profile).subscribe((user: User) => {
+        console.log(user);
         this.toastr.successToastr('Les modifications ont bien été prise en compte', '', { position: 'bottom-right' });
       }, (error: HttpErrorResponse) => {
         console.log(error.message);
       });
-    }
   }
-
 }

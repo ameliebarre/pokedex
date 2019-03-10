@@ -20,7 +20,7 @@ export class UserService {
     return this.http.put<User>(environment.apiUrl + '/profile/' + user._id, user);
   }
 
-  public updateProfileTrainer(user: User, trainer: Trainer): Observable<User> {
-    return this.http.put<User>(environment.apiUrl + '/profile/' + user._id + '/trainer', trainer);
+  public updateProfileTrainer(user: User): Observable<User> {
+    return this.http.put<User>(environment.apiUrl + '/profile/' + user._id + '/trainer', user);
   }
 }

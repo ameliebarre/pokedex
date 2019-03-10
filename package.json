@@ -36,6 +36,7 @@
     "jasmine": "^3.3.0",
     "lodash": "^4.17.11",
     "moment": "^2.23.0",
+    "ng-modal": "^1.0.2",
     "ng6-toastr-notifications": "^1.0.4",
     "path": "^0.12.7",
     "popper.js": "^1.14.6",
