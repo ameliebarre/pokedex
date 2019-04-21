@@ -13,6 +13,9 @@
     <li class="nav-item">
       <span class="username"><strong>Hello, </strong> {{ user.firstname }} {{ user.name }}</span>
     </li>
+    <li class="nav-item logout" (click)="logout()">
+      <fa-icon [icon]="['fas', 'sign-out-alt']" class="alert-icon"></fa-icon>
+    </li>
   </ul>
   <!-- <div class="col text-right">
     <div ngbDropdown class="d-inline-block">

@@ -10,6 +10,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
+/* Font Awesome */
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { PublicComponent } from './layouts/public/public.component';
@@ -65,6 +70,9 @@ import { PokemonModule } from './modules/pokemon/pokemon.module';
   ]
 })
 export class AppModule {
+  constructor() {
+    library.add(faBell, faSignOutAlt);
+  }
 }
 
 export function tokenGetter() {
