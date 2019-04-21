@@ -53,6 +53,7 @@ export class UserInformationsComponent implements OnInit {
       zipcode: [this.profile.zipcode],
       phone: [this.profile.phone],
       country: [this.profile.country],
+      permissions: [this.profile.permissions],
       pokemons: [this.profile.pokemons],
     });
   }
