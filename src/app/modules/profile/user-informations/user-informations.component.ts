@@ -41,15 +41,12 @@ export class UserInformationsComponent implements OnInit {
 
     // Check if user is admin
     const index = this.profile.permissions.indexOf('ADMIN');
+    console.log(this.profile);
     if (index !== -1) {
       this.isAdmin = true;
     }
 
     this.setUserForm();
-
-    this.getAllTrainers();
-
-    console.log(this.profile);
   }
 
   setUserForm() {
@@ -84,36 +81,5 @@ export class UserInformationsComponent implements OnInit {
     }, (error: HttpErrorResponse) => {
       this.toastr.errorToastr('La modification de votre profil a échoué', '', { position: 'bottom-right' });
     });
-  }
-
-  getAllTrainers() {
-    this.trainerService.getTrainers().subscribe((trainers: Trainer[]) => {
-      this.trainers = trainers;
-    }, (error: HttpErrorResponse) => {
-      console.log(error.message);
-    });
-  }
-
-  chooseTrainer(trainer: Trainer, content): void {
-    this.selectedTrainer = trainer;
-
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      // this.profile.trainer = new Trainer(trainer);
-      this.updateTrainer();
-    });
-  }
-
-  updateTrainer(): void {
-      // Assign the selected trainer to the profile
-      this.profile.trainer = this.selectedTrainer;
-
-      localStorage.setItem('user', JSON.stringify(this.profile)); // Set new user data in local storage
-
-      this.userService.updateProfileTrainer(this.profile).subscribe((user: User) => {
-        console.log(user);
-        this.toastr.successToastr('Les modifications ont bien été prise en compte', '', { position: 'bottom-right' });
-      }, (error: HttpErrorResponse) => {
-        console.log(error.message);
-      });
   }
 }

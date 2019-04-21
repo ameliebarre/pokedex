@@ -64,6 +64,7 @@
     form {
       margin-bottom: 25px;
       fieldset {
+        margin-top: 25px;
         margin-bottom: 25px;
 
         legend {
@@ -81,52 +82,17 @@
             color: $main-red;
           }
         }
+
+        input {
+          font-size: 13px;
+          color: #000;
+          font-family: Arial, sans-serif;
+        }
       }
       .submit-button {
         @include submit-button($main-red, white);
       }
     }
   }
-
-  .trainers {
-    .trainer {
-      img {
-        cursor: pointer;
-        width: 100%;
-      }
-
-      img.active {
-        border: 6px solid #ddd;
-      }
-    }
-
-    button {
-      @include submit-button($main-red, white);
-      cursor: pointer;
-      margin: 30px auto;
-    }
-  }
 }
-
-.modal-header {
-  border-bottom: none;
-}
-
-.modal-body {
-  text-align: center;
-  font-weight: lighter;
-  width: 90%;
-  font-size: 20px;
-  margin: 0 auto;
-  line-height: 1.5;
-}
-
-.modal-footer {
-  border-top: none;
-
-  button {
-    @include submit-button($main-red, white);
-  }
-}
-
 

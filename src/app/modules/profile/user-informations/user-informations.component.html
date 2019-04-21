@@ -5,114 +5,68 @@
       <h3>Mon profil <span class="is-admin" *ngIf="isAdmin">Administrateur</span></h3>
     </div>
 
-    <ngb-tabset class="col-md-12">
-      <ngb-tab title="Informations">
-        <ng-template ngbTabContent>
-          <div class="user-informations row mt-3">
-            <div class="no-trainer col-md-4" *ngIf="profile.trainer.length === 0; else trainerInfo">
-              <img src="../../../../assets/images/no-trainer.svg" />
-              <button type="button">Choisir un dresseur</button>
-            </div>
-            <ng-template #trainerInfo>
-              <div class="col-md-4">
-                <img src="../../../../assets/images/trainers/{{ profile.trainer.slug }}.png" />
-              </div>
-            </ng-template>
-
-            <form class="col-md-7" (ngSubmit)="updateProfile()" [formGroup]="userForm">
-              <fieldset>
-                <legend>Identifiants</legend>
-                <div class="form-group">
-                  <label for="username">Nom d'utilisateur <span class="mandatory">*</span></label>
-                  <input type="text" class="form-control" id="username" formControlName="username" />
-                </div>
-                <div class="form-group">
-                  <label for="password">Mot de passe</label>
-                  <input type="password" class="form-control" id="password" formControlName="password" />
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend>Informations personnelles</legend>
-                <div class="form-group">
-                  <label for="name">Nom</label>
-                  <input type="text" class="form-control" id="name" formControlName="name" />
-                </div>
-                <div class="form-group">
-                  <label for="firstname">Prénom</label>
-                  <input type="text" class="form-control" id="firstname" formControlName="firstname" />
-                </div>
-                <div class="form-group">
-                  <label for="email">Adresse mail <span class="mandatory">*</span></label>
-                  <input type="email" class="form-control" id="email" formControlName="email" disabled />
-                </div>
-                <div class="form-group">
-                  <label for="birthdate">Date de naissance</label>
-                  <input type="text" class="form-control" id="birthdate" formControlName="birthdate" />
-                </div>
-                <div class="form-group">
-                  <label class="pr-3">Sexe</label>
-                  <div class="icheck-material-red">
-                    <input type="radio" id="male" value="male" formControlName="sex" />
-                    <label for="male">Homme</label>
-                  </div>
-                  <div class="icheck-material-red">
-                    <input type="radio" id="female" value="female" formControlName="sex" />
-                    <label for="female">Femme</label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="birthdate">Mobile</label>
-                  <input type="text" class="form-control" id="phone" formControlName="phone" />
-                </div>
-                <div class="form-group">
-                  <label for="city">Ville</label>
-                  <input type="text" class="form-control" id="city" formControlName="city" />
-                </div>
-                <div class="form-group">
-                  <label for="zipcode">Code postal</label>
-                  <input type="text" class="form-control" id="zipcode" formControlName="zipcode" />
-                </div>
-                <div class="form-group">
-                  <label for="country">Pays</label>
-                  <input type="text" class="form-control" id="country" formControlName="country" />
-                </div>
-              </fieldset>
-              <input type="submit" class="btn btn-primary submit-button col-md-3" value="Modifier" />
-            </form>
+    <div class="user-informations col-md-12">
+      <form (ngSubmit)="updateProfile()" [formGroup]="userForm">
+        <fieldset>
+          <legend>Identifiants</legend>
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur <span class="mandatory">*</span></label>
+            <input type="text" class="form-control" id="username" formControlName="username" />
           </div>
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab>
-        <ng-template ngbTabTitle>Dresseur Pokemon</ng-template>
-        <ng-template ngbTabContent>
-
-          <ng-template #content let-modal>
-            <div class="modal-header">
-              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div *ngIf="profile.trainer; else noTrainer">
-                <p>Votre dresseur Pokemon est actuellement <strong>{{ profile.trainer.name }}</strong>. Voulez-vous changer pour <strong>{{ selectedTrainer.name }}</strong> ?</p>
-              </div>
-              <ng-template #noTrainer>
-                <p>Vous n'avez actuellement aucun dresseur Pokemon. Voulez-vous prendre {{ selectedTrainer.name }} comme dresseur Pokemon ?</p>
-              </ng-template>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Choisir</button>
-            </div>
-          </ng-template>
-
-          <div class="trainers row mt-4 mb-4">
-            <div class="trainer col-md-3" *ngFor="let trainer of trainers;" (click)="chooseTrainer(trainer, content)">
-              <img #trainerImg src="../../../../assets/images/trainers/{{ trainer.slug }}.png" [class.active]="selectedTrainer === trainer">
-            </div>
-            <button type="submit" (click)="updateTrainer()">Choisir</button>
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" class="form-control" id="password" formControlName="password" />
           </div>
-        </ng-template>
-      </ngb-tab>
-    </ngb-tabset>
+        </fieldset>
+        <fieldset>
+          <legend>Informations personnelles</legend>
+          <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" class="form-control" id="name" formControlName="name" />
+          </div>
+          <div class="form-group">
+            <label for="firstname">Prénom</label>
+            <input type="text" class="form-control" id="firstname" formControlName="firstname" />
+          </div>
+          <div class="form-group">
+            <label for="email">Adresse mail <span class="mandatory">*</span></label>
+            <input type="email" class="form-control" id="email" formControlName="email" disabled />
+          </div>
+          <div class="form-group">
+            <label for="birthdate">Date de naissance</label>
+            <input type="text" class="form-control" id="birthdate" formControlName="birthdate" />
+          </div>
+          <div class="form-group">
+            <label class="pr-3">Sexe</label>
+            <div class="icheck-material-red">
+              <input type="radio" id="male" value="male" formControlName="sex" />
+              <label for="male" class="pl-2">Homme</label>
+            </div>
+            <div class="icheck-material-red">
+              <input type="radio" id="female" value="female" formControlName="sex" />
+              <label for="female" class="pl-2">Femme</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="birthdate">Mobile</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone" />
+          </div>
+          <div class="form-group">
+            <label for="city">Ville</label>
+            <input type="text" class="form-control" id="city" formControlName="city" />
+          </div>
+          <div class="form-group">
+            <label for="zipcode">Code postal</label>
+            <input type="text" class="form-control" id="zipcode" formControlName="zipcode" />
+          </div>
+          <div class="form-group">
+            <label for="country">Pays</label>
+            <input type="text" class="form-control" id="country" formControlName="country" />
+          </div>
+        </fieldset>
+        <input type="submit" class="btn btn-primary submit-button col-md-3" value="Modifier" />
+      </form>
+    </div>
+
   </div>
 </div>
