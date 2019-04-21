@@ -5,6 +5,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AuthService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
@@ -47,6 +48,7 @@ import { PokemonModule } from './modules/pokemon/pokemon.module';
     }),
     RouterModule,
     ToastrModule.forRoot(),
+    FontAwesomeModule,
     PokemonModule
   ],
   providers: [
@@ -62,7 +64,8 @@ import { PokemonModule } from './modules/pokemon/pokemon.module';
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+}
 
 export function tokenGetter() {
   return localStorage.getItem('token');
