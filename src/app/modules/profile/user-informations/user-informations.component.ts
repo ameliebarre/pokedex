@@ -5,9 +5,6 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 
 import { User } from '../../../shared/models/user.model';
 import { UserService } from '../../../shared/services/user.service';
-import { Trainer } from '../../../shared/models/trainer';
-import { TrainerService } from '../../../shared/services/trainer.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-informations',
@@ -18,21 +15,14 @@ export class UserInformationsComponent implements OnInit {
 
   public profile: User;
   public isAdmin: boolean;
-  public trainers: Trainer[] = [];
-  public trainer: Trainer;
-  public selectedTrainer: Trainer;
-
-  closeResult: string;
 
   // Form
   public userForm: FormGroup;
 
   constructor(
     private userService: UserService,
-    private trainerService: TrainerService,
     private fb: FormBuilder,
     private toastr: ToastrManager,
-    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
