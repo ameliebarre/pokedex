@@ -12,6 +12,9 @@
           <div class="form-group">
             <label for="username">Nom d'utilisateur <span class="mandatory">*</span></label>
             <input type="text" class="form-control" id="username" formControlName="username" />
+            <div *ngIf="userForm.controls['username'].invalid && (userForm.controls['username'].dirty || userForm.controls['username'].touched)" class="alert alert-danger mt-2 mb-0">
+              Le nom d'utilisateur est obligatoire
+            </div>
           </div>
           <div class="form-group">
             <label for="password">Mot de passe</label>
@@ -30,7 +33,7 @@
           </div>
           <div class="form-group">
             <label for="email">Adresse mail <span class="mandatory">*</span></label>
-            <input type="email" class="form-control" id="email" formControlName="email" disabled />
+            <input type="email" class="form-control" id="email" formControlName="email" />
           </div>
           <div class="form-group">
             <label for="birthdate">Date de naissance</label>
@@ -64,7 +67,7 @@
             <input type="text" class="form-control" id="country" formControlName="country" />
           </div>
         </fieldset>
-        <input type="submit" class="btn btn-primary submit-button col-md-3" value="Modifier" />
+        <input type="submit" [disabled]="!userForm.valid" class="btn btn-primary submit-button col-md-3" value="Modifier" />
       </form>
     </div>
 

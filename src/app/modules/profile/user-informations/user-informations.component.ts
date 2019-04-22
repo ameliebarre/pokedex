@@ -56,6 +56,9 @@ export class UserInformationsComponent implements OnInit {
       permissions: [this.profile.permissions],
       pokemons: [this.profile.pokemons],
     });
+
+    // Disable email form
+    this.userForm.controls['email'].disable();
   }
 
   updateProfile() {
