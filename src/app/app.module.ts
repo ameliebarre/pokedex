@@ -22,7 +22,6 @@ import { SecureComponent } from './layouts/secure/secure.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
-import { TrainerComponent } from './components/trainer/trainer.component';
 
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,8 +35,7 @@ import { PokemonModule } from './modules/pokemon/pokemon.module';
     SecureComponent,
     HomeComponent,
     RegisterComponent,
-    HeaderComponent,
-    TrainerComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
