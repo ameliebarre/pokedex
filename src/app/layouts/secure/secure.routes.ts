@@ -5,5 +5,10 @@ export const SECURE_ROUTES: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'profile',
+    loadChildren: '../../modules/profile/profile.module#ProfileModule'
   }
 ];

@@ -5,10 +5,10 @@
         <h1 class="app-icon">My Pokedex</h1>
         <form (submit)="onSubmit()" [formGroup]="registerForm">
           <div class="form-group">
-            <label for="name">Nom d'utilisateur</label>
-            <input type="text" id="name" class="form-control" formControlName="name" autocomplete="off" />
-            <div *ngIf="submitted && form['name'].errors">
-              <div class="text-danger mt-2" *ngIf="form['name'].invalid">Le nom est obligatoire</div>
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" class="form-control" formControlName="username" autocomplete="off" />
+            <div *ngIf="submitted && form['username'].errors">
+              <div class="text-danger mt-2" *ngIf="form['username'].invalid">Le nom est obligatoire</div>
             </div>
           </div>
           <div class="form-group">

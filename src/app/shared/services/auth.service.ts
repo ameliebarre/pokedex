@@ -24,15 +24,14 @@ export class AuthService {
     this.helper = new JwtHelperService();
   }
 
-  register(name: string, email: string, password: string): Observable<any> {
-    return this.http.post<any>(environment.authUrl + '/register', { name: name, email: email, password: password });
+  register(username: string, email: string, password: string): Observable<any> {
+    return this.http.post<any>(environment.authUrl + '/register', { username: username, email: email, password: password });
   }
 
   login(email: string, password: string) {
     return this.http.post(environment.authUrl + '/login', { email: email, password: password })
       .pipe(
         tap((req) => {
-          console.log(req);
           this.storeUserData(req);
         })
       );
@@ -42,9 +41,8 @@ export class AuthService {
     const expireDate = moment(authResult.expiresAt).format('YYYY-MM-DDTHH:mm:ssZ');
 
     localStorage.setItem('expires_at', expireDate);
-    localStorage.setItem('isFirstTime', authResult.isFirstTime);
     localStorage.setItem('token', authResult.token);
-    localStorage.setItem('user', JSON.stringify({ name: authResult.user.name, email: authResult.user.email }));
+    localStorage.setItem('user', JSON.stringify(authResult.user));
   }
 
   getSession() {
@@ -56,7 +54,8 @@ export class AuthService {
   }
 
   isFirstTime() {
-    return localStorage.getItem('isFirstTime') === 'true' ? true : false;
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.isFirstTime === true ? true : false;
   }
 
   isUserLoggedIn(): boolean {
