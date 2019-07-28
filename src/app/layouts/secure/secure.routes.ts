@@ -5,5 +5,9 @@ export const SECURE_ROUTES: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'games',
+    loadChildren: '../../modules/game/game.module#GameModule'
   }
 ];
