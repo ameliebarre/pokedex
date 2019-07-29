@@ -1,6 +1,11 @@
 <div id="games" class="container">
-    <div class="row">
-      <p>console-list works</p>
+  <div class="row">
+    <div class="console-container col-sm" *ngFor="let console of consoles">
+      <div class="console">
+          <img src="./../../../../assets/images/{{ console.slug }}.svg" alt="{{ console.name }}" width="100px" />
+          <h3>{{ console.name }}</h3>
+      </div>
     </div>
   </div>
+</div>
   

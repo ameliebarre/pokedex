@@ -19,7 +19,7 @@ export class ConsoleService {
    * Get the list of all consoles
    */
   getAllConsoles(): Observable<Console[]> {
-    return this.httpClient.get<Console[]>(`${environment.apiUrl}/games`)
+    return this.httpClient.get<Console[]>(`${environment.apiUrl}/consoles`)
       .pipe(
         map((response: Console[]) => {
           return response.map((console: Console) => {
