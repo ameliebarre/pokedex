@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { ConsoleListComponent } from './console-list/console-list.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: ConsoleListComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
