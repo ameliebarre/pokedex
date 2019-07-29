@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { map, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { Pokemon } from '../models/pokemon.model';
 
@@ -20,7 +20,7 @@ export class PokemonService {
   }
 
   getAllPokemons(): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>('http://localhost:4500/api/pokemons')
+    return this.http.get<Pokemon[]>(`${environment.apiUrl}/pokemons`)
       .pipe(
         map((response: Pokemon[]) => {
           return response.map((pokemon: Pokemon) => {
