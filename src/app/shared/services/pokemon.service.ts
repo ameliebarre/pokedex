@@ -11,9 +11,6 @@ import { Pokemon } from '../models/pokemon.model';
 })
 export class PokemonService {
 
-  private headers: Headers;
-  apiUrl = environment.apiUrl;
-
   constructor(
     private http: HttpClient,
   ) {
