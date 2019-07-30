@@ -14,7 +14,7 @@ import { RegistrationValidator } from '../../shared/validators/registration.vali
 })
 export class RegisterComponent implements OnInit {
 
-  name: string;
+  username: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+
     if (this.authService.isUserLoggedIn()) {
       this.router.navigate(['home']);
     }
@@ -46,8 +46,8 @@ export class RegisterComponent implements OnInit {
   setRegisterForm() {
 
     this.registerForm = this.fb.group({
-      name: [this.name, Validators.required],
-      email: [this.email, Validators.compose([Validators.required, Validators.pattern("[^ @]*@[^ @]*")])],
+      username: [this.username, Validators.required],
+      email: [this.email, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
       password: [this.password, Validators.required],
       confirmPassword: [this.confirmPassword, Validators.required],
     }, {
@@ -63,11 +63,11 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.name = this.registerForm.controls['name'].value;
+    this.username = this.registerForm.controls['username'].value;
     this.email = this.registerForm.controls['email'].value;
     this.password = this.registerForm.controls['password'].value;
 
-    this.authService.register(this.name, this.email, this.password).subscribe(
+    this.authService.register(this.username, this.email, this.password).subscribe(
       (res: any) => {
         this.toastr.successToastr('Merci de votre inscription, vous pouvez désormais vous connecter', '', { position: 'bottom-right' });
         this.router.navigate(['/signin']);

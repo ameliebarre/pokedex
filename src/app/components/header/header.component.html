@@ -1,21 +1,36 @@
 <nav class="navbar">
-  <a class="navbar-brand mr-auto">
-    <img src="../../../assets/images/buttons.svg" />
-  </a>
-  <div class="col text-right">
-    <div ngbDropdown class="d-inline-block">
-      <button class="btn dropdown-button" id="dropdownBasic" ngbDropdownToggle>{{ user?.username }}</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu mt-1">
-        <button class="dropdown-item">Mon profil</button>
-        <div class="dropdown-divider"></div>
-        <button class="dropdown-item">Mes Pokemons</button>
-        <button class="dropdown-item">Mes jeux</button>
-        <button class="dropdown-item">Mes badges</button>
-        <div class="dropdown-divider"></div>
-        <button class="dropdown-item"(click)="logout()">Déconnexion</button>
+  <div class="navbar-brand">
+    <div class="mask">
+      <div class="logo">
+        <img src="../../../assets/images/pokeball.svg" alt="Pokeball" />
       </div>
     </div>
   </div>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <fa-icon [icon]="['fas', 'bell']" class="alert-icon"></fa-icon>
+    </li>
+    <li class="nav-item">
+      <span class="username"><strong>Hello, </strong> {{ user.firstname }} {{ user.name }}</span>
+    </li>
+    <li class="nav-item logout" (click)="logout()">
+      <fa-icon [icon]="['fas', 'sign-out-alt']" class="alert-icon"></fa-icon>
+    </li>
+  </ul>
+  <!-- <div class="col text-right">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn dropdown-button" id="dropdownBasic" ngbDropdownToggle>{{ user?.username }}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu mt-1">
+        <a [routerLink]="['/profile/', user?._id]" routerLinkActive="router-link-active"  class="dropdown-item">Mon profil</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item">Mes Pokemons</a>
+        <a class="dropdown-item">Mes jeux</a>
+        <a class="dropdown-item">Mes badges</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item"(click)="logout()">Déconnexion</a>
+      </div>
+    </div>
+  </div> -->
   <!--<div class="form-inline">
     <p class="mr-3">{{ user?.name }}</p>
     <button class="btn my-2 my-sm-0 logout" type="submit" (click)="logout()">Déconnexion</button>

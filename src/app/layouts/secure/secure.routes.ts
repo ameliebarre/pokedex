@@ -5,13 +5,10 @@ export const SECURE_ROUTES: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    pathMatch: 'full'
   },
   {
-    path: 'games',
-    loadChildren: '../../modules/game/game.module#GameModule'
-  },
-  {
-    path: 'consoles',
-    loadChildren: '../../modules/console/console.module#ConsoleModule'
+    path: 'profile',
+    loadChildren: '../../modules/profile/profile.module#ProfileModule'
   }
 ];
