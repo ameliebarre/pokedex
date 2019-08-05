@@ -1,6 +1,6 @@
 <div id="games" class="container">
   <div class="row">
-    <div class="console-container col-sm" *ngFor="let console of consoles">
+    <div class="console-container col-sm-3" *ngFor="let console of consoles" (click)="viewConsole(console.slug)">
       <div class="console">
           <img src="./../../../../assets/images/{{ console.slug }}.svg" alt="{{ console.name }}" width="100px" />
           <h3>{{ console.name }}</h3>
@@ -8,4 +8,4 @@
     </div>
   </div>
 </div>
-  
+

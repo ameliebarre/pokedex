@@ -28,4 +28,12 @@ export class ConsoleListComponent implements OnInit {
     )
   }
 
+  /**
+   *
+   * @param console
+   */
+  viewConsole(console) {
+    window.console.log(console);
+  }
+
 }
