@@ -5,6 +5,11 @@
           <img src="./../../../../assets/images/{{ console.slug }}.svg" alt="{{ console.name }}" width="100px" />
           <h3>{{ console.name }}</h3>
       </div>
+      <div class="games-list" *ngIf="console.games.length > 0">
+        <ul>
+          <li *ngFor="let game of console.games">{{ game.name }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

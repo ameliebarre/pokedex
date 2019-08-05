@@ -4,6 +4,7 @@
 
   .console-container {
     margin-bottom: 30px;
+    position: relative;
 
     .console {
       background: lightgray;
@@ -25,6 +26,35 @@
             font-size: 13px;
             text-align: center;
         }
+    }
+
+    .games-list {
+      position: absolute;
+      background: white;
+      top: 43px;
+      right: -80px;
+      -webkit-box-shadow: 4px 4px 5px 0 rgba(173,173,173,1);
+      -moz-box-shadow: 4px 4px 5px 0 rgba(173,173,173,1);
+      box-shadow: 4px 4px 5px 0 rgba(173,173,173,1);
+      z-index: 1;
+      padding: 20px;
+
+      &:after, &:before {
+        right: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+
+      &:before {
+        border-right-color: white;
+        border-width: 13px;
+        margin-top: 0;
+      }
     }
   }
 }
