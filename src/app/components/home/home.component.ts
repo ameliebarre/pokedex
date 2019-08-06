@@ -10,7 +10,12 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  user: any[] = [];
+  user: {
+    email: string;
+    isFirstTime: boolean;
+    username: string;
+  };
+
   token: string;
   isNew: boolean;
 

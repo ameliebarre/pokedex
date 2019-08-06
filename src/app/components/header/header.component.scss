@@ -3,12 +3,67 @@
 
 .navbar {
   background: $main-red;
+  border-bottom: 1px solid $main-red;
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 
-  .dropdown {
+  .navbar-brand {
+    padding: 0;
+
+    .mask {
+      clip-path: polygon(
+          0 0, /* left top */
+          100% 0, /* right top */
+          85% 100%, /* right bottom */
+          0 100% /* left bottom */
+      );
+      width: 150px;
+      height: 85px;
+      z-index: 100000;
+      background: white;
+
+      .logo {
+        line-height: 85px;
+        width: 70px;
+        margin: 0 auto;
+
+        img {
+          display: inline-block;
+          vertical-align: middle;
+          width: 48px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .nav {
+    color: white;
+
+    .nav-item {
+      margin-right: 20px;
+
+      .alert-icon {
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .username {
+        font-size: 15px;
+        margin-top: 4px;
+        display: block;
+      }
+    }
+  }
+
+  /*.dropdown {
     .dropdown-button {
       background: transparent;
       color: white;
       font-size: 18px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 200;
 
       &:focus {
         box-shadow: inherit;
@@ -24,10 +79,21 @@
       right: 0;
       width: 200px;
 
+      .dropdown-item {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 200;
+
+        &:hover {
+          font-weight: bold;
+          background: inherit;
+          cursor: pointer;
+        }
+      }
+
       button {
         cursor: pointer;
       }
     }
-  }
+  }*/
 
 }

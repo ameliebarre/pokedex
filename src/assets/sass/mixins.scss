@@ -17,6 +17,19 @@
 
   &:active {
     border-color: transparent;
-    background-color: darken($bg, 26%);
+    background-color: darken($bg, 25%);
+  }
+}
+
+@mixin submit-button($bg, $color) {
+  background-color: $bg;
+  color: $color;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 0;
+  font-size: 14px;
+
+  &:active {
+    background-color: darken($bg, 25%);
   }
 }

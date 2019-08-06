@@ -1,5 +1,6 @@
 @import "imports";
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
 
 * {
   padding: 0;
@@ -31,4 +32,19 @@ a {
 
 li {
   list-style: none;
+}
+
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+form {
+  input {
+    &:focus {
+      border-color: #999 !important;
+      box-shadow: none !important;
+    }
+  }
 }

@@ -1,0 +1,19 @@
+<div id="games" class="container">
+  <div class="row">
+    <div class="console-container col-sm-3" *ngFor="let console of consoles" (click)="viewConsole(console.slug)">
+      <div class="console">
+          <img src="./../../../../assets/images/{{ console.slug }}.svg" alt="{{ console.name }}" width="100px" />
+          <h3>{{ console.name }}</h3>
+      </div>
+      <div class="games-list" *ngIf="console.games.length > 0">
+        <ul>
+          <li *ngFor="let game of console.games">
+            <img src="../../../../assets/images/{{ game.slug }}.svg" alt="{{ game.name }}" />
+            <p>{{ game.name }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
