@@ -32,12 +32,13 @@
       position: absolute;
       background: white;
       top: 43px;
-      right: -80px;
+      right: -120px;
       -webkit-box-shadow: 4px 4px 5px 0 rgba(173,173,173,1);
       -moz-box-shadow: 4px 4px 5px 0 rgba(173,173,173,1);
       box-shadow: 4px 4px 5px 0 rgba(173,173,173,1);
       z-index: 1;
       padding: 20px;
+      width: 180px;
 
       &:after, &:before {
         right: 100%;
@@ -54,6 +55,25 @@
         border-right-color: white;
         border-width: 13px;
         margin-top: 0;
+      }
+
+      ul {
+        margin-bottom: 0;
+
+        li {
+          overflow: auto;
+          margin-bottom: 5px;
+          margin-top: 5px;
+
+          img {
+            float: left;
+          }
+
+          p {
+            margin: 8px 0 0 5px !important;
+            display: inline-block;
+          }
+        }
       }
     }
   }
