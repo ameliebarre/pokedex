@@ -1,56 +1,101 @@
 @import '../../../../assets/sass/mixins';
 @import '../../../../assets/sass/variables';
 
-#pokemons-list {
+.container {
   margin-top: 50px;
+  font-family: 'Montserrat', Arial, sans-serif;
 
-  .pokemon {
-    figure {
-      background: #F5F4F4;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      padding: 10px;
-      position: relative;
-      display: table;
-      width: 100%;
+  #filter {
+    h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+  }
 
-      .thumb {
+  #pokemon-list {
+    margin-top: 50px;
+
+    .pokemon {
+      figure {
+        background: #F5F4F4;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        padding: 10px;
+        position: relative;
+        display: table;
         width: 100%;
-      }
 
-      figcaption {
-        margin-top: 15px;
-        text-align: center;
-
-        .number {
-          background: $number-tag;
-          border-radius: 24px;
-          color: white;
-          margin-bottom: 5px;
-          padding: 3px 9px;
-          display: inline-block;
+        .thumb {
+          width: 100%;
         }
 
-        .name {
-          font-family: 'Montserrat', Arial, sans-serif;
-          font-size: 14px;
-        }
+        figcaption {
+          margin-top: 15px;
+          text-align: center;
 
-        .actions {
-          position: absolute;
-          bottom: -22px;
-          left: 28px;
+          .number {
+            background: $number-tag;
+            border-radius: 24px;
+            color: white;
+            margin-bottom: 5px;
+            padding: 3px 9px;
+            display: inline-block;
+          }
 
-          a {
-            float: left;
-            background: #DFDFDF;
-            margin-right: 5px;
-            margin-left: 5px;
-            padding: 10px;
-            border-radius: 25px;
+          .name {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 14px;
+          }
+
+          .actions {
+            position: absolute;
+            bottom: -22px;
+            left: 28px;
+
+            a {
+              float: left;
+              background: #DFDFDF;
+              margin-right: 5px;
+              margin-left: 5px;
+              padding: 10px;
+              border-radius: 25px;
+            }
           }
         }
       }
+    }
+  }
+}
+
+::ng-deep .multiselect-dropdown {
+  .dropdown-btn {
+    .selected-item {
+      border: 1px solid $main-red !important;
+      background: $main-red !important;
+      margin-top: 5px;
+    }
+
+    .dropdown-down {
+      border-top: 8px solid $main-red !important;
+      border-left: 8px solid transparent !important;
+      border-right: 8px solid transparent !important;
+    }
+  }
+}
+
+::ng-deep .multiselect-item-checkbox {
+  padding: 12px 10px !important;
+
+  input + div {
+    &:before {
+      color: $main-red !important;
+      border: 2px solid $main-red !important;
+    }
+  }
+
+  input:checked + div {
+    &:before {
+      background: $main-red !important;
     }
   }
 }
