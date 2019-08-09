@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <div id="pokemon-list" class="row" [@listAnimation]="pokemons.length">
+  <div id="pokemon-list" class="row">
     <div *ngFor="let pokemon of pokemons" class="pokemon col-md-2">
       <figure>
         <img class="thumb" src="../../../assets/images/pokemons/{{ pokemon.national_number }}.svg" alt="{{ pokemon.name }}"/>
