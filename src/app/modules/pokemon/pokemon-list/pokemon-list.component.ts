@@ -3,11 +3,29 @@ import * as _ from 'lodash';
 
 import { Pokemon } from '../../../shared/models/pokemon.model';
 import { PokemonService } from '../../../shared/services/pokemon.service';
+import { trigger, query, state, stagger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
-  styleUrls: ['./pokemon-list.component.scss']
+  styleUrls: ['./pokemon-list.component.scss'],
+  animations: [
+    trigger('listAnimation', [
+      transition('* => *', [ // each time the binding value changes
+        query(':leave', [
+          stagger(100, [
+            animate('0.5s', style({ opacity: 0 }))
+          ])
+        ], { optional: true }),
+        query(':enter', [
+          style({ opacity: 0 }),
+          stagger(100, [
+            animate('0.5s', style({ opacity: 1 }))
+          ])
+        ], { optional: true })
+      ])
+    ])
+  ],
 })
 export class PokemonListComponent implements OnInit {
 
@@ -16,6 +34,7 @@ export class PokemonListComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
   generations: any[] = [];
+  currentState = 'initial';
 
   constructor(
     private pokemonService: PokemonService,
@@ -42,6 +61,8 @@ export class PokemonListComponent implements OnInit {
       allowSearchFilter: false,
       itemsShowLimit: 3
     };
+
+    this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
   }
 
   getPokemons() {
