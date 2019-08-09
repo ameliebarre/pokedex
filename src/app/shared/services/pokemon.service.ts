@@ -13,9 +13,13 @@ export class PokemonService {
 
   constructor(
     private http: HttpClient,
-  ) {
-  }
+  ) { }
 
+  /**
+   * Get the list of all Pokemons
+   *
+   * @returns {Observable<Pokemon[]>}
+   */
   getAllPokemons(): Observable<Pokemon[]> {
     return this.http.get<Pokemon[]>(`${environment.apiUrl}/pokemons`)
       .pipe(
@@ -25,6 +29,16 @@ export class PokemonService {
           });
         })
       );
+  }
+
+  /**
+   * Filter the Pokemons by their generation
+   *
+   * @param {Array<number>} generations
+   * @returns {Observable<Pokemon[]>}
+   */
+  filterByGeneration(generations: Array<number>): Observable<Pokemon[]> {
+    return this.http.post<Pokemon[]>(`${environment.apiUrl}/pokemons/generations`, { generations: generations });
   }
 
 }

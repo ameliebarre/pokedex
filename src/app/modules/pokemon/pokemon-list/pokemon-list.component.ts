@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import * as _ from 'lodash';
 
 import { Pokemon } from '../../../shared/models/pokemon.model';
 import { PokemonService } from '../../../shared/services/pokemon.service';
@@ -14,6 +15,7 @@ export class PokemonListComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
+  generations: any[] = [];
 
   constructor(
     private pokemonService: PokemonService,
@@ -43,16 +45,39 @@ export class PokemonListComponent implements OnInit {
   }
 
   getPokemons() {
-    this.pokemonService.getAllPokemons().subscribe((pokemons: Pokemon[]) => {
-      this.pokemons = pokemons;
-    });
+    this.pokemonService.getAllPokemons().subscribe(
+      (pokemons: Pokemon[]) => {
+        this.pokemons = pokemons;
+      }
+    );
   }
 
-  onItemSelect(item: any) {
-    console.log(item);
+  onItemSelect(generation: { item_id: number, item_text: string }) {
+    this.generations.push(generation.item_id);
+    this.filter(this.generations);
+  }
+
+  onItemDeselect(generation: { item_id: number, item_text: string }) {
+    this.generations = _.remove(this.generations, (g) => {
+      return g !== generation.item_id;
+    });
+
+    this.filter(this.generations);
   }
 
   onSelectAll(items: any) {
     console.log(items);
+  }
+
+  filter(generations: Array<number>) {
+    if (this.generations.length === 0) {
+      this.getPokemons();
+    } else {
+      this.pokemonService.filterByGeneration(generations).subscribe(
+        (pokemons: Pokemon[]) => {
+          this.pokemons = pokemons;
+        }
+      );
+    }
   }
 }
