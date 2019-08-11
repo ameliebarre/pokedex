@@ -41,4 +41,8 @@ export class PokemonService {
     return this.http.post<Pokemon[]>(`${environment.apiUrl}/pokemons/generations`, { generations: generations });
   }
 
+  filterByType(types: Array<string>): Observable<Pokemon[]> {
+    return this.http.post<Pokemon[]>(`${environment.apiUrl}/pokemons/types`, { types: types });
+  }
+
 }
