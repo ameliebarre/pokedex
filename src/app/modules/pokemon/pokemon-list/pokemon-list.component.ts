@@ -40,6 +40,8 @@ export class PokemonListComponent implements OnInit {
   generations: any[] = [];
   types: Type[] = [];
   typeItems: any[] = [];
+  term = '';
+  noPokemons: boolean;
   selectedType: Type;
   active: boolean;
   currentState = 'initial';
@@ -152,6 +154,16 @@ export class PokemonListComponent implements OnInit {
         this.pokemons = pokemons;
       }
     );
+  }
+
+  searchPokemon(term: string) {
+    if (!term) {
+      this.getPokemons();
+    } else {
+      this.pokemons = this.pokemons.filter((pokemon) => {
+        return pokemon.name.toLowerCase().includes(term.toLowerCase());
+      });
+    }
   }
 
   /*onTypeDeselect(type: { id: string, itemName }) {

@@ -27,20 +27,15 @@
           >
           </ng-multiselect-dropdown>
         </div>
-        <!--<div class="col-md-7">
-          <label>Types : </label>
-          <div id="type-list" class="row">
-            <div *ngFor="let type of types" ngbTooltip="{{ type.name }}" container="body" class="type col-md-1" (click)="onTypeSelect(type)">
-              <img src="../../../../assets/images/types/{{ type.slug }}.svg" alt="{{ type.name }}" [class.active]="" />
-            </div>
-          </div>
-        </div>-->
+        <div class="col-md-4">
+          <input type="text" id="search" class="form-control" [(ngModel)]="term" (keyup)="onKeyUp(term)" placeholder="Rechercher un Pokemon..." autocomplete="off"/>
+        </div>
       </div>
     </div>
   </div>
 
   <div id="pokemon-list" class="row">
-    <div *ngFor="let pokemon of pokemons" class="pokemon col-md-2">
+    <div *ngFor="let pokemon of pokemons | filter: term" class="pokemon col-md-2">
       <figure>
         <img class="thumb" src="../../../assets/images/pokemons/{{ pokemon.national_number }}.svg" alt="{{ pokemon.name }}"/>
         <figcaption>
@@ -55,6 +50,9 @@
           </div>
         </figcaption>
       </figure>
+    </div>
+    <div *ngIf="pokemons.length === 0" class="col-md-12 text-center no-results">
+      Aucun Pokemon trouvé...
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   imports: [
@@ -16,14 +17,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgbModule,
     BrowserAnimationsModule
   ],
-  declarations: [],
+  declarations: [
+    FilterPipe
+  ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFontAwesomeModule,
     NgMultiSelectDropDownModule,
-    NgbModule
+    NgbModule,
+    FilterPipe
   ]
 })
 export class SharedModule { }
