@@ -139,6 +139,20 @@
   }
 }
 
+#create--button {
+  position: absolute;
+  padding: 0px 11px;
+  font-size: 50px;
+  color: white;
+  background: $main-red;
+  border: none;
+  bottom: 25px;
+  right: 25px;
+  cursor: pointer;
+  @include border-radius(100%);
+
+}
+
 ::placeholder {
   color: #999;
   font-size: 12px;
