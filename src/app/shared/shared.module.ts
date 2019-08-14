@@ -20,9 +20,9 @@ import { FilterPipe } from './pipes/filter.pipe';
   ],
   exports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
     AngularFontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule,
     NgMultiSelectDropDownModule,
     NgbModule,
     FilterPipe
