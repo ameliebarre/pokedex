@@ -55,4 +55,6 @@
       Aucun Pokemon trouvé...
     </div>
   </div>
+
+  <button type="button" id="create--button" *ngIf="user.permissions.includes('ADMIN')" (click)="createPokemon()">+</button>
 </div>

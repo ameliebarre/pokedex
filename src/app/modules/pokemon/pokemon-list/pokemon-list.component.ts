@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, query, stagger, style, animate, transition } from '@angular/animations';
+import { Router } from '@angular/router';
 import * as _ from 'lodash';
 
 import { Pokemon } from '../../../shared/models/pokemon.model';
 import { PokemonService } from '../../../shared/services/pokemon.service';
 import { Type } from '../../../shared/models/type.model';
 import { TypeService } from '../../../shared/services/type.service';
-import { trigger, query, state, stagger, style, animate, transition } from '@angular/animations';
-import { Observable, forkJoin } from 'rxjs'
 
 @Component({
   selector: 'app-pokemon-list',
@@ -41,19 +41,22 @@ export class PokemonListComponent implements OnInit {
   types: Type[] = [];
   typeItems: any[] = [];
   term = '';
-  noPokemons: boolean;
-  selectedType: Type;
-  active: boolean;
+  user: any;
+
   currentState = 'initial';
 
   constructor(
     private pokemonService: PokemonService,
-    private typeService: TypeService
+    private typeService: TypeService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.getPokemons();
     this.getTypes();
+
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user);
 
     this.dropdownGenerations = [
       { item_id: 1, item_text: 'Première' },
@@ -166,10 +169,7 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
-  /*onTypeDeselect(type: { id: string, itemName }) {
-    this.generations = _.remove(this.generations, (g) => {
-      return g !== type.name;
-    });
+  createPokemon() {
+    this.router.navigate(['/pokemons/add']);
   }
-  */
 }

@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../../app-routing.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import {SharedModule} from '../../shared/shared.module';
@@ -10,7 +11,7 @@ import {SharedModule} from '../../shared/shared.module';
   imports: [
     CommonModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   exports: [
     PokemonListComponent
