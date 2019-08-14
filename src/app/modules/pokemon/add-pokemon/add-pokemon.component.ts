@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Pokemon } from '../../../shared/models/pokemon.model';
+
 @Component({
   selector: 'app-add-pokemon',
   templateUrl: './add-pokemon.component.html',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPokemonComponent implements OnInit {
 
+  pokemon: Pokemon;
+
   constructor() { }
 
   ngOnInit() {
+    this.pokemon = new Pokemon();
   }
 
 }
