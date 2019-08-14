@@ -9,7 +9,7 @@ export const SECURE_ROUTES: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: '../../modules/profile/profile.module#ProfileModule'
+    loadChildren: './../modules/profile/profile.module#ProfileModule'
   },
   {
     path: 'games',
@@ -18,5 +18,9 @@ export const SECURE_ROUTES: Routes = [
   {
     path: 'consoles',
     loadChildren: '../../modules/console/console.module#ConsoleModule'
+  },
+  {
+    path: 'pokemons',
+    loadChildren: '../../modules/pokemon/pokemon.module#PokemonModule'
   }
 ];

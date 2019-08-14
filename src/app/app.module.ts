@@ -38,7 +38,6 @@ import { PokemonModule } from './modules/pokemon/pokemon.module';
     HeaderComponent
   ],
   imports: [
-    BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
