@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <fieldset class="form-group" formGroupName="numbers">
+  <!-- <fieldset class="form-group" formGroupName="numbers">
     <div class="row">
       <div class="col-md-12">
         <legend>Numéros de Pokedex</legend>
@@ -36,5 +36,25 @@
         <input type="text" class="form-control" formControlName="national_number" />
       </div>
     </div>
-  </fieldset>
+  </fieldset> -->
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <label>Famille</label>
+        <input type="text" class="form-control" formControlName="family" />
+      </div>
+      <div class="col-md-4">
+        <label>Génération</label>
+        <ng-multiselect-dropdown
+          [placeholder]="'Générations'"
+          [data]="dropdownGenerations"
+          [settings]="dropdownGenerationsSettings"
+          (onSelect)="onGenerationSelect($event)"
+          ngDefaultControl
+        >
+        </ng-multiselect-dropdown>
+      </div>
+    </div>
+  </div>
 </form>

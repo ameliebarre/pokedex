@@ -35,3 +35,52 @@
     }
   }
 }
+
+::ng-deep .multiselect-dropdown {
+  .dropdown-btn {
+    padding: 8px 12px !important;
+
+    .selected-item {
+      border: none !important;
+      background: transparent !important;
+      color: black !important;
+    }
+
+    .dropdown-down {
+      margin-top: 10px;
+      border-top: 8px solid $main-red !important;
+      border-left: 8px solid transparent !important;
+      border-right: 8px solid transparent !important;
+    }
+
+    .dropdown-up {
+      border-bottom: 8px solid $main-red !important;
+      border-left: 8px solid transparent !important;
+      border-right: 8px solid transparent !important;
+    }
+
+    span {
+      span:first-child {
+        margin-top: 5px;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+::ng-deep .multiselect-item-checkbox {
+  padding: 12px 10px !important;
+
+  input + div {
+    &:before {
+      color: $main-red !important;
+      border: 2px solid $main-red !important;
+    }
+  }
+
+  input:checked + div {
+    &:before {
+      background: $main-red !important;
+    }
+  }
+}
