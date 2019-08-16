@@ -1,4 +1,9 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+/* Font Awesome */
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBackspace } from '@fortawesome/free-solid-svg-icons';
 
 import { SharedModule } from '../../shared/shared.module';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
@@ -15,10 +20,15 @@ import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
   imports: [
     PokemonRoutingModule,
     SharedModule,
+    FontAwesomeModule
   ],
   exports: [
     PokemonListComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class PokemonModule { }
+export class PokemonModule {
+  constructor() {
+    library.add(faBackspace);
+  }
+}

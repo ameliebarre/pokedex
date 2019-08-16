@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
+import * as _ from 'lodash';
 
 import { Pokemon } from '../../../shared/models/pokemon.model';
 import { PokemonService } from '../../../shared/services/pokemon.service';
@@ -14,6 +15,8 @@ export class PokemonFormComponent implements OnInit {
   @Input() pokemon: Pokemon;
 
   pokemonForm: FormGroup;
+  isExists = false;
+  isInexistant = false;
 
   constructor(
     private pokemonService: PokemonService,
@@ -45,6 +48,26 @@ export class PokemonFormComponent implements OnInit {
 
   get numbers() {
     return this.pokemonForm.controls.numbers as FormGroup;
+  }
+
+  bindNameValue(event: any) {
+    const pokemonName = event.target.value;
+    this.pokemonForm.get('slug').setValue(pokemonName.toLowerCase());
+
+    // Check among the list of all Pokemons if the name value exists
+    this.pokemonService.getAllPokemons().subscribe(
+      (pokemons: Pokemon[]) => {
+        const index = _.findIndex(pokemons, { name: pokemonName });
+
+        this.isExists = index !== -1;
+      }
+    );
+  }
+
+  removeName() {
+    this.pokemonForm.get('name').setValue('');
+    this.pokemonForm.get('slug').setValue('');
+    this.isExists = false;
   }
 
   savePokemon() { }

@@ -12,8 +12,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 /* Font Awesome */
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';

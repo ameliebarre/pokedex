@@ -1,0 +1,37 @@
+@import '../../../../assets/sass/mixins';
+@import '../../../../assets/sass/variables';
+
+#pokemon-form {
+
+  .form-group {
+    margin-bottom: 25px;
+
+    input {
+      border-color: #999;
+    }
+
+    .alert-danger {
+      color: white;
+      background-color: $main-red;
+      border-color: darken($main-red, 10%);
+    }
+
+    .remove-text {
+      position: absolute;
+      top: 30px;
+      right: 26px;
+      font-size: 21px;
+      color: $main-red;
+      cursor: pointer;
+    }
+  }
+
+  fieldset {
+    legend {
+      font-size: 14px;
+      font-family: $main-font;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+  }
+}
