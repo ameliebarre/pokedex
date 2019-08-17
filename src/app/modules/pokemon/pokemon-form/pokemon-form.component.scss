@@ -44,6 +44,10 @@
       border: none !important;
       background: transparent !important;
       color: black !important;
+
+      &:hover {
+        box-shadow: none !important;
+      }
     }
 
     .dropdown-down {
