@@ -7,12 +7,17 @@ export class Pokemon {
   name: string;
   slug: string;
   national: string;
-  pokedex: Array<{
-    game: Game,
-    number: string,
-    region: string,
-    generation: number
-  }>;
+  kanto: string;
+  johto_oac: string;
+  johto_hgss: string;
+  hoenn_rse: string;
+  hoenn_rosa: string;
+  sinnoh: string;
+  unys_nb: string;
+  unys_n2b2: string;
+  kalos: string;
+  alola_sl: string;
+  alola_usul: string;
   description: string;
   sex: Array<string>;
   family: string;
@@ -43,7 +48,17 @@ export class Pokemon {
     this.name = obj && obj.name || null;
     this.slug = obj && obj.slug || null;
     this.national = obj && obj.national || null;
-    this.pokedex = obj && obj.pokedex || [{ game: null, number: null, region: null, generation: null }];
+    this.kanto = obj && obj.kanto || null;
+    this.johto_oac = obj && obj.johto_oac || null;
+    this.johto_hgss = obj && obj.johto_hgss || null;
+    this.hoenn_rse = obj && obj.hoenn_rse || null;
+    this.hoenn_rosa = obj && obj.hoenn_rosa || null;
+    this.sinnoh = obj && obj.sinnoh || null;
+    this.unys_nb = obj && obj.unys_nb || null;
+    this.unys_n2b2 = obj && obj.unys_n2b2 || null;
+    this.kalos = obj && obj.kalos || null;
+    this.alola_sl = obj && obj.alola_sl || null;
+    this.alola_usul = obj && obj.alola_usul || null;
     this.description = obj && obj.description || null;
     this.sex = obj && obj.sex || [];
     this.family = obj && obj.family || [];

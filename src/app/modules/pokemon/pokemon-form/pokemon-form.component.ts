@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
+import {FormGroup, FormControl, FormBuilder, FormArray} from '@angular/forms';
 import * as _ from 'lodash';
 
 import { Pokemon } from '../../../shared/models/pokemon.model';
 import { PokemonService } from '../../../shared/services/pokemon.service';
+import {Game} from '../../../shared/models/game.model';
+import {GameService} from '../../../shared/services/game.service';
 
 @Component({
   selector: 'app-pokemon-form',
@@ -21,6 +23,7 @@ export class PokemonFormComponent implements OnInit {
 
   constructor(
     private pokemonService: PokemonService,
+    private gameService: GameService,
     private fb: FormBuilder
   ) { }
 
@@ -50,6 +53,18 @@ export class PokemonFormComponent implements OnInit {
       id: [this.pokemon._id],
       name: [this.pokemon.name],
       slug: [this.pokemon.slug],
+      national: [this.pokemon.national],
+      kanto: [this.pokemon.kanto],
+      johto_oac: [this.pokemon.johto_oac],
+      johto_hgss: [this.pokemon.johto_hgss],
+      hoenn_rse: [this.pokemon.hoenn_rse],
+      hoenn_rosa: [this.pokemon.hoenn_rosa],
+      sinnoh: [this.pokemon.sinnoh],
+      unys_nb: [this.pokemon.unys_nb],
+      unys_n2b2: [this.pokemon.unys_n2b2],
+      kalos: [this.pokemon.kalos],
+      alola_sl: [this.pokemon.alola_sl],
+      alola_usul: [this.pokemon.alola_usul],
       family: [this.pokemon.family],
       generation: [this.pokemon.generation],
     });
