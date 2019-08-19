@@ -48,7 +48,7 @@ export class PokemonFormComponent implements OnInit {
   setPokemonForm() {
     this.pokemonForm = this.fb.group({
       id: [this.pokemon._id],
-      name: [this.pokemon.national_number],
+      name: [this.pokemon.name],
       slug: [this.pokemon.slug],
       family: [this.pokemon.family],
       generation: [this.pokemon.generation],
