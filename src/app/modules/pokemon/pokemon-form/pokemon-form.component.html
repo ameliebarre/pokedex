@@ -74,23 +74,28 @@
     </div>
   </fieldset>
 
-  <div class="form-group">
-    <div class="row">
-      <div class="col-md-4">
-        <label>Famille</label>
-        <input type="text" class="form-control" formControlName="family" />
-      </div>
-      <div class="col-md-4">
-        <label>Génération</label>
-        <ng-multiselect-dropdown
-          [placeholder]="'Générations'"
-          [data]="dropdownGenerations"
-          [settings]="dropdownGenerationsSettings"
-          (onSelect)="onGenerationSelect($event)"
-          ngDefaultControl
-        >
-        </ng-multiselect-dropdown>
-      </div>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label>Famille</label>
+      <input type="text" class="form-control" formControlName="family" />
+    </div>
+    <div class="form-group col-md-4">
+      <label>Génération</label>
+      <ng-multiselect-dropdown
+        [placeholder]="'Générations'"
+        [data]="dropdownGenerations"
+        [settings]="dropdownGenerationsSettings"
+        (onSelect)="onGenerationSelect($event)"
+        ngDefaultControl
+      >
+      </ng-multiselect-dropdown>
+    </div>
+    <div class="form-group col-md-4">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>Description</label>
+      <textarea class="form-control" formControlName="description"></textarea>
     </div>
   </div>
 </form>

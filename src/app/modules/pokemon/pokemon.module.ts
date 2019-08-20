@@ -11,13 +11,15 @@ import { AddPokemonComponent } from './add-pokemon/add-pokemon.component';
 import { PokemonRoutingModule } from './pokemon-routing.module';
 import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
 import { PokemonViewComponent } from './pokemon-view/pokemon-view.component';
+import { EditPokemonComponent } from './edit-pokemon/edit-pokemon.component';
 
 @NgModule({
   declarations: [
     PokemonListComponent,
     AddPokemonComponent,
     PokemonFormComponent,
-    PokemonViewComponent
+    PokemonViewComponent,
+    EditPokemonComponent
   ],
   imports: [
     PokemonRoutingModule,

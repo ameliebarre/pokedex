@@ -67,6 +67,7 @@ export class PokemonFormComponent implements OnInit {
       alola_usul: [this.pokemon.alola_usul],
       family: [this.pokemon.family],
       generation: [this.pokemon.generation],
+      description: [this.pokemon.description]
     });
   }
 
