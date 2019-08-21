@@ -11,7 +11,7 @@ const routes: Routes = [
     component: AddPokemonComponent
   },
   {
-    path: ':id/edit',
+    path: ':slug/edit',
     component: EditPokemonComponent
   },
   {

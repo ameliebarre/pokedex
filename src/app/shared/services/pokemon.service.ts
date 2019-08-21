@@ -31,6 +31,15 @@ export class PokemonService {
       );
   }
 
+  getPokemonBySlug(slug: string): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${environment.apiUrl}/pokemons/${slug}`)
+      .pipe(
+        map((pokemon: Pokemon) => {
+          return new Pokemon(pokemon);
+        })
+      );
+  }
+
   /**
    * Filter the Pokemons by their generation
    *

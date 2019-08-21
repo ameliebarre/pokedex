@@ -6,8 +6,9 @@
   .form-group {
     margin-bottom: 25px;
 
-    input {
+    .form-control {
       border-color: #999;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .alert-danger {
@@ -23,6 +24,15 @@
       font-size: 21px;
       color: $main-red;
       cursor: pointer;
+    }
+
+    textarea {
+      height: 260px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 20px;
+      text-align: justify;
+      border-color: #999;
+      resize: none;
     }
   }
 

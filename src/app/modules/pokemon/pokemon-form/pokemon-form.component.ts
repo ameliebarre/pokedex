@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {FormGroup, FormControl, FormBuilder, FormArray} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 
 import { Pokemon } from '../../../shared/models/pokemon.model';
 import { PokemonService } from '../../../shared/services/pokemon.service';
-import {Game} from '../../../shared/models/game.model';
-import {GameService} from '../../../shared/services/game.service';
+import { GameService } from '../../../shared/services/game.service';
+
 
 @Component({
   selector: 'app-pokemon-form',
@@ -20,14 +21,23 @@ export class PokemonFormComponent implements OnInit {
   isExists = false;
   dropdownGenerations = [];
   dropdownGenerationsSettings = {};
+  slug: string;
 
   constructor(
+    private route: ActivatedRoute,
     private pokemonService: PokemonService,
     private gameService: GameService,
     private fb: FormBuilder
   ) { }
 
   ngOnInit() {
+
+    this.slug = this.route.snapshot.params['slug'];
+
+    if (this.slug) {
+      this.loadPokemonDetails(this.slug);
+    }
+
     this.setPokemonForm();
 
     this.dropdownGenerations = [
@@ -48,26 +58,50 @@ export class PokemonFormComponent implements OnInit {
     };
   }
 
+  loadPokemonDetails(slug: string) {
+    this.pokemonService.getPokemonBySlug(slug).subscribe(
+      (pokemon: Pokemon) => {
+        console.log(pokemon);
+        this.pokemonForm.controls['name'].setValue(pokemon.name);
+        this.pokemonForm.controls['slug'].setValue(pokemon.slug);
+        this.pokemonForm.controls['national'].setValue(pokemon.national);
+        this.pokemonForm.controls['kanto'].setValue(pokemon.kanto);
+        this.pokemonForm.controls['johto_oac'].setValue(pokemon.johto_oac);
+        this.pokemonForm.controls['johto_hgss'].setValue(pokemon.johto_hgss);
+        this.pokemonForm.controls['hoenn_rse'].setValue(pokemon.hoenn_rse);
+        this.pokemonForm.controls['hoenn_rosa'].setValue(pokemon.hoenn_rosa);
+        this.pokemonForm.controls['sinnoh'].setValue(pokemon.sinnoh);
+        this.pokemonForm.controls['unys_nb'].setValue(pokemon.unys_nb);
+        this.pokemonForm.controls['unys_n2b2'].setValue(pokemon.unys_n2b2);
+        this.pokemonForm.controls['kalos'].setValue(pokemon.kalos);
+        this.pokemonForm.controls['alola_sl'].setValue(pokemon.alola_sl);
+        this.pokemonForm.controls['alola_usul'].setValue(pokemon.alola_usul);
+        this.pokemonForm.controls['family'].setValue(pokemon.family);
+        this.pokemonForm.controls['description'].setValue(pokemon.description);
+      }
+    );
+  }
+
   setPokemonForm() {
     this.pokemonForm = this.fb.group({
-      id: [this.pokemon._id],
-      name: [this.pokemon.name],
-      slug: [this.pokemon.slug],
-      national: [this.pokemon.national],
-      kanto: [this.pokemon.kanto],
-      johto_oac: [this.pokemon.johto_oac],
-      johto_hgss: [this.pokemon.johto_hgss],
-      hoenn_rse: [this.pokemon.hoenn_rse],
-      hoenn_rosa: [this.pokemon.hoenn_rosa],
-      sinnoh: [this.pokemon.sinnoh],
-      unys_nb: [this.pokemon.unys_nb],
-      unys_n2b2: [this.pokemon.unys_n2b2],
-      kalos: [this.pokemon.kalos],
-      alola_sl: [this.pokemon.alola_sl],
-      alola_usul: [this.pokemon.alola_usul],
-      family: [this.pokemon.family],
-      generation: [this.pokemon.generation],
-      description: [this.pokemon.description]
+      id: [''],
+      name: ['', Validators.required],
+      slug: ['', Validators.required],
+      national: ['', Validators.required],
+      kanto: [''],
+      johto_oac: [''],
+      johto_hgss: [''],
+      hoenn_rse: [''],
+      hoenn_rosa: [''],
+      sinnoh: [''],
+      unys_nb: [''],
+      unys_n2b2: [''],
+      kalos: [''],
+      alola_sl: [''],
+      alola_usul: [''],
+      family: ['', Validators.required],
+      generation: [{ item_id: 1, item_text: 'Première' }, Validators.required],
+      description: ['', Validators.required]
     });
   }
 
@@ -106,8 +140,7 @@ export class PokemonFormComponent implements OnInit {
    * @param {{item_id: number, item_text: string}} event
    */
   onGenerationSelect(event: { item_id: number, item_text: string }) {
-    this.pokemonForm.get('generation').setValue(event.item_id);
-    console.log(this.pokemonForm.value);
+    this.pokemonForm.get('generation').setValue({ item_id: event.item_id, item_name: event.item_text });
   }
 
   savePokemon() { }

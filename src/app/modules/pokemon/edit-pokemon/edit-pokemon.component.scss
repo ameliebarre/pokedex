@@ -1,0 +1,17 @@
+@import '../../../../assets/sass/mixins';
+@import '../../../../assets/sass/variables';
+
+.form-content {
+  margin-top: 60px;
+
+  .form-title {
+    font-family: $main-font;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    border: none;
+  }
+}
