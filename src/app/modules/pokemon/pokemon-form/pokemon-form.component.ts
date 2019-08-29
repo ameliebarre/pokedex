@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {FormGroup, FormBuilder, Validators, FormControl, FormArray} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 
@@ -17,11 +17,19 @@ export class PokemonFormComponent implements OnInit {
 
   @Input() pokemon: Pokemon;
 
+  selectedPokemon: Pokemon;
   pokemonForm: FormGroup;
   isExists = false;
   dropdownGenerations = [];
   dropdownGenerationsSettings = {};
   slug: string;
+
+  generations = [
+    { id: 1, genre:'Première' },
+    { id: 2, genre:'Deuxième' },
+    { id: 3, genre:'Troisième' },
+    { id: 4, genre:'Quatrième' }
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -31,12 +39,6 @@ export class PokemonFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    this.slug = this.route.snapshot.params['slug'];
-
-    if (this.slug) {
-      this.loadPokemonDetails(this.slug);
-    }
 
     this.setPokemonForm();
 
@@ -58,55 +60,34 @@ export class PokemonFormComponent implements OnInit {
     };
   }
 
-  loadPokemonDetails(slug: string) {
-    this.pokemonService.getPokemonBySlug(slug).subscribe(
-      (pokemon: Pokemon) => {
-        console.log(pokemon);
-        this.pokemonForm.controls['name'].setValue(pokemon.name);
-        this.pokemonForm.controls['slug'].setValue(pokemon.slug);
-        this.pokemonForm.controls['english_name'].setValue(pokemon.english_name);
-        this.pokemonForm.controls['japanese_name'].setValue(pokemon.japanese_name);
-        this.pokemonForm.controls['national'].setValue(pokemon.national);
-        this.pokemonForm.controls['kanto'].setValue(pokemon.kanto);
-        this.pokemonForm.controls['johto_oac'].setValue(pokemon.johto_oac);
-        this.pokemonForm.controls['johto_hgss'].setValue(pokemon.johto_hgss);
-        this.pokemonForm.controls['hoenn_rse'].setValue(pokemon.hoenn_rse);
-        this.pokemonForm.controls['hoenn_rosa'].setValue(pokemon.hoenn_rosa);
-        this.pokemonForm.controls['sinnoh'].setValue(pokemon.sinnoh);
-        this.pokemonForm.controls['unys_nb'].setValue(pokemon.unys_nb);
-        this.pokemonForm.controls['unys_n2b2'].setValue(pokemon.unys_n2b2);
-        this.pokemonForm.controls['kalos'].setValue(pokemon.kalos);
-        this.pokemonForm.controls['alola_sl'].setValue(pokemon.alola_sl);
-        this.pokemonForm.controls['alola_usul'].setValue(pokemon.alola_usul);
-        this.pokemonForm.controls['family'].setValue(pokemon.family);
-        this.pokemonForm.controls['description'].setValue(pokemon.description);
-      }
-    );
+  setPokemonForm() {
+
+    const formControls = this.generations.map(generation => new FormControl(false));
+
+    this.pokemonForm = this.fb.group({
+      id: [this.pokemon._id],
+      name: [this.pokemon.name, Validators.required],
+      slug: [this.pokemon.slug, Validators.required],
+      national: [this.pokemon.national, Validators.required],
+      kanto: [this.pokemon.kanto],
+      johto_oac: [this.pokemon.johto_oac],
+      johto_hgss: [this.pokemon.johto_hgss],
+      hoenn_rse: [this.pokemon.hoenn_rse],
+      hoenn_rosa: [this.pokemon.hoenn_rosa],
+      sinnoh: [this.pokemon.sinnoh],
+      unys_nb: [this.pokemon.unys_nb],
+      unys_n2b2: [this.pokemon.unys_n2b2],
+      kalos: [this.pokemon.kalos],
+      alola_sl: [this.pokemon.alola_sl],
+      alola_usul: [this.pokemon.alola_usul],
+      family: [this.pokemon.family, Validators.required],
+      // generation: this.fb.array(formControls),
+      description: [this.pokemon.description, Validators.required]
+    });
   }
 
-  setPokemonForm() {
-    this.pokemonForm = this.fb.group({
-      id: [''],
-      name: ['', Validators.required],
-      slug: ['', Validators.required],
-      english_name: ['', Validators.required],
-      japanese_name: ['', Validators.required],
-      national: ['', Validators.required],
-      kanto: [''],
-      johto_oac: [''],
-      johto_hgss: [''],
-      hoenn_rse: [''],
-      hoenn_rosa: [''],
-      sinnoh: [''],
-      unys_nb: [''],
-      unys_n2b2: [''],
-      kalos: [''],
-      alola_sl: [''],
-      alola_usul: [''],
-      family: ['', Validators.required],
-      generation: [{ item_id: 1, item_text: 'Première' }, Validators.required],
-      description: ['', Validators.required]
-    });
+  get generationsArray() {
+    return this.pokemonForm.get('generation') as FormArray;
   }
 
   /**

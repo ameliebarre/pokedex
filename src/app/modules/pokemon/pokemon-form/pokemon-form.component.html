@@ -91,17 +91,13 @@
     </div>
     <div class="form-group col-md-4">
       <label>Génération</label>
-      <ng-multiselect-dropdown
-        [placeholder]="'Générations'"
-        [data]="dropdownGenerations"
-        [settings]="dropdownGenerationsSettings"
-        (onSelect)="onGenerationSelect($event)"
-        formControlName="generation"
-        ngDefaultControl
-      >
-      </ng-multiselect-dropdown>
-    </div>
-    <div class="form-group col-md-4">
+      <!--<div formArrayName="generationsArray">
+        <div *ngFor="let generation of generationsArray.controls; let i=index">
+          <label>
+            Alias:
+            <input type="text" [formControlName]="i">
+          </label>
+        </div>-->
     </div>
 
     <div class="form-group col-md-12">
