@@ -64,6 +64,8 @@ export class PokemonFormComponent implements OnInit {
         console.log(pokemon);
         this.pokemonForm.controls['name'].setValue(pokemon.name);
         this.pokemonForm.controls['slug'].setValue(pokemon.slug);
+        this.pokemonForm.controls['english_name'].setValue(pokemon.english_name);
+        this.pokemonForm.controls['japanese_name'].setValue(pokemon.japanese_name);
         this.pokemonForm.controls['national'].setValue(pokemon.national);
         this.pokemonForm.controls['kanto'].setValue(pokemon.kanto);
         this.pokemonForm.controls['johto_oac'].setValue(pokemon.johto_oac);
@@ -87,6 +89,8 @@ export class PokemonFormComponent implements OnInit {
       id: [''],
       name: ['', Validators.required],
       slug: ['', Validators.required],
+      english_name: ['', Validators.required],
+      japanese_name: ['', Validators.required],
       national: ['', Validators.required],
       kanto: [''],
       johto_oac: [''],

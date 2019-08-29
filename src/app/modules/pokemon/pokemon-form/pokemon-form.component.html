@@ -1,7 +1,7 @@
 <form id="pokemon-form" [formGroup]="pokemonForm" (ngSubmit)="savePokemon()" novalidate>
   <div class="form-group">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <label>Nom</label>
         <input type="text" class="form-control" formControlName="name" (keyup)="bindNameValue($event)" [ngStyle]="{'border': isExists ? '1px solid #e74541' : '1px solid #999'}" />
         <span class="remove-text" *ngIf="isExists" (click)="removeName()">
@@ -11,9 +11,19 @@
           Ce Pokemon existe déjà
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <label>Slug</label>
         <input type="text" class="form-control" formControlName="slug" readonly />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <label>Nom anglais</label>
+        <input type="text" class="form-control" formControlName="english_name" />
+      </div>
+      <div class="col-md-4">
+        <label>Nom japonais</label>
+        <input type="text" class="form-control" formControlName="japanese_name" />
       </div>
     </div>
   </div>

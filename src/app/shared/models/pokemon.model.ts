@@ -6,6 +6,8 @@ export class Pokemon {
   _id: string;
   name: string;
   slug: string;
+  english_name: string;
+  japanese_name: string;
   national: string;
   kanto: string;
   johto_oac: string;
@@ -47,6 +49,8 @@ export class Pokemon {
     this._id = obj && obj._id || null;
     this.name = obj && obj.name || null;
     this.slug = obj && obj.slug || null;
+    this.english_name = obj && obj.english_name || null;
+    this.japanese_name = obj && obj.japanese_name || null;
     this.national = obj && obj.national || null;
     this.kanto = obj && obj.kanto || null;
     this.johto_oac = obj && obj.johto_oac || null;
