@@ -6,6 +6,8 @@ import * as _ from 'lodash';
 import { Pokemon } from '../../../shared/models/pokemon.model';
 import { PokemonService } from '../../../shared/services/pokemon.service';
 import { GameService } from '../../../shared/services/game.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
+import {HttpErrorResponse} from '@angular/common/http';
 
 
 @Component({
@@ -35,7 +37,8 @@ export class PokemonFormComponent implements OnInit {
     private route: ActivatedRoute,
     private pokemonService: PokemonService,
     private gameService: GameService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrManager
   ) { }
 
   ngOnInit() {
@@ -62,7 +65,7 @@ export class PokemonFormComponent implements OnInit {
 
   setPokemonForm() {
     this.pokemonForm = this.fb.group({
-      id: [this.pokemon._id],
+      _id: [this.pokemon._id],
       name: [this.pokemon.name, Validators.required],
       english_name: [this.pokemon.english_name, Validators.required],
       japanese_name: [this.pokemon.japanese_name, Validators.required],
@@ -126,7 +129,7 @@ export class PokemonFormComponent implements OnInit {
   }
 
   removeTalent(index: number) {
-    this.talents.value.splice(index, 1);
+    this.talents.removeAt(index);
   }
 
   setPokemonTalents() {
@@ -148,16 +151,28 @@ export class PokemonFormComponent implements OnInit {
   }
 
   submit() {
-    if (this.pokemon._id) {
-      this.updatePokemon();
+    this.pokemon = new Pokemon(this.pokemonForm.value);
+    console.log(this.pokemon);
+
+    if (this.pokemon._id === null) {
+      this.save();
     } else {
-      this.savePokemon();
+      this.update();
     }
   }
 
-  savePokemon() {}
+  update() {
+    this.pokemonService.updatePokemon(this.pokemon).subscribe((pokemon: Pokemon) => {
+      this.toastr.successToastr('Succès', 'Le Pokemon a bien été modifié');
+    }, (error: HttpErrorResponse) => {
+      console.log(error);
+      this.toastr.errorToastr('Erreur', 'La modification du Pokemon a échoué');
+    });
+  }
 
-  updatePokemon() {}
+  save() {
+    console.log('Save');
+  }
 
   cancel() { }
 

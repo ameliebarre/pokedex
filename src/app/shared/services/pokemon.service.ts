@@ -31,6 +31,12 @@ export class PokemonService {
       );
   }
 
+  /**
+   * Get Pokemon by its slug
+   *
+   * @param {string} slug
+   * @returns {Observable<Pokemon>}
+   */
   getPokemonBySlug(slug: string): Observable<Pokemon> {
     return this.http.get<Pokemon>(`${environment.apiUrl}/pokemons/${slug}`)
       .pipe(
@@ -41,17 +47,33 @@ export class PokemonService {
   }
 
   /**
-   * Filter the Pokemons by their generation
+   * Create a Pokemon
+   *
+   * @param {Pokemon} pokemon
+   * @returns {Observable<Pokemon>}
+   */
+  savePokemon(pokemon: Pokemon): Observable<Pokemon> {
+    return this.http.post<Pokemon>(`${environment.apiUrl}/pokemons`, pokemon);
+  }
+
+  /**
+   * Update a Pokemon
+   *
+   * @param {Pokemon} pokemon
+   * @returns {Observable<Pokemon>}
+   */
+  updatePokemon(pokemon: Pokemon): Observable<Pokemon> {
+    return this.http.put<Pokemon>(`${environment.apiUrl}/pokemons/${pokemon.slug}`, pokemon);
+  }
+
+  /**
+   * Filter Pokemons by their generation
    *
    * @param {Array<number>} generations
    * @returns {Observable<Pokemon[]>}
    */
   filterByGeneration(generations: Array<number>): Observable<Pokemon[]> {
     return this.http.post<Pokemon[]>(`${environment.apiUrl}/pokemons/generations`, { generations: generations });
-  }
-
-  filterByType(types: Array<string>): Observable<Pokemon[]> {
-    return this.http.post<Pokemon[]>(`${environment.apiUrl}/pokemons/types`, { types: types });
   }
 
 }
