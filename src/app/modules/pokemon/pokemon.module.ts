@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 /* Font Awesome */
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBackspace } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 import { SharedModule } from '../../shared/shared.module';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
@@ -33,6 +34,6 @@ import { EditPokemonComponent } from './edit-pokemon/edit-pokemon.component';
 })
 export class PokemonModule {
   constructor() {
-    library.add(faBackspace);
+    library.add(faBackspace, faPlusSquare);
   }
 }

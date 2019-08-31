@@ -61,12 +61,11 @@ export class PokemonFormComponent implements OnInit {
   }
 
   setPokemonForm() {
-
-    const formControls = this.generations.map(generation => new FormControl(false));
-
     this.pokemonForm = this.fb.group({
       id: [this.pokemon._id],
       name: [this.pokemon.name, Validators.required],
+      english_name: [this.pokemon.english_name, Validators.required],
+      japanese_name: [this.pokemon.japanese_name, Validators.required],
       slug: [this.pokemon.slug, Validators.required],
       national: [this.pokemon.national, Validators.required],
       kanto: [this.pokemon.kanto],
@@ -81,14 +80,17 @@ export class PokemonFormComponent implements OnInit {
       alola_sl: [this.pokemon.alola_sl],
       alola_usul: [this.pokemon.alola_usul],
       family: [this.pokemon.family, Validators.required],
-      // generation: this.fb.array(formControls),
-      description: [this.pokemon.description, Validators.required]
+      generation: [this.pokemon.generation, Validators.required],
+      description: [this.pokemon.description, Validators.required],
+      talents: this.fb.array([])
     });
+
+    this.setPokemonTalents();
   }
 
-  get generationsArray() {
-    return this.pokemonForm.get('generation') as FormArray;
-  }
+  get talents(): FormArray {
+    return this.pokemonForm.get('talents') as FormArray;
+  };
 
   /**
    * Set the value for the slug based on the name input
@@ -98,7 +100,6 @@ export class PokemonFormComponent implements OnInit {
    */
   bindNameValue(event: any) {
     const pokemonName = event.target.value;
-    this.pokemonForm.get('slug').setValue(pokemonName.toLowerCase());
 
     // Check among the list of all Pokemons if the name value exists
     this.pokemonService.getAllPokemons().subscribe(
@@ -120,6 +121,24 @@ export class PokemonFormComponent implements OnInit {
     this.isExists = false;
   }
 
+  addTalent(i: number) {
+    this.talents.push(this.fb.control(''));
+  }
+
+  removeTalent(index: number) {
+    this.talents.value.splice(index, 1);
+  }
+
+  setPokemonTalents() {
+    if (this.pokemon._id) {
+      this.pokemon.talents.forEach((talent: string) => {
+        this.talents.push(this.fb.control(talent));
+      });
+    } else {
+      this.talents.push(this.fb.control(''));
+    }
+  }
+
   /**
    * Choose the Pokemon's generation
    * @param {{item_id: number, item_text: string}} event
@@ -128,6 +147,18 @@ export class PokemonFormComponent implements OnInit {
     this.pokemonForm.get('generation').setValue({ item_id: event.item_id, item_name: event.item_text });
   }
 
-  savePokemon() { }
+  submit() {
+    if (this.pokemon._id) {
+      this.updatePokemon();
+    } else {
+      this.savePokemon();
+    }
+  }
+
+  savePokemon() {}
+
+  updatePokemon() {}
+
+  cancel() { }
 
 }

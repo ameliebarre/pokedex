@@ -35,6 +35,15 @@
       border-color: #999;
       resize: none;
     }
+
+    .radio {
+      float: left;
+      margin-right: 15px;
+
+      label {
+        font-size: 16px;
+      }
+    }
   }
 
   fieldset {
@@ -43,6 +52,31 @@
       font-family: $main-font;
       text-transform: uppercase;
       margin-bottom: 10px;
+    }
+  }
+
+  .talents {
+    .add-talent {
+      border: none;
+      cursor: pointer;
+      margin-bottom: 11px;
+      font-size: 10px;
+      background: black;
+      padding: 8px 15px;
+      color: white;
+      @include border-radius(20px);
+
+      &:hover {
+        background: $main-red;
+      }
+    }
+
+    input{
+      margin-bottom: 10px;
+
+      &::placeholder {
+        font-size: 12px;
+      }
     }
   }
 }
