@@ -23,7 +23,7 @@ export class Pokemon {
   description: string;
   sex: Array<string>;
   family: string;
-  generation: string;
+  generation: number;
   height: number;
   weight: number;
   hp: number;

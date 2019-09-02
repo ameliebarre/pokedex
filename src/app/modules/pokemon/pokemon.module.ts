@@ -1,5 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UiSwitchModule } from 'ngx-ui-switch';
 
 /* Font Awesome */
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -13,6 +14,7 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
 import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
 import { PokemonViewComponent } from './pokemon-view/pokemon-view.component';
 import { EditPokemonComponent } from './edit-pokemon/edit-pokemon.component';
+import {TypesModalComponent} from '../../components/types-modal/types-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,17 +22,22 @@ import { EditPokemonComponent } from './edit-pokemon/edit-pokemon.component';
     AddPokemonComponent,
     PokemonFormComponent,
     PokemonViewComponent,
-    EditPokemonComponent
+    EditPokemonComponent,
+    TypesModalComponent
   ],
   imports: [
     PokemonRoutingModule,
     SharedModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    UiSwitchModule,
   ],
   exports: [
     PokemonListComponent
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  entryComponents: [
+    TypesModalComponent
+  ]
 })
 export class PokemonModule {
   constructor() {

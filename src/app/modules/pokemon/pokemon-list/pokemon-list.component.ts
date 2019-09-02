@@ -150,25 +150,6 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
-  onTypeSelect(type: string) {
-    this.typeItems.push(type);
-    this.pokemonService.filterByType(this.typeItems).subscribe(
-      (pokemons: Pokemon[]) => {
-        this.pokemons = pokemons;
-      }
-    );
-  }
-
-  searchPokemon(term: string) {
-    if (!term) {
-      this.getPokemons();
-    } else {
-      this.pokemons = this.pokemons.filter((pokemon) => {
-        return pokemon.name.toLowerCase().includes(term.toLowerCase());
-      });
-    }
-  }
-
   createPokemon() {
     this.router.navigate(['/pokemons/add']);
   }

@@ -45,6 +45,7 @@
     "ng-multiselect-dropdown": "^0.2.3",
     "ng6-toastr-notifications": "^1.0.4",
     "ngx-infinite-scroll": "^8.0.0",
+    "ngx-ui-switch": "^1.6.1",
     "path": "^0.12.7",
     "popper.js": "^1.14.6",
     "rxjs": "^6.0.0",

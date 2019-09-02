@@ -25,7 +25,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     FormsModule,
     NgMultiSelectDropDownModule,
     NgbModule,
-    FilterPipe
+    FilterPipe,
   ]
 })
 export class SharedModule { }

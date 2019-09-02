@@ -1,14 +1,15 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators, FormControl, FormArray} from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormGroup, FormBuilder, Validators, FormArray} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrManager } from 'ng6-toastr-notifications';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as _ from 'lodash';
 
 import { Pokemon } from '../../../shared/models/pokemon.model';
 import { PokemonService } from '../../../shared/services/pokemon.service';
 import { GameService } from '../../../shared/services/game.service';
-import {ToastrManager} from 'ng6-toastr-notifications';
-import {HttpErrorResponse} from '@angular/common/http';
-
+import { TypesModalComponent } from '../../../components/types-modal/types-modal.component';
 
 @Component({
   selector: 'app-pokemon-form',
@@ -19,26 +20,25 @@ export class PokemonFormComponent implements OnInit {
 
   @Input() pokemon: Pokemon;
 
-  selectedPokemon: Pokemon;
   pokemonForm: FormGroup;
   isExists = false;
   dropdownGenerations = [];
   dropdownGenerationsSettings = {};
   slug: string;
 
-  generations = [
-    { id: 1, genre:'Première' },
-    { id: 2, genre:'Deuxième' },
-    { id: 3, genre:'Troisième' },
-    { id: 4, genre:'Quatrième' }
-  ];
+  male = false;
+  female = false;
+
+  generations = [1, 2, 3, 4, 5, 6, 7, 8];
+  selectedGeneration: number;
 
   constructor(
     private route: ActivatedRoute,
     private pokemonService: PokemonService,
     private gameService: GameService,
     private fb: FormBuilder,
-    private toastr: ToastrManager
+    private toastr: ToastrManager,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit() {
@@ -85,15 +85,23 @@ export class PokemonFormComponent implements OnInit {
       family: [this.pokemon.family, Validators.required],
       generation: [this.pokemon.generation, Validators.required],
       description: [this.pokemon.description, Validators.required],
-      talents: this.fb.array([])
+      talents: this.fb.array([]),
+      evolutions: this.fb.array([]),
+      sex: [this.pokemon.sex]
     });
 
     this.setPokemonTalents();
+    this.setPokemonSex();
+    this.setGeneration();
   }
 
   get talents(): FormArray {
     return this.pokemonForm.get('talents') as FormArray;
   };
+
+  get evolutions(): FormArray {
+    return this.pokemonForm.get('evolutions') as FormArray;
+  }
 
   /**
    * Set the value for the slug based on the name input
@@ -124,8 +132,27 @@ export class PokemonFormComponent implements OnInit {
     this.isExists = false;
   }
 
-  addTalent(i: number) {
-    this.talents.push(this.fb.control(''));
+  setGeneration() {
+    if (this.pokemon._id) {
+      this.selectedGeneration = this.pokemon.generation;
+    } else {
+      this.selectedGeneration = null;
+    }
+  }
+
+  selectGeneration(generation: number) {
+    this.selectedGeneration = generation;
+    this.pokemonForm.get('generation').setValue(this.selectedGeneration);
+  }
+
+  addTalent() {
+    if (this.talents.value.length > 1) {
+      this.toastr.warningToastr(`Pas plus de deux talents pour un Pokemon`,'Attention', {
+        position: 'bottom-right'
+      });
+    } else {
+      this.talents.push(this.fb.control(''));
+    }
   }
 
   removeTalent(index: number) {
@@ -142,17 +169,60 @@ export class PokemonFormComponent implements OnInit {
     }
   }
 
+  setPokemonSex() {
+    const isMale = _.includes(this.pokemonForm.get('sex').value, 'male');
+    const isFemale = _.includes(this.pokemonForm.get('sex').value, 'female');
+
+    if (isMale) {
+      this.male = isMale;
+    }
+
+    if (isFemale) {
+      this.female = isFemale;
+    }
+  }
+
+  switchMaleSex() {
+    this.male = !this.male;
+
+    if (!this.male) {
+      this.removeSex(this.pokemonForm.get('sex').value, 'male');
+    } else {
+      this.pokemonForm.get('sex').value.push('male');
+    }
+  }
+
+  switchFemaleSex() {
+    this.female = !this.female;
+
+    if (!this.female) {
+      this.removeSex(this.pokemonForm.get('sex').value, 'female');
+    } else {
+      this.pokemonForm.get('sex').value.push('female');
+    }
+  }
+
   /**
-   * Choose the Pokemon's generation
-   * @param {{item_id: number, item_text: string}} event
+   * Remove the given sexe from the Pokemon form sex array
+   *
+   * @param {Array<string>} sex
+   * @param {string} scope
    */
-  onGenerationSelect(event: { item_id: number, item_text: string }) {
-    this.pokemonForm.get('generation').setValue({ item_id: event.item_id, item_name: event.item_text });
+  removeSex (sex: Array<string>, scope: string) {
+    for(let i = 0; i < sex.length; i++){
+      if (sex[i] === scope) {
+        sex.splice(i, 1);
+      }
+    }
+  }
+
+  addType() {
+    const modalRef = this.modalService.open(TypesModalComponent);
+    modalRef.componentInstance.render = 'modal';
   }
 
   submit() {
     this.pokemon = new Pokemon(this.pokemonForm.value);
-    console.log(this.pokemon);
 
     if (this.pokemon._id === null) {
       this.save();
@@ -163,10 +233,14 @@ export class PokemonFormComponent implements OnInit {
 
   update() {
     this.pokemonService.updatePokemon(this.pokemon).subscribe((pokemon: Pokemon) => {
-      this.toastr.successToastr('Succès', 'Le Pokemon a bien été modifié');
+      this.toastr.successToastr(`${pokemon.name} a bien été modifié`,'Succès', {
+        position: 'bottom-right'
+      });
     }, (error: HttpErrorResponse) => {
       console.log(error);
-      this.toastr.errorToastr('Erreur', 'La modification du Pokemon a échoué');
+      this.toastr.errorToastr('Erreur', 'La modification a échoué', {
+        position: 'bottom-right'
+      });
     });
   }
 
