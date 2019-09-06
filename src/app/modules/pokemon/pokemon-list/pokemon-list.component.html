@@ -35,12 +35,12 @@
   </div>
 
   <div id="pokemon-list" class="row">
-    <div *ngFor="let pokemon of pokemons | filter: term" class="pokemon col-md-2">
-      <figure>
+    <div *ngFor="let pokemon of pokemons | filter: term" class="pokemon col-md-3" (mouseover)="hoverPokemon = pokemon" (mouseleave)="hoverPokemon = null">
+      <figure [ngClass]="hoverPokemon === pokemon ? 'active' : ''" [ngStyle]="hoverPokemon === pokemon && { 'background' : '#EEEEEE', 'cursor': 'pointer' }">
         <img class="thumb" src="../../../assets/images/pokemons/{{ pokemon.national }}.svg" alt="{{ pokemon.name }}"/>
         <figcaption>
-          <span class="number">#{{ pokemon?.national }}</span>
           <h4 class="name">{{ pokemon?.name }}</h4>
+          <span class="number">#{{ pokemon?.national }}</span>
           <ul class="types">
             <li *ngFor="let type of pokemon.types"></li>
           </ul>

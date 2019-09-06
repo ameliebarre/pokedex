@@ -45,8 +45,10 @@
     }
 
     .pokemon {
+      margin-bottom: 40px;
+
       figure {
-        background: #F5F4F4;
+        border: 1px solid #EEEEEE;
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
         padding: 10px;
@@ -62,6 +64,11 @@
           margin-top: 15px;
           text-align: center;
 
+          .name {
+            font-family: $main-font;
+            font-size: 19px;
+          }
+
           .number {
             background: $number-tag;
             border-radius: 24px;
@@ -69,17 +76,13 @@
             margin-bottom: 5px;
             padding: 3px 9px;
             display: inline-block;
-          }
-
-          .name {
-            font-family: $main-font;
-            font-size: 14px;
+            font-size: 15px;
           }
 
           .actions {
             position: absolute;
             bottom: -22px;
-            left: 28px;
+            left: 77px;
 
             a {
               float: left;

@@ -45,6 +45,8 @@ export class PokemonListComponent implements OnInit {
 
   currentState = 'initial';
 
+  hoverPokemon: Pokemon;
+
   constructor(
     private pokemonService: PokemonService,
     private typeService: TypeService,
