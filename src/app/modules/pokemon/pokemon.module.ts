@@ -6,6 +6,7 @@ import { UiSwitchModule } from 'ngx-ui-switch';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBackspace } from '@fortawesome/free-solid-svg-icons';
 import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
 import { SharedModule } from '../../shared/shared.module';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
@@ -41,6 +42,6 @@ import {TypesModalComponent} from '../../components/types-modal/types-modal.comp
 })
 export class PokemonModule {
   constructor() {
-    library.add(faBackspace, faMinusCircle);
+    library.add(faBackspace, faWindowClose);
   }
 }

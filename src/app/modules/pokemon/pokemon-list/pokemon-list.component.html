@@ -35,20 +35,18 @@
   </div>
 
   <div id="pokemon-list" class="row">
-    <div *ngFor="let pokemon of pokemons | filter: term" class="pokemon col-md-3" (mouseover)="hoverPokemon = pokemon" (mouseleave)="hoverPokemon = null">
-      <figure [ngClass]="hoverPokemon === pokemon ? 'active' : ''" [ngStyle]="hoverPokemon === pokemon && { 'background' : '#EEEEEE', 'cursor': 'pointer' }">
+    <div *ngFor="let pokemon of pokemons | filter: term; let i = index;" class="pokemon col-md-3" (mouseover)="hoverPokemon = pokemon" (mouseleave)="hoverPokemon = null" (click)="viewPokemon(pokemon)">
+      <figure [ngClass]="hoverPokemon === pokemon ? 'active' : ''" [ngStyle]="hoverPokemon === pokemon && { 'background' : '#fff', 'border': '1px solid #D1D1D1' }">
         <img class="thumb" src="../../../assets/images/pokemons/{{ pokemon.national }}.svg" alt="{{ pokemon.name }}"/>
         <figcaption>
           <h4 class="name">{{ pokemon?.name }}</h4>
           <span class="number">#{{ pokemon?.national }}</span>
-          <ul class="types">
-            <li *ngFor="let type of pokemon.types"></li>
-          </ul>
-          <div class="actions">
-            <a href="#"><img src="../../../../assets/images/pokeball-icon.png" width="20"/></a>
-            <a href="#"><img src="../../../../assets/images/like.svg" width="20"/></a>
-          </div>
         </figcaption>
+        <div class="types d-flex justify-content-center">
+          <div class="type" *ngFor="let type of pokemon.types">
+            <img src="../../../../assets/images/types/{{ type.color }}.svg" width="30" />
+          </div>
+        </div>
       </figure>
     </div>
     <div *ngIf="pokemons.length === 0" class="col-md-12 text-center no-results">

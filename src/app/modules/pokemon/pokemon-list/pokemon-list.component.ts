@@ -46,6 +46,8 @@ export class PokemonListComponent implements OnInit {
   currentState = 'initial';
 
   hoverPokemon: Pokemon;
+  position: string;
+  selectedIndex: number;
 
   constructor(
     private pokemonService: PokemonService,
@@ -57,8 +59,9 @@ export class PokemonListComponent implements OnInit {
     this.getPokemons();
     this.getTypes();
 
+    this.selectedIndex = null;
+
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user);
 
     this.dropdownGenerations = [
       { item_id: 1, item_text: 'Première' },
@@ -154,5 +157,9 @@ export class PokemonListComponent implements OnInit {
 
   createPokemon() {
     this.router.navigate(['/pokemons/add']);
+  }
+
+  viewPokemon(pokemon: Pokemon) {
+    this.router.navigate(['/pokemons', pokemon.slug]);
   }
 }
