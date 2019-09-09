@@ -1,3 +1,39 @@
-<p>
-  pokemon-view works!
-</p>
+<div class="container-fluid p-0">
+  <div class="row content">
+    <div class="col-1" *ngIf="prevPokemon">
+      <div class="arrow-content">
+        <span class="arrow prev">
+          <img src="../../../../assets/images/arrow_prev.svg" alt="Previous" />
+        </span>
+      </div>
+    </div>
+    <div [ngClass]="prevPokemon ? 'col-10' : 'col-11'">
+      <div class="row">
+        <div class="col-6">
+          <img src="../../../../assets/images/pokemons/{{ pokemon?.national }}.svg" width="100%">
+        </div>
+        <div class="pokemon-details col-6">
+          <h2>{{ pokemon?.name }}</h2>
+          <p class="description">{{ pokemon?.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-1 position-absolute p-0" style="top: 50%; right: 0;">
+      <div class="arrow next" (mouseenter)="showNextPokemon()" (mouseleave)="hideNextPokemon()" (click)="viewPokemon(nextPokemon)">
+        <img src="../../../../assets/images/arrow_next.svg" alt="Next" width="30" />
+      </div>
+      <div class="next-pokemon container" *ngIf="showNext">
+        <div class="row">
+          <div class="col-4 image">
+            <img src="../../../../assets/images/pokemons/{{ nextPokemon?.national }}.svg" width="100%">
+          </div>
+          <div class="col-6">
+            <h3 class="name">{{ nextPokemon?.name }}</h3>
+            <span class="number">#{{ nextPokemon?.national }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
