@@ -44,6 +44,8 @@ export class Pokemon {
     }
   }>;
   types: Type[] = [];
+  next: Pokemon;
+  prev: Pokemon;
 
   constructor (obj?: any) {
     this._id = obj && obj._id || null;
@@ -78,5 +80,7 @@ export class Pokemon {
     this.talents = obj && obj.talents || [];
     this.evolutions = obj && obj.evolutions || [{ parent: null, children: null }];
     this.types = obj && obj.types || [];
+    this.next = obj && obj.next || null;
+    this.prev = obj && obj.prev || null;
   }
 }
