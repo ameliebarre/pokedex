@@ -21,7 +21,12 @@ export class PokemonViewComponent implements OnInit {
     public pokemonService: PokemonService,
     public route: ActivatedRoute,
     public router: Router
-  ) { }
+  ) {
+    // Reload component when the URL changed
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+  }
 
   ngOnInit() {
 
@@ -62,6 +67,7 @@ export class PokemonViewComponent implements OnInit {
   }
 
   viewPokemon(pokemon: Pokemon) {
+    console.log(pokemon);
     this.router.navigate(['/pokemons', pokemon.slug]);
   }
 }
