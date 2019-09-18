@@ -6,6 +6,7 @@ import { PUBLIC_ROUTES } from './layouts/public/public.routes';
 import { SecureComponent } from './layouts/secure/secure.component';
 import { SECURE_ROUTES } from './layouts/secure/secure.routes';
 import { AuthGuard } from './shared/guard/auth/auth.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,9 @@ const routes: Routes = [
     component: SecureComponent,
     canActivate: [AuthGuard],
     children: SECURE_ROUTES
-  }
+  },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({
