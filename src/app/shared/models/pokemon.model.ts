@@ -1,6 +1,4 @@
-import * as _ from 'lodash';
 import { Type } from './type.model';
-import { Game } from './game.model';
 
 export class Pokemon {
   _id: string;
@@ -83,6 +81,7 @@ export class Pokemon {
     this.height = obj && Number(obj.height) || null;
     this.weight = obj && Number(obj.weight) || null;
     this.statistics = obj && obj.statistics || { hp: null, attack: null, defense: null, sp_attack: null, sp_defense: null, speed: null };
+    this.catch_rate = obj && obj.catch_rate || null;
     this.talents = obj && obj.talents || [];
     this.evolutions = obj && obj.evolutions || [{ parent: null, children: null }];
     this.capacities = obj && obj.capacities || [];
