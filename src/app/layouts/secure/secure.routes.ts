@@ -9,18 +9,18 @@ export const SECURE_ROUTES: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: '../../../modules/profile/profile.module#ProfileModule'
+    loadChildren: () => import('../../modules/profile/profile.module').then(m => m.ProfileModule)
   },
   {
     path: 'games',
-    loadChildren: '../../modules/game/game.module#GameModule'
+    loadChildren: () => import('../../modules/game/game.module').then(m => m.GameModule)
   },
   {
     path: 'consoles',
-    loadChildren: '../../modules/console/console.module#ConsoleModule'
+    loadChildren: () => import('../../modules/console/console.module').then(m => m.ConsoleModule)
   },
   {
     path: 'pokemons',
-    loadChildren: '../../modules/pokemon/pokemon.module#PokemonModule'
+    loadChildren: () => import('../../modules/pokemon/pokemon.module').then(m => m.PokemonModule)
   }
 ];
