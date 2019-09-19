@@ -66,22 +66,26 @@ export class PokemonFormComponent implements OnInit {
   setPokemonForm() {
     this.pokemonForm = this.fb.group({
       _id: [this.pokemon._id],
-      name: [this.pokemon.name, Validators.required],
-      english_name: [this.pokemon.english_name, Validators.required],
-      japanese_name: [this.pokemon.japanese_name, Validators.required],
+      names: this.fb.group({
+        french: [this.pokemon.names.french, Validators.required],
+        english: [this.pokemon.names.english, Validators.required],
+        japanese: [this.pokemon.names.japanese, Validators.required],
+      }),
       slug: [this.pokemon.slug, Validators.required],
-      national: [this.pokemon.national, Validators.required],
-      kanto: [this.pokemon.kanto],
-      johto_oac: [this.pokemon.johto_oac],
-      johto_hgss: [this.pokemon.johto_hgss],
-      hoenn_rse: [this.pokemon.hoenn_rse],
-      hoenn_rosa: [this.pokemon.hoenn_rosa],
-      sinnoh: [this.pokemon.sinnoh],
-      unys_nb: [this.pokemon.unys_nb],
-      unys_n2b2: [this.pokemon.unys_n2b2],
-      kalos: [this.pokemon.kalos],
-      alola_sl: [this.pokemon.alola_sl],
-      alola_usul: [this.pokemon.alola_usul],
+      pokedex: this.fb.group({
+        national: [this.pokemon.pokedex.national, Validators.required],
+        kanto: [this.pokemon.pokedex.kanto],
+        johto_oac: [this.pokemon.pokedex.johto_oac],
+        johto_hgss: [this.pokemon.pokedex.johto_hgss],
+        hoenn_rse: [this.pokemon.pokedex.hoenn_rse],
+        hoenn_rosa: [this.pokemon.pokedex.hoenn_rosa],
+        sinnoh: [this.pokemon.pokedex.sinnoh],
+        unys_nb: [this.pokemon.pokedex.unys_nb],
+        unys_n2b2: [this.pokemon.pokedex.unys_n2b2],
+        kalos: [this.pokemon.pokedex.kalos],
+        alola_sl: [this.pokemon.pokedex.alola_sl],
+        alola_usul: [this.pokemon.pokedex.alola_usul],
+      }),
       family: [this.pokemon.family, Validators.required],
       generation: [this.pokemon.generation, Validators.required],
       description: [this.pokemon.description, Validators.required],
@@ -233,7 +237,7 @@ export class PokemonFormComponent implements OnInit {
 
   update() {
     this.pokemonService.updatePokemon(this.pokemon).subscribe((pokemon: Pokemon) => {
-      this.toastr.successToastr(`${pokemon.name} a bien été modifié`,'Succès', {
+      this.toastr.successToastr(`${pokemon.names.french} a bien été modifié`,'Succès', {
         position: 'bottom-right'
       });
     }, (error: HttpErrorResponse) => {
