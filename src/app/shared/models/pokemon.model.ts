@@ -1,4 +1,5 @@
 import { Type } from './type.model';
+import { Capacity } from './capacity.model';
 
 export class Pokemon {
   _id: string;
@@ -49,7 +50,7 @@ export class Pokemon {
     }
   }>;
   capacities: Array<{
-    capacity: any;
+    capacity: Capacity;
     generation: number;
   }>;
   types: Type[] = [];
