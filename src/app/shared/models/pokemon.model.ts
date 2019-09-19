@@ -24,7 +24,7 @@ export class Pokemon {
     alola_usul: string;
   };
   description: string;
-  sex: Array<string>;
+  sex: string[];
   family: string;
   generation: number;
   height: number;
@@ -38,8 +38,8 @@ export class Pokemon {
     speed: number;
   };
   catch_rate: number;
-  talents: Array<string>;
-  evolutions: Array<{
+  talents: string[];
+  evolutions: [{
     parent: {
       pokemon: Pokemon,
       evolution: string
@@ -48,11 +48,11 @@ export class Pokemon {
       pokemon: Pokemon,
       evolution: string
     }
-  }>;
-  capacities: Array<{
+  }];
+  capacities: [{
     capacity: Capacity;
     generation: number;
-  }>;
+  }];
   types: Type[] = [];
   next: Pokemon;
   prev: Pokemon;
@@ -79,8 +79,8 @@ export class Pokemon {
     this.sex = obj && obj.sex || [];
     this.family = obj && obj.family || [];
     this.generation = obj && obj.generation || null;
-    this.height = obj && Number(obj.height) || null;
-    this.weight = obj && Number(obj.weight) || null;
+    this.height = obj && obj.height || null;
+    this.weight = obj && obj.weight || null;
     this.statistics = obj && obj.statistics || { hp: null, attack: null, defense: null, sp_attack: null, sp_defense: null, speed: null };
     this.catch_rate = obj && obj.catch_rate || null;
     this.talents = obj && obj.talents || [];
