@@ -97,7 +97,7 @@ export class PokemonFormComponent implements OnInit {
 
   get talents(): FormArray {
     return this.pokemonForm.get('talents') as FormArray;
-  };
+  }
 
   get evolutions(): FormArray {
     return this.pokemonForm.get('evolutions') as FormArray;
@@ -147,7 +147,7 @@ export class PokemonFormComponent implements OnInit {
 
   addTalent() {
     if (this.talents.value.length > 1) {
-      this.toastr.warningToastr(`Pas plus de deux talents pour un Pokemon`,'Attention', {
+      this.toastr.warningToastr(`Pas plus de deux talents pour un Pokemon`, 'Attention', {
         position: 'bottom-right'
       });
     } else {
