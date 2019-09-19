@@ -1,4 +1,3 @@
-import { Schema } from 'mongoose';
 import { Type } from './type.model';
 import { Game } from './game.model';
 
