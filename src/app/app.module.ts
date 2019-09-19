@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -26,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PokemonModule } from './modules/pokemon/pokemon.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CapacityModule } from './modules/capacity/capacity.module';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     RouterModule,
     ToastrModule.forRoot(),
     FontAwesomeModule,
-    PokemonModule
+    PokemonModule,
+    CapacityModule
   ],
   providers: [
     AuthService,
