@@ -16,6 +16,40 @@
           <h2>{{ pokemon?.name }}</h2>
           <p class="description">{{ pokemon?.description }}</p>
         </div>
+        <div class="statistics col-6 offset-md-1">
+          <h3 class="title">Statistiques</h3>
+          <div class="statistic mt-2" *ngFor="let stat of stats">
+            <div class="row">
+              <div class="col-4">
+                <p>{{ stat.name }}</p>
+              </div>
+              <div class="col-8">
+                <ngb-progressbar type="success" value="{{ stat.percentage }}">{{ stat.value }}</ngb-progressbar>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <h3 class="title">Morphologie</h3>
+          <p class="weight">{{ pokemon?.weight }} <span>kg</span></p>
+          <p class="height">{{ pokemon?.height }} <span>m</span></p>
+
+          <div class="types">
+            <h3 class="title mt-4 mb-1">Types</h3>
+            <div class="type" *ngFor="let type of pokemon?.types">
+              <img src="../../../../assets/images/types/{{ type.color }}.svg" width="40" placement="top" ngbTooltip="{{ type.name }}" />
+            </div>
+          </div>
+        </div>
+        <div class="evolutions d-flex col-3">
+          <h3 class="title">Évolutions</h3>
+          <div *ngIf="pokemon.evolutions; else noEvolutions">
+
+          </div>
+          <ng-template #noEvolutions>
+            <p>Ce Pokemon n'a aucune évolution</p>
+          </ng-template>
+        </div>
       </div>
     </div>
     <div class="col-1 position-absolute p-0" style="top: 50%; right: 0;">

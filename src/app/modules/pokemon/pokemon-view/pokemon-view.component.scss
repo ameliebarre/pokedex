@@ -50,10 +50,29 @@
     left: -280px;
     width: 300px;
 
-    .name {
-      font-size: 23px;
-      margin: 5px 0 0;
-      font-weight: lighter;
+      .weight,
+      .height {
+        font-size: 25px;
+
+        span {
+          font-size: 15px;
+        }
+      }
+
+      .types {
+        .type {
+          float: left;
+        }
+      }
+
+      .title {
+        font-weight: bold;
+        font-size: 13px;
+        font-family: 'Montserrat', Arial, sans-serif;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+
+      }
     }
 
     .number {
