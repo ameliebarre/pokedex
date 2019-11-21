@@ -1,0 +1,27 @@
+@import '../../../../assets/sass/mixins';
+@import '../../../../assets/sass/variables';
+
+#filters {
+  .search {
+    position: relative;
+
+    .search-bar {
+      border: 1px solid #DCDCDC;
+      padding: 15px;
+      display: block;
+      width: 100%;
+      font-weight: bold;
+      font-size: 15px;
+      color: #777;
+
+      @include placeholder {
+      }
+
+      &:focus {
+        border: 1px solid #9A9A9A;
+        box-shadow: none;
+        outline: none;
+      }
+    }
+  }
+}

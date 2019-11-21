@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Pokemon } from '../../../shared/models/pokemon.model';
 
 @Component({
   selector: 'app-pokemon-filters',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonFiltersComponent implements OnInit {
 
+  @Input() pokemons: Pokemon[] = [];
+
+  @Output() term: EventEmitter<string> = new EventEmitter<string>();
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  getSearchedValue(value: string) {
+    console.log('passe ici');
+    this.term.emit(value);
   }
 
 }

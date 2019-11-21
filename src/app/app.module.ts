@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+/** Services **/
 import { AuthService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
@@ -13,6 +14,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBell, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
+/** Components **/
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { PublicComponent } from './layouts/public/public.component';
@@ -20,12 +22,13 @@ import { SecureComponent } from './layouts/secure/secure.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
-
-import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
-import { PokemonModule } from './modules/pokemon/pokemon.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+
+/** Modules **/
 import { CapacityModule } from './modules/capacity/capacity.module';
+import { PokemonModule } from './modules/pokemon/pokemon.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [

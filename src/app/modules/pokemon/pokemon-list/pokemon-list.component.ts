@@ -37,7 +37,7 @@ export class PokemonListComponent implements OnInit {
   dropdownGenerationsSettings = {};
   dropdownTypes = [];
   dropdownTypesSettings = {};
-  generations: any[] = [];
+  selectedGenerations: any[] = [];
   types: Type[] = [];
   term = '';
   user: any;
@@ -126,16 +126,16 @@ export class PokemonListComponent implements OnInit {
   }
 
   onGenerationSelect(generation: { item_id: number, item_text: string }) {
-    this.generations.push(generation.item_id);
-    this.filterGenerations(this.generations);
+    this.selectedGenerations.push(generation.item_id);
+    this.filterGenerations(this.selectedGenerations);
   }
 
   onGenerationDeselect(generation: { item_id: number, item_text: string }) {
-    this.generations = _.remove(this.generations, (g) => {
+    this.selectedGenerations = _.remove(this.selectedGenerations, (g) => {
       return g !== generation.item_id;
     });
 
-    this.filterGenerations(this.generations);
+    this.filterGenerations(this.selectedGenerations);
   }
 
   onGenerationSelectAll(items: any) {
@@ -143,7 +143,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   filterGenerations(generations: Array<number>) {
-    if (this.generations.length === 0) {
+    if (this.selectedGenerations.length === 0) {
       this.getPokemons();
     } else {
       this.pokemonService.filterByGeneration(generations).subscribe(
@@ -160,5 +160,10 @@ export class PokemonListComponent implements OnInit {
 
   viewPokemon(pokemon: Pokemon) {
     this.router.navigate(['/pokemons', pokemon.slug]);
+  }
+
+  getTerm(value: string) {
+    console.log('TEST', value);
+    this.term = value;
   }
 }
