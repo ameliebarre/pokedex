@@ -15,11 +15,9 @@ export class FilterPipe implements PipeTransform {
       return items;
     }
 
-    const filteredItems = items.filter((item) => {
-      return item.name.toLowerCase().includes(searchText.toLowerCase());
+    return items.filter((item) => {
+      return item.names.french.toLowerCase().includes(searchText.toLowerCase());
     });
-
-    return filteredItems;
   }
 
 }

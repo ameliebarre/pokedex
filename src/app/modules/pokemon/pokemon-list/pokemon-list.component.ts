@@ -39,7 +39,6 @@ export class PokemonListComponent implements OnInit {
   dropdownTypesSettings = {};
   generations: any[] = [];
   types: Type[] = [];
-  typeItems: any[] = [];
   term = '';
   user: any;
 
@@ -47,7 +46,7 @@ export class PokemonListComponent implements OnInit {
 
   hoverPokemon: Pokemon;
   position: string;
-  selectedIndex: number;
+  selectedIndex;
 
   constructor(
     private pokemonService: PokemonService,
