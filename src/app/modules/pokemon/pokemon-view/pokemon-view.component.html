@@ -1,73 +1,102 @@
 <div class="container-fluid p-0">
-  <div class="row content">
-    <div class="col-1" *ngIf="prevPokemon">
-      <div class="arrow-content">
-        <span class="arrow prev">
-          <img src="../../../../assets/images/arrow_prev.svg" alt="Previous" />
-        </span>
-      </div>
+  <div class="row">
+    <div class="col-6">
+      <img src="../../../../assets/images/pokemons/{{ pokemon?.pokedex.national }}.svg" width="70%">
     </div>
-    <div [ngClass]="prevPokemon ? 'col-10' : 'col-11'">
-      <div class="row">
-        <div class="col-6">
-          <img src="../../../../assets/images/pokemons/{{ pokemon?.national }}.svg" width="100%">
-        </div>
-        <div class="pokemon-details col-6">
-          <h2>{{ pokemon?.name }}</h2>
-          <p class="description">{{ pokemon?.description }}</p>
-        </div>
-        <div class="statistics col-6 offset-md-1">
-          <h3 class="title">Statistiques</h3>
-          <div class="statistic mt-2" *ngFor="let stat of stats">
-            <div class="row">
-              <div class="col-4">
-                <p>{{ stat.name }}</p>
-              </div>
-              <div class="col-8">
-                <ngb-progressbar type="success" value="{{ stat.percentage }}">{{ stat.value }}</ngb-progressbar>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-          <h3 class="title">Morphologie</h3>
-          <p class="weight">{{ pokemon?.weight }} <span>kg</span></p>
-          <p class="height">{{ pokemon?.height }} <span>m</span></p>
-
-          <div class="types">
-            <h3 class="title mt-4 mb-1">Types</h3>
-            <div class="type" *ngFor="let type of pokemon?.types">
-              <img src="../../../../assets/images/types/{{ type.color }}.svg" width="40" placement="top" ngbTooltip="{{ type.name }}" />
-            </div>
-          </div>
-        </div>
-        <div class="evolutions d-flex col-3">
-          <h3 class="title">Évolutions</h3>
-          <div *ngIf="pokemon.evolutions; else noEvolutions">
-
-          </div>
-          <ng-template #noEvolutions>
-            <p>Ce Pokemon n'a aucune évolution</p>
-          </ng-template>
-        </div>
+    <div class="pokemon-details col-5">
+      <div style="overflow: auto">
+        <h2 class="name">{{ pokemon?.names.french }}</h2>
+        <div class="number">#{{ pokemon?.pokedex.national }}</div>
       </div>
+      <div class="other-names">
+        <p>{{ pokemon?.names.english }} - {{ pokemon?.names.japanese }}</p>
+      </div>
+      <p class="description">{{ pokemon?.description }}</p>
     </div>
-    <div class="col-1 position-absolute p-0" style="top: 50%; right: 0;">
-      <div class="arrow next" (mouseenter)="showNextPokemon()" (mouseleave)="hideNextPokemon()" (click)="viewPokemon(nextPokemon)">
-        <img src="../../../../assets/images/arrow_next.svg" alt="Next" width="30" />
-      </div>
-      <div class="next-pokemon container" *ngIf="showNext">
+  </div>
+  <div class="row mt-5">
+    <div class="statistics col-5 offset-md-1">
+      <h3 class="title">Statistiques</h3>
+      <div class="statistic mt-2" *ngFor="let stat of statistics">
         <div class="row">
-          <div class="col-4 image">
-            <img src="../../../../assets/images/pokemons/{{ nextPokemon?.national }}.svg" width="100%">
+          <div class="col-4">
+            <p>{{ stat.name }}</p>
           </div>
-          <div class="col-6">
-            <h3 class="name">{{ nextPokemon?.name }}</h3>
-            <span class="number">#{{ nextPokemon?.national }}</span>
+          <div class="col-8">
+            <ngb-progressbar type="success" value="{{ stat.percentage }}">{{ stat.value }}</ngb-progressbar>
           </div>
         </div>
       </div>
+    </div><!-- .statistics -->
+    <div class="col-2">
+      <div class="morphology">
+        <h3 class="title">Morphologie</h3>
+        <p class="weight">{{ pokemon?.weight }}<span>kg</span></p>
+        <p class="height">{{ pokemon?.height }}<span>m</span></p>
+      </div><!-- .morphology -->
+      <hr>
+      <div class="types">
+        <h3 class="title mt-4 mb-1">Types</h3>
+        <div class="type" *ngFor="let type of pokemon?.types">
+          <img src="../../../../assets/images/types/{{ type.color }}.svg" width="40" placement="top" ngbTooltip="{{ type.name }}" />
+        </div>
+      </div><!-- .types -->
+    </div><!-- .col-2 -->
+    <div class="evolutions d-flex col-3">
+      <h3 class="title">Évolutions</h3>
+      <div *ngIf="pokemon?.evolutions; else noEvolutions">
+
+      </div>
+      <ng-template #noEvolutions>
+        <p>Ce Pokemon n'a aucune évolution</p>
+      </ng-template>
     </div>
   </div>
 </div>
 
+<!--<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-6">
+
+    </div>
+    <div class="pokemon-details col-6">
+      <h2>{{ pokemon?.names.french }}</h2>
+      <p class="description">{{ pokemon?.description }}</p>
+    </div>
+    <div class="statistics col-6 offset-md-1">
+      <h3 class="title">Statistiques</h3>
+      <div class="statistic mt-2" *ngFor="let stat of pokemon.statistics">
+        <div class="row">
+          <div class="col-4">
+            <p>{{ stat.name }}</p>
+          </div>
+          <div class="col-8">
+            <ngb-progressbar type="success" value="{{ stat.percentage }}">{{ stat.value }}</ngb-progressbar>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <h3 class="title">Morphologie</h3>
+      <p class="weight">{{ pokemon?.weight }} <span>kg</span></p>
+      <p class="height">{{ pokemon?.height }} <span>m</span></p>
+
+      <div class="types">
+        <h3 class="title mt-4 mb-1">Types</h3>
+        <div class="type" *ngFor="let type of pokemon?.types">
+          <img src="../../../../assets/images/types/{{ type.color }}.svg" width="40" placement="top" ngbTooltip="{{ type.name }}" />
+        </div>
+      </div>
+    </div>
+    <div class="evolutions d-flex col-3">
+      <h3 class="title">Évolutions</h3>
+      <div *ngIf="pokemon.evolutions; else noEvolutions">
+
+      </div>
+      <ng-template #noEvolutions>
+        <p>Ce Pokemon n'a aucune évolution</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
+-->

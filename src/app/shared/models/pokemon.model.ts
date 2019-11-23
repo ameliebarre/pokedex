@@ -30,12 +30,30 @@ export class Pokemon {
   height: number;
   weight: number;
   statistics: {
-    hp: number;
-    attack: number;
-    defense: number;
-    sp_attack: number;
-    sp_defense: number;
-    speed: number;
+    hp: {
+      name: string,
+      value: number
+    },
+    attack: {
+      name: string,
+      value: number
+    },
+    defense: {
+      name: string,
+      value: number
+    },
+    sp_attack: {
+      name: string,
+      value: number
+    },
+    sp_defense: {
+      name: string,
+      value: number
+    },
+    speed: {
+      name: string,
+      value: number
+    };
   };
   catch_rate: number;
   talents: string[];

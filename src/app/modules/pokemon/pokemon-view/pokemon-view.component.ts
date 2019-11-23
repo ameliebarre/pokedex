@@ -12,10 +12,7 @@ import { Pokemon } from '../../../shared/models/pokemon.model';
 export class PokemonViewComponent implements OnInit {
 
   pokemon: Pokemon;
-  prevPokemon: Pokemon;
-  nextPokemon: Pokemon;
-  showPrev: boolean;
-  showNext: boolean;
+  statistics = [];
 
   constructor(
     public pokemonService: PokemonService,
@@ -29,45 +26,24 @@ export class PokemonViewComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.showPrev = false;
-    this.showNext = false;
-
     const slug = this.route.snapshot.params['slug'];
 
     this.pokemonService.getPokemonBySlug(slug).subscribe(
       (pokemon: Pokemon) => {
         this.pokemon = pokemon;
 
-        if (this.pokemon.next !== null) {
-          this.nextPokemon = this.pokemon.next;
-        }
-
-        if (this.pokemon.prev !== null) {
-          this.prevPokemon = this.pokemon.prev;
+        for (let key in this.pokemon.statistics) {
+          this.statistics.push({
+            name: this.pokemon.statistics[key].name,
+            value: this.pokemon.statistics[key].value,
+            percentage: this.calculatePercentage(this.pokemon.statistics[key].value)
+          });
         }
       }
     );
   }
 
-  showNextPokemon() {
-    this.showNext = true;
-  }
-
-  hideNextPokemon() {
-    this.showNext = false;
-  }
-
-  showPreviousPokemon() {
-    this.showPrev = true;
-  }
-
-  hidePreviousPokemon() {
-    this.showPrev = false;
-  }
-
-  viewPokemon(pokemon: Pokemon) {
-    console.log(pokemon);
-    this.router.navigate(['/pokemons', pokemon.slug]);
+  calculatePercentage(value: number) {
+    return (100*value)/250;
   }
 }

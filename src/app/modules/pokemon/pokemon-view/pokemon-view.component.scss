@@ -3,23 +3,46 @@
 
 .container-fluid {
   position: relative;
+  margin: 50px 0 40px 0;
 
-  .content {
-    font-family: $main-font;
+  img {
+    margin: 0 auto;
+    display: block;
+  }
+
+  h3 {
+    font-size: 18px;
+    text-transform: uppercase;
   }
 
   .pokemon-details {
-    margin-top: 50px;
 
-    h2 {
+    .name {
       color: $black;
       text-transform: uppercase;
       font-weight: bold;
-      margin-top: 50px;
+      float: left;
+      margin: 0 10px 0 0;
+    }
+
+    .number {
+      color: white;
+      margin: 5px 0 0 0;
+      background: $main-red;
+      font-size: 15px;
+      border-radius: 15px;
+      padding: 5px 10px;
+      overflow: auto;
+      width: max-content;
+    }
+
+    .other-names {
+      clear: both;
+      color: #555;
     }
 
     .description {
-      margin-top: 50px !important;
+      margin-top: 30px !important;
       width: 85%;
       text-align: justify;
       font-weight: lighter;
@@ -27,61 +50,17 @@
     }
   }
 
-  .arrow {
-    background: $main-red;
-    padding: 23px;
-    margin: 0 auto;
-    display: inline-block;
-    float: right;
-    cursor: pointer;
+  .morphology {
+    font-size: 20px;
 
-    img {
-      margin: 0 auto;
-      display: block;
+    span {
+      font-weight: lighter;
     }
   }
 
-  .next-pokemon {
-    background: $black;
-    overflow: auto;
-    padding: 10px;
-    color: white;
-    position: absolute;
-    left: -280px;
-    width: 300px;
-
-      .weight,
-      .height {
-        font-size: 25px;
-
-        span {
-          font-size: 15px;
-        }
-      }
-
-      .types {
-        .type {
-          float: left;
-        }
-      }
-
-      .title {
-        font-weight: bold;
-        font-size: 13px;
-        font-family: 'Montserrat', Arial, sans-serif;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-
-      }
-    }
-
-    .number {
-      background: white;
-      border-radius: 15px;
-      color: $black;
-      padding: 5px;
-      margin-top: 1px;
-      display: inline-block;
+  .types {
+    .type {
+      float: left;
     }
   }
 }
