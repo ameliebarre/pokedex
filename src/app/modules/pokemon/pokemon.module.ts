@@ -16,6 +16,7 @@ import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
 import { PokemonViewComponent } from './pokemon-view/pokemon-view.component';
 import { EditPokemonComponent } from './edit-pokemon/edit-pokemon.component';
 import {TypesModalComponent} from '../../components/types-modal/types-modal.component';
+import { PokemonFiltersComponent } from './pokemon-filters/pokemon-filters.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {TypesModalComponent} from '../../components/types-modal/types-modal.comp
     PokemonFormComponent,
     PokemonViewComponent,
     EditPokemonComponent,
-    TypesModalComponent
+    TypesModalComponent,
+    PokemonFiltersComponent
   ],
   imports: [
     PokemonRoutingModule,
