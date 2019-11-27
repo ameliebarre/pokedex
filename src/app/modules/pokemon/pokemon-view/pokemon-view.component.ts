@@ -53,7 +53,7 @@ export class PokemonViewComponent implements OnInit {
   }
 
   calculatePercentage(value: number) {
-    return (100*value)/250;
+    return (100 * value) / 250;
   }
 
   getPokedexNumbers(pokedexNumbers: any[]) {
@@ -80,8 +80,6 @@ export class PokemonViewComponent implements OnInit {
         width = '70%';
         break;
     }
-
-    console.log(width);
 
     return width;
   }
