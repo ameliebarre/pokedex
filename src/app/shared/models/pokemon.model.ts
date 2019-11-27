@@ -9,20 +9,17 @@ export class Pokemon {
     japanese: string;
   };
   slug: string;
-  pokedex: {
-    national: string;
-    kanto: string;
-    johto_oac: string;
-    johto_hgss: string;
-    hoenn_rse: string;
-    hoenn_rosa: string;
-    sinnoh: string;
-    unys_nb: string;
-    unys_n2b2: string;
-    kalos: string;
-    alola_sl: string;
-    alola_usul: string;
-  };
+  pokedex: [
+    {
+      name: string;
+      key: string;
+      number: string;
+      version: Array<{
+        name: string;
+        key: string;
+      }>
+    }
+  ];
   description: string;
   sex: string[];
   family: string;
@@ -71,6 +68,7 @@ export class Pokemon {
     capacity: Capacity;
     generation: number;
   }];
+  size: string;
   types: Type[] = [];
   next: Pokemon;
   prev: Pokemon;
@@ -79,20 +77,7 @@ export class Pokemon {
     this._id = obj && obj._id || null;
     this.names = obj && obj.names || { french: null, english: null, japanese: null };
     this.slug = obj && obj.slug || null;
-    this.pokedex = obj && obj.pokedex || {
-      national: null,
-      kanto: null,
-      johto_hgss: null,
-      johto_oac: null,
-      hoenn_rse: null,
-      hoenn_rosa: null,
-      sinnoh: null,
-      unys_nb: null,
-      unys_n2b2: null,
-      kalos: null,
-      alola_sl: null,
-      alola_usul: null
-    };
+    this.pokedex = obj && obj.pokedex || [];
     this.description = obj && obj.description || null;
     this.sex = obj && obj.sex || [];
     this.family = obj && obj.family || [];
@@ -104,6 +89,7 @@ export class Pokemon {
     this.talents = obj && obj.talents || [];
     this.evolutions = obj && obj.evolutions || [{ parent: null, children: null }];
     this.capacities = obj && obj.capacities || [];
+    this.size = obj && obj.size || null;
     this.types = obj && obj.types || [];
     this.next = obj && obj.next || null;
     this.prev = obj && obj.prev || null;

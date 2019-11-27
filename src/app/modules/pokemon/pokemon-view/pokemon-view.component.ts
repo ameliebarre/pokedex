@@ -12,7 +12,8 @@ import { Pokemon } from '../../../shared/models/pokemon.model';
 export class PokemonViewComponent implements OnInit {
 
   pokemon: Pokemon;
-  statistics = [];
+  statistics: any[] = [];
+  pokedexNumbers: any[] = [];
 
   constructor(
     public pokemonService: PokemonService,
@@ -32,18 +33,56 @@ export class PokemonViewComponent implements OnInit {
       (pokemon: Pokemon) => {
         this.pokemon = pokemon;
 
-        for (let key in this.pokemon.statistics) {
-          this.statistics.push({
-            name: this.pokemon.statistics[key].name,
-            value: this.pokemon.statistics[key].value,
-            percentage: this.calculatePercentage(this.pokemon.statistics[key].value)
-          });
-        }
+        // Compute the statistics of the Pokemon (name, value and percentage)
+        this.computeStatistics(this.pokemon.statistics);
+
+        // Get the Pokedex numbers
+        this.getPokedexNumbers(this.pokemon.pokedex);
       }
     );
   }
 
+  computeStatistics(statistics) {
+    for (let key in statistics) {
+      this.statistics.push({
+        name: statistics[key].name,
+        value: statistics[key].value,
+        percentage: this.calculatePercentage(statistics[key].value)
+      });
+    }
+  }
+
   calculatePercentage(value: number) {
     return (100*value)/250;
+  }
+
+  getPokedexNumbers(pokedexNumbers: any[]) {
+    for (let pokedex of pokedexNumbers) {
+      if (pokedex.number != null) {
+        this.pokedexNumbers.push(pokedex);
+      }
+    }
+  }
+
+  setImageSize(size: string) {
+    let width = '';
+
+    switch (size) {
+      case 'small':
+        width = '50%';
+        break;
+
+      case 'medium':
+        width = '60%';
+        break;
+
+      case 'big':
+        width = '70%';
+        break;
+    }
+
+    console.log(width);
+
+    return width;
   }
 }

@@ -1,22 +1,23 @@
-<div class="container-fluid p-0">
+<div class="pokemon-details container-fluid p-0">
   <div class="row">
     <div class="col-6">
-      <img src="../../../../assets/images/pokemons/{{ pokemon?.pokedex.national }}.svg" width="70%">
+      <img src="../../../../assets/images/pokemons/{{ pokemon?.pokedex[0].number }}.svg" [style.width]="setImageSize(pokemon?.size)">
     </div>
-    <div class="pokemon-details col-5">
-      <div style="overflow: auto">
-        <h2 class="name">{{ pokemon?.names.french }}</h2>
-        <div class="number">#{{ pokemon?.pokedex.national }}</div>
-      </div>
-      <div class="other-names">
+
+    <div class="col-5">
+      <h2 class="name">{{ pokemon?.names.french }}</h2>
+      <div class="national-number">#{{ pokemon?.pokedex[0].number }}</div>
+      <div class="foreign-names">
         <p>{{ pokemon?.names.english }} - {{ pokemon?.names.japanese }}</p>
       </div>
       <p class="description">{{ pokemon?.description }}</p>
     </div>
   </div>
   <div class="row mt-5">
+
     <div class="statistics col-5 offset-md-1">
-      <h3 class="title">Statistiques</h3>
+      <h3 class="section-title">Statistiques</h3>
+      <hr>
       <div class="statistic mt-2" *ngFor="let stat of statistics">
         <div class="row">
           <div class="col-4">
@@ -28,28 +29,36 @@
         </div>
       </div>
     </div><!-- .statistics -->
+
     <div class="col-2">
       <div class="morphology">
-        <h3 class="title">Morphologie</h3>
+        <h3 class="section-title">Morphologie</h3>
+        <hr>
         <p class="weight">{{ pokemon?.weight }}<span>kg</span></p>
         <p class="height">{{ pokemon?.height }}<span>m</span></p>
       </div><!-- .morphology -->
-      <hr>
+
       <div class="types">
-        <h3 class="title mt-4 mb-1">Types</h3>
+        <h3 class="section-title mt-4 mb-1">Types</h3>
+        <hr>
         <div class="type" *ngFor="let type of pokemon?.types">
           <img src="../../../../assets/images/types/{{ type.color }}.svg" width="40" placement="top" ngbTooltip="{{ type.name }}" />
         </div>
       </div><!-- .types -->
     </div><!-- .col-2 -->
-    <div class="evolutions d-flex col-3">
-      <h3 class="title">Évolutions</h3>
-      <div *ngIf="pokemon?.evolutions; else noEvolutions">
 
+    <div class="evolutions col-3">
+      <h3 class="section-title">Pokedex</h3>
+      <hr>
+      <div class="row">
+        <div class="col-4" *ngFor="let pokedex of pokedexNumbers">
+          <div class="d-flex">
+            <h4>{{ pokedex?.name }}</h4>
+            <span class="version" *ngIf="pokedex.version">{{ pokedex?.version.key }}</span>
+          </div>
+          <span class="number">#{{ pokedex?.number }}</span>
+        </div>
       </div>
-      <ng-template #noEvolutions>
-        <p>Ce Pokemon n'a aucune évolution</p>
-      </ng-template>
     </div>
   </div>
 </div>
