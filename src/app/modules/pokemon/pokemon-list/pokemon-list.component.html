@@ -2,38 +2,14 @@
   <div *ngIf="pokemons">
     <app-pokemon-filters [pokemons]="pokemons" (term)="getTerm($event)"></app-pokemon-filters>
   </div>
-  <!--<div id="filter" class="row">
-    <div class="col-md-12 mb-2">
-      <h4>Filtrer par :</h4>
-    </div>
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-3">
-          <ng-multiselect-dropdown
-            [placeholder]="'Générations'"
-            [data]="dropdownGenerations"
-            [settings]="dropdownGenerationsSettings"
-            (onSelect)="onGenerationSelect($event)"
-            (onDeSelect)="onGenerationDeselect($event)"
-            (onSelectAll)="onGenerationSelectAll($event)"
-            ngDefaultControl
-          >
-          </ng-multiselect-dropdown>
-        </div>
-        <div class="col-md-4">
-          <input type="text" id="search" class="form-control" [(ngModel)]="term" placeholder="Rechercher un Pokemon..." autocomplete="off"/>
-        </div>
-      </div>
-    </div>
-  </div>-->
 
   <div id="pokemon-list" class="row">
     <div *ngFor="let pokemon of pokemons | filter: term; let i = index;" class="pokemon col-md-3" (mouseover)="hoverPokemon = pokemon" (mouseleave)="hoverPokemon = null" (click)="viewPokemon(pokemon)">
       <figure [ngClass]="hoverPokemon === pokemon ? 'active' : ''" [ngStyle]="hoverPokemon === pokemon && { 'background' : '#fff', 'border': '1px solid #D1D1D1' }">
-        <img class="thumb" src="../../../assets/images/pokemons/{{ pokemon?.pokedex.national }}.svg" alt="{{ pokemon?.names.french }}" width="140" height="140" />
+        <img class="thumb" src="../../../assets/images/pokemons/{{ pokemon?.slug }}.svg" alt="{{ pokemon?.names.french }}" width="140" height="140" />
         <figcaption>
           <h4 class="name">{{ pokemon?.names.french }}</h4>
-          <span class="number">#{{ pokemon?.pokedex.national }}</span>
+          <span class="number">#{{ pokemon?.pokedex[0].national }}</span>
         </figcaption>
         <div class="types d-flex justify-content-center">
           <div class="type" *ngFor="let type of pokemon.types">
