@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FilterPipe } from './pipes/filter.pipe';
@@ -10,7 +9,6 @@ import { FilterPipe } from './pipes/filter.pipe';
   imports: [
     CommonModule,
     FormsModule,
-    AngularFontAwesomeModule,
     NgMultiSelectDropDownModule.forRoot(),
     ReactiveFormsModule,
     NgbModule
@@ -20,7 +18,6 @@ import { FilterPipe } from './pipes/filter.pipe';
   ],
   exports: [
     CommonModule,
-    AngularFontAwesomeModule,
     ReactiveFormsModule,
     FormsModule,
     NgMultiSelectDropDownModule,

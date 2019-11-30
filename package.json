@@ -9,9 +9,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "styles": [
-    "../node_modules/font-awesome/css/font-awesome.css"
-  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.7",
@@ -26,18 +23,11 @@
     "@angular/platform-browser-dynamic": "^8.2.7",
     "@angular/router": "^8.2.7",
     "@auth0/angular-jwt": "^3.0.0",
-    "@fortawesome/angular-fontawesome": "^0.5.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.24",
-    "@fortawesome/free-brands-svg-icons": "^5.11.1",
-    "@fortawesome/free-regular-svg-icons": "^5.11.1",
-    "@fortawesome/free-solid-svg-icons": "^5.11.1",
     "@ng-bootstrap/ng-bootstrap": "^5.1.1",
-    "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.9",
     "crypto-js": "^3.1.9-1",
     "express": "^4.17.1",
-    "font-awesome": "^4.7.0",
     "icheck-material": "^1.0.0",
     "jasmine": "^3.4.0",
     "lodash": "^4.17.15",

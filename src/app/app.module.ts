@@ -4,15 +4,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ng6-toastr-notifications';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 /** Services **/
 import { AuthService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
-
-/* Font Awesome */
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBell, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 /** Components **/
 import { AppComponent } from './app.component';
@@ -54,7 +49,6 @@ import { SharedModule } from './shared/shared.module';
     }),
     RouterModule,
     ToastrModule.forRoot(),
-    FontAwesomeModule,
     PokemonModule,
     CapacityModule
   ],
@@ -71,11 +65,7 @@ import { SharedModule } from './shared/shared.module';
     AppComponent
   ]
 })
-export class AppModule {
-  constructor() {
-    library.add(faBell, faSignOutAlt);
-  }
-}
+export class AppModule {}
 
 export function tokenGetter() {
   return localStorage.getItem('token');

@@ -1,12 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UiSwitchModule } from 'ngx-ui-switch';
-
-/* Font Awesome */
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBackspace } from '@fortawesome/free-solid-svg-icons';
-import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
 import { SharedModule } from '../../shared/shared.module';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
@@ -31,7 +24,6 @@ import { PokemonFiltersComponent } from './pokemon-filters/pokemon-filters.compo
   imports: [
     PokemonRoutingModule,
     SharedModule,
-    FontAwesomeModule,
     UiSwitchModule,
   ],
   exports: [
@@ -42,8 +34,4 @@ import { PokemonFiltersComponent } from './pokemon-filters/pokemon-filters.compo
     TypesModalComponent
   ]
 })
-export class PokemonModule {
-  constructor() {
-    library.add(faBackspace, faWindowClose);
-  }
-}
+export class PokemonModule {}
