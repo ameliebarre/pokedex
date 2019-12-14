@@ -9,7 +9,7 @@
         <img class="thumb" src="../../../assets/images/pokemons/{{ pokemon?.slug }}.svg" alt="{{ pokemon?.names.french }}" width="140" height="140" />
         <figcaption>
           <h4 class="name">{{ pokemon?.names.french }}</h4>
-          <span class="number">#{{ pokemon?.pokedex[0].national }}</span>
+          <span class="number">#{{ pokemon?.pokedex[0].number }}</span>
         </figcaption>
         <div class="types d-flex justify-content-center">
           <div class="type" *ngFor="let type of pokemon.types">
