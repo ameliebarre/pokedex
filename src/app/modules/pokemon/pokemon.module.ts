@@ -10,8 +10,6 @@ import { PokemonViewComponent } from './pokemon-view/pokemon-view.component';
 import { EditPokemonComponent } from './edit-pokemon/edit-pokemon.component';
 import {TypesModalComponent} from '../../components/types-modal/types-modal.component';
 import { PokemonFiltersComponent } from './pokemon-filters/pokemon-filters.component';
-import { TabsComponent } from './pokemon-tabs/tabs/tabs.component';
-import { TabComponent } from './pokemon-tabs/tab/tab.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +19,7 @@ import { TabComponent } from './pokemon-tabs/tab/tab.component';
     PokemonViewComponent,
     EditPokemonComponent,
     TypesModalComponent,
-    PokemonFiltersComponent,
-    TabsComponent,
-    TabComponent
+    PokemonFiltersComponent
   ],
   imports: [
     PokemonRoutingModule,
