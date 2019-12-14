@@ -1,5 +1,6 @@
 import { Type } from './type.model';
 import { Capacity } from './capacity.model';
+import {Game} from './game.model';
 
 export class Pokemon {
   _id: string;
@@ -14,14 +15,17 @@ export class Pokemon {
       name: string;
       key: string;
       number: string;
-      version: Array<{
+      version: {
         name: string;
         key: string;
-      }>
+      }
     }
   ];
   description: string;
-  sex: string[];
+  sex: [{
+      gender: string;
+      percentage: number;
+  }];
   family: string;
   generation: number;
   height: number;
@@ -54,19 +58,32 @@ export class Pokemon {
   };
   catch_rate: number;
   talents: string[];
-  evolutions: [{
-    parent: {
+  evolutions: {
+    parent: [{
       pokemon: Pokemon,
       evolution: string
-    },
-    children: {
+    }],
+    children: [{
       pokemon: Pokemon,
       evolution: string
+    }]
+  };
+  mega_evolution: {
+    pokemon: Pokemon,
+    evolution: String
+  };
+  shapes: [
+    {
+      pokemon: Pokemon
     }
-  }];
+  ];
   capacities: [{
     capacity: Capacity;
     generation: number;
+  }];
+  localisations: [{
+    game: Game;
+    place: string;
   }];
   size: string;
   types: Type[] = [];
@@ -87,8 +104,11 @@ export class Pokemon {
     this.statistics = obj && obj.statistics || { hp: null, attack: null, defense: null, sp_attack: null, sp_defense: null, speed: null };
     this.catch_rate = obj && obj.catch_rate || null;
     this.talents = obj && obj.talents || [];
-    this.evolutions = obj && obj.evolutions || [{ parent: null, children: null }];
+    this.evolutions = obj && obj.evolutions || { parent: null, children: null };
+    this.mega_evolution = obj && obj.mega_evolution || null;
+    this.shapes = obj && obj.shapes || [];
     this.capacities = obj && obj.capacities || [];
+    this.localisations = obj && obj.localisations || [];
     this.size = obj && obj.size || null;
     this.types = obj && obj.types || [];
     this.next = obj && obj.next || null;

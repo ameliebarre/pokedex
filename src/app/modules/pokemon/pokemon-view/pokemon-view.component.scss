@@ -67,7 +67,7 @@
     }
   }
 
-  .evolutions {
+  .pokedex-numbers {
     h4 {
       margin: 0;
       font-size: 16px;
@@ -83,6 +83,20 @@
       color: $main-red;
       margin-left: 1px;
       font-size: 12px;
+    }
+  }
+
+  .evolutions {
+    .img-content {
+      width: 100%;
+      background: #e9ecef;
+      border-radius: 100%;
+      padding: 15px 7px;
+
+      img {
+        padding: 25px;
+        width: 95%;
+      }
     }
   }
 }
