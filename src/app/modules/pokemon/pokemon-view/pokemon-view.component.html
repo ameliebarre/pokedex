@@ -1,7 +1,7 @@
 <div class="pokemon-details container-fluid p-0">
   <div class="row">
     <div class="col-6">
-      <img src="../../../../assets/images/pokemons/{{ pokemon?.pokedex[0].number }}.svg" [style.width]="setImageSize(pokemon?.size)">
+      <img src="../../../../assets/images/pokemons/{{ pokemon?.slug }}.svg" [style.width]="setImageSize(pokemon?.size)">
     </div>
 
     <div class="col-5">
@@ -47,9 +47,9 @@
       </div><!-- .types -->
     </div><!-- .col-2 -->
 
-    <div class="evolutions col-3">
-      <h3 class="section-title">Pokedex</h3>
-      <hr>
+    <div class="pokedex-numbers col-3">
+      <h3 class="section-title">Pokedex <hr></h3>
+
       <div class="row">
         <div class="col-4" *ngFor="let pokedex of pokedexNumbers">
           <div class="d-flex">
@@ -60,6 +60,39 @@
         </div>
       </div>
     </div>
+
+    <!--<div class="evolutions col-8 offset-md-1 mt-5" *ngIf="pokemon?.evolutions.parent || pokemon?.evolutions.children">
+      <h3 class="section-title">Évolutions</h3>
+      <hr>
+      <div class="mt-2">
+        <div class="row">
+          <div [ngClass]="pokemon.evolutions.parent ? 'col-md-3' : 'col-md-5'" *ngIf="pokemon.evolutions.children">
+            <div class="img-content">
+              <img src="../../../../assets/images/pokemons/{{ pokemon?.evolutions.children.pokemon.pokedex[0].number }}.svg">
+            </div>
+          </div>
+
+          <div [ngClass]="pokemon?.evolutions.children && pokemon?.evolutions.parent ? 'col-md-3' : 'col-md-5'">
+            <div class="img-content">
+              <img src="../../../../assets/images/pokemons/{{ pokemon?.pokedex[0].number }}.svg">
+            </div>
+          </div>
+
+          <div [ngClass]="pokemon?.evolutions.children ? 'col-md-3' : 'col-md-5'" *ngIf="pokemon?.evolutions.parent">
+            <div class="img-content">
+              <img src="../../../../assets/images/pokemons/{{ pokemon?.evolutions.parent.pokemon.pokedex[0].number }}.svg">
+            </div>
+          </div>
+
+          <div class="evolution-way col-md-1" *ngIf="pokemon.evolutions.children">
+            <h4>{{ pokemon?.evolutions.children.pokemon.names.french }}</h4>
+            <p>{{ pokemon?.evolutions.children.evolution }}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>-->
+
   </div>
 </div>
 
