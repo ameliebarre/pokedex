@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import {User} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -52,19 +53,6 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  isFirstTime() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    let isFirstTime: boolean;
-
-    if (user.isFirstTime) {
-      isFirstTime = true;
-    } else {
-      isFirstTime = false;
-    }
-
-    return isFirstTime;
-  }
-
   isUserLoggedIn(): boolean {
     const token = this.getToken();
     if (!token) {
@@ -72,6 +60,14 @@ export class AuthService {
     }
 
     return !this.jwtHelperService.isTokenExpired(token);
+  }
+
+  isUserAdmin() {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+
+    if (user.permissions.indexOf('ADMIN') > -1) {
+      return true;
+    }
   }
 
   logout() {

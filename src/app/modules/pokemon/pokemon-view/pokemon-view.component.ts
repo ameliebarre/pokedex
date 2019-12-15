@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { PokemonService } from '../../../shared/services/pokemon.service';
 import { Pokemon } from '../../../shared/models/pokemon.model';
+import {AuthService} from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-pokemon-view',
@@ -14,9 +15,11 @@ export class PokemonViewComponent implements OnInit {
   pokemon: Pokemon;
   statistics: any[] = [];
   pokedexNumbers: any[] = [];
+  isUserAdmin: boolean;
 
   constructor(
     public pokemonService: PokemonService,
+    public authService: AuthService,
     public route: ActivatedRoute,
     public router: Router
   ) {
@@ -40,6 +43,8 @@ export class PokemonViewComponent implements OnInit {
         this.getPokedexNumbers(this.pokemon.pokedex);
       }
     );
+
+    this.isUserAdmin = this.authService.isUserAdmin();
   }
 
   computeStatistics(statistics) {
@@ -69,7 +74,7 @@ export class PokemonViewComponent implements OnInit {
 
     switch (size) {
       case 'small':
-        width = '50%';
+        width = '60%';
         break;
 
       case 'medium':
