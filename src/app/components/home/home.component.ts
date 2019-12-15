@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
 
   user: {
     email: string;
-    isFirstTime: boolean;
     username: string;
   };
 
@@ -33,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   getStatus() {
-    this.isNew = this.authService.isFirstTime();
+    // this.isNew = this.authService.isFirstTime();
   }
 
 }

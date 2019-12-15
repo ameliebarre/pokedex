@@ -14,7 +14,7 @@ export class User {
   isFirstTime: boolean;
   password: string;
   email: string;
-  permissions: any[];
+  permissions: Array<string>;
   token: string;
   pokemons: Pokemon[];
   trainer: any;
