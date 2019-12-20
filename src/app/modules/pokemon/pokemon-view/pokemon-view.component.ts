@@ -36,7 +36,7 @@ export class PokemonViewComponent implements OnInit {
     this.pokemonService.getPokemonBySlug(slug).subscribe(
       (pokemon: Pokemon) => {
         this.pokemon = pokemon;
-        
+
         // Compute the statistics of the Pokemon (name, value and percentage)
         this.computeStatistics(this.pokemon.statistics);
 
