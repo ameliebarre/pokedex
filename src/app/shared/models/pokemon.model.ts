@@ -5,26 +5,26 @@ import {Game} from './game.model';
 export class Pokemon {
   _id: string;
   names: {
-    french: string;
-    english: string;
-    japanese: string;
+    french: string,
+    english: string,
+    japanese: string
   };
   slug: string;
   pokedex: [
     {
-      name: string;
-      key: string;
-      number: string;
+      name: string,
+      key: string,
+      number: string,
       version: {
-        name: string;
-        key: string;
+        name: string,
+        key: string
       }
     }
   ];
   description: string;
   sex: [{
-      gender: string;
-      percentage: number;
+      gender: string,
+      percentage: number
   }];
   family: string;
   generation: number;
@@ -57,36 +57,44 @@ export class Pokemon {
     };
   };
   catch_rate: number;
-  talents: string[];
+  talents: [
+    {
+      name: string;
+      description: string;
+    }
+  ];
   evolutions: {
-    parent: [{
+    parent: {
       pokemon: Pokemon,
       evolution: string
-    }],
-    children: [{
+    },
+    children: {
       pokemon: Pokemon,
       evolution: string
-    }]
-  };
-  mega_evolution: {
-    pokemon: Pokemon,
-    evolution: String
+    },
+    mega: {
+      pokemon: Pokemon,
+      evolution: string
+    }
   };
   shapes: [
     {
-      pokemon: Pokemon
+      name: string,
+      slug: string
     }
   ];
   capacities: [{
-    capacity: Capacity;
-    generation: number;
+    capacity: Capacity,
+    generation: number
   }];
   localisations: [{
     game: Game;
-    place: string;
+    localisation: string,
+    generation: number
   }];
   size: string;
   types: Type[] = [];
+  weaknesses: Type[] = [];
   next: Pokemon;
   prev: Pokemon;
 
@@ -104,13 +112,13 @@ export class Pokemon {
     this.statistics = obj && obj.statistics || { hp: null, attack: null, defense: null, sp_attack: null, sp_defense: null, speed: null };
     this.catch_rate = obj && obj.catch_rate || null;
     this.talents = obj && obj.talents || [];
-    this.evolutions = obj && obj.evolutions || { parent: null, children: null };
-    this.mega_evolution = obj && obj.mega_evolution || null;
+    this.evolutions = obj && obj.evolutions || { parent: null, children: null, mega: null };
     this.shapes = obj && obj.shapes || [];
     this.capacities = obj && obj.capacities || [];
     this.localisations = obj && obj.localisations || [];
     this.size = obj && obj.size || null;
     this.types = obj && obj.types || [];
+    this.weaknesses = obj && obj.weaknesses || [];
     this.next = obj && obj.next || null;
     this.prev = obj && obj.prev || null;
   }
