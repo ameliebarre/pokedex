@@ -94,16 +94,25 @@
   .family,
   .catch-rate,
   .talents,
-  .egg-group {
+  .egg-group,
+  .sex {
     p {
       font-size: 20px;
     }
   }
 
-  .talents,
-  .egg-group {
-    p {
-      float: left;
+  .sex {
+    .fas {
+      font-size: 20px;
+      margin-right: 5px;
+    }
+
+    .fa-mars {
+      color: #00D6F7;
+    }
+
+    .fa-venus {
+      color: #FF6BCB;
     }
   }
 

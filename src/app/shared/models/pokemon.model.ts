@@ -23,7 +23,8 @@ export class Pokemon {
   ];
   description: string;
   sex: [{
-      gender: string,
+      label: string,
+      key: string,
       percentage: number
   }];
   family: string;

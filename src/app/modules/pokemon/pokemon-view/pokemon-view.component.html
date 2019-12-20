@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <div class="col-md-6 col-lg-2 mb-4">
+    <div class="col-md-6 col-lg-2 mb-5">
       <div class="types mb-3">
         <h3 class="section-title">Types</h3>
         <hr>
@@ -67,8 +67,8 @@
       </div>
     </div>
 
-    <div class="family col-md-6 col-lg-2 mb-4">
-      <h3 class="section-title">Famille</h3>
+    <div class="family col-md-6 col-lg-2 mb-5">
+      <h3 class="section-title">Catégorie</h3>
       <hr>
       <p>{{ pokemon?.family }}</p>
     </div>
@@ -79,28 +79,40 @@
       <p>{{ pokemon?.catch_rate }}</p>
     </div>
 
-    <div class="generation col-md-6 col-lg-2 mb-4">
+    <div class="generation col-md-6 col-lg-2 mb-5">
       <h3 class="section-title">Génération</h3>
       <hr>
       <p>{{ generation }}</p>
     </div>
 
-    <div class="talents col-md-6 col-lg-3 mb-4">
+    <div class="talents col-md-6 col-lg-3 mb-5">
       <h3 class="section-title">Talents</h3>
       <hr>
-      <p *ngFor="let talent of pokemon?.talents; first as isFirst" ngbTooltip="{{ talent?.description }}">
+      <p *ngFor="let talent of pokemon?.talents; first as isFirst" ngbTooltip="{{ talent?.description }}" class="float-left">
         <ng-container *ngIf="!isFirst">, </ng-container>
         {{ talent?.name }}
       </p>
     </div>
 
-    <div class="egg-group col-md-6 col-lg-3 mb-4">
+    <div class="egg-group col-md-6 col-lg-3 mb-5">
       <h3 class="section-title">Groupe œuf</h3>
       <hr>
-      <p *ngFor="let group of pokemon?.egg_group; first as isFirst">
+      <p *ngFor="let group of pokemon?.egg_group; first as isFirst" class="float-left">
         <ng-container *ngIf="!isFirst">, </ng-container>
         {{ group }}
       </p>
+    </div>
+
+    <div class="sex col-md-6 col-lg-2 mb-5">
+      <h3 class="section-title">Sexe</h3>
+      <hr>
+      <div class="d-flex">
+        <div *ngFor="let sex of pokemon?.sex" class="d-flex mr-2">
+          <i class="fas fa-venus" *ngIf="sex.key === 'female'"></i>
+          <i class="fas fa-mars" *ngIf="sex.key === 'male'"></i>
+          <p>{{ sex.percentage }}%</p>
+        </div>
+      </div>
     </div>
 
     <!--<div class="evolutions col-8 offset-md-1 mt-5" *ngIf="pokemon?.evolutions.parent || pokemon?.evolutions.children">
