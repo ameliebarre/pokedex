@@ -85,6 +85,24 @@
       <p>{{ generation }}</p>
     </div>
 
+    <div class="talents col-md-6 col-lg-3 mb-4">
+      <h3 class="section-title">Talents</h3>
+      <hr>
+      <p *ngFor="let talent of pokemon?.talents; first as isFirst" ngbTooltip="{{ talent?.description }}">
+        <ng-container *ngIf="!isFirst">, </ng-container>
+        {{ talent?.name }}
+      </p>
+    </div>
+
+    <div class="egg-group col-md-6 col-lg-3 mb-4">
+      <h3 class="section-title">Groupe œuf</h3>
+      <hr>
+      <p *ngFor="let group of pokemon?.egg_group; first as isFirst">
+        <ng-container *ngIf="!isFirst">, </ng-container>
+        {{ group }}
+      </p>
+    </div>
+
     <!--<div class="evolutions col-8 offset-md-1 mt-5" *ngIf="pokemon?.evolutions.parent || pokemon?.evolutions.children">
       <h3 class="section-title">Évolutions</h3>
       <hr>

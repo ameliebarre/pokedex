@@ -83,6 +83,7 @@ export class Pokemon {
       slug: string
     }
   ];
+  egg_group: Array<string>;
   capacities: [{
     capacity: Capacity,
     generation: number
@@ -115,6 +116,7 @@ export class Pokemon {
     this.talents = obj && obj.talents || [];
     this.evolutions = obj && obj.evolutions || { parent: null, children: null, mega: null };
     this.shapes = obj && obj.shapes || [];
+    this.egg_group = obj && obj.egg_group || [];
     this.capacities = obj && obj.capacities || [];
     this.localisations = obj && obj.localisations || [];
     this.size = obj && obj.size || null;
