@@ -76,4 +76,31 @@ export class PokemonService {
     return this.http.post<Pokemon[]>(`${environment.apiUrl}/pokemons/generations`, { generations: generations });
   }
 
+  getPokemonGenerationToString(pokemon: Pokemon) {
+    let generation: string = '';
+    switch (pokemon.generation) {
+      case 1:
+        generation = '1ère génération';
+        break;
+
+      case 2:
+        generation = '2ème génération';
+        break;
+
+      case 3:
+        generation = '3ème génération';
+        break;
+
+      case 4:
+        generation = '4ème génération';
+        break;
+
+      case 5:
+        generation = '5ème génération';
+        break;
+    }
+
+    return generation;
+  }
+
 }
