@@ -10,13 +10,14 @@
   }
 
   .section-title {
-    font-size: 18px;
+    font-size: 15px;
+    font-weight: bold;
     text-transform: uppercase;
   }
 
   hr {
-    margin-top: 8px;
-    margin-bottom: 15px;
+    margin-top: 5px;
+    margin-bottom: 8px;
     width: 40%;
   }
 
@@ -70,12 +71,6 @@
     }
   }
 
-  .types {
-    .type {
-      float: left;
-    }
-  }
-
   .pokedex-numbers {
     h4 {
       margin: 0;
@@ -92,6 +87,13 @@
       color: $main-red;
       margin-left: 1px;
       font-size: 12px;
+    }
+  }
+
+  .generation,
+  .family {
+    p {
+      font-size: 20px;
     }
   }
 

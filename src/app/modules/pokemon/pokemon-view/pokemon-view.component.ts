@@ -16,6 +16,7 @@ export class PokemonViewComponent implements OnInit {
   statistics: any[] = [];
   pokedexNumbers: any[] = [];
   isUserAdmin: boolean;
+  generation: string;
 
   constructor(
     public pokemonService: PokemonService,
@@ -35,12 +36,14 @@ export class PokemonViewComponent implements OnInit {
     this.pokemonService.getPokemonBySlug(slug).subscribe(
       (pokemon: Pokemon) => {
         this.pokemon = pokemon;
-
+        
         // Compute the statistics of the Pokemon (name, value and percentage)
         this.computeStatistics(this.pokemon.statistics);
 
         // Get the Pokedex numbers
         this.getPokedexNumbers(this.pokemon.pokedex);
+
+        this.generation = this.pokemonService.getPokemonGenerationToString(this.pokemon);
       }
     );
 
@@ -85,7 +88,6 @@ export class PokemonViewComponent implements OnInit {
         width = '70%';
         break;
     }
-
     return width;
   }
 }

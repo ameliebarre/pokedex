@@ -7,7 +7,7 @@
     <div class="col-md-12 col-lg-5 p-lg-0 m-lg-0">
       <h2 class="name">{{ pokemon?.names.french }}</h2>
       <div class="national-number">#{{ pokemon?.pokedex[0].number }}</div>
-      <i class="fas fa-pencil-alt" [ngbTooltip]="'Éditer ' + pokemon.names.french"></i>
+      <i class="fas fa-pencil-alt" [ngbTooltip]="'Éditer ' + pokemon?.names.french"></i>
       <div class="foreign-names">
         <p>{{ pokemon?.names.english }} - {{ pokemon?.names.japanese }}</p>
       </div>
@@ -16,7 +16,7 @@
   </div>
 
   <div class="row mt-5">
-    <div class="statistics col-md-12 col-lg-6 offset-lg-1">
+    <div class="statistics col-md-12 col-lg-5 mb-5">
       <h3 class="section-title">Statistiques</h3>
       <hr>
       <div class="statistic mt-2" *ngFor="let stat of statistics">
@@ -29,11 +29,11 @@
           </div>
         </div>
       </div>
-    </div><!-- .statistics -->
+    </div>
 
-    <div class="pokedex-numbers col-md-12 col-lg-4">
-      <h3 class="section-title">Pokedex <hr></h3>
-
+    <div class="pokedex-numbers col-md-12 col-lg-4 mb-5">
+      <h3 class="section-title">Pokedex</h3>
+      <hr>
       <div class="row">
         <div class="col-4" *ngFor="let pokedex of pokedexNumbers">
           <div class="d-flex">
@@ -43,6 +43,40 @@
           <span class="number">#{{ pokedex?.number }}</span>
         </div>
       </div>
+    </div>
+
+    <div class="col-md-6 col-lg-2 mb-4">
+      <div class="types mb-3">
+        <h3 class="section-title">Types</h3>
+        <hr>
+        <div class="d-flex">
+          <div class="type" *ngFor="let type of pokemon?.types">
+            <img src="../../../../assets/images/types/{{ type.color }}.svg" width="40" placement="top" ngbTooltip="{{ type.name }}" />
+          </div>
+        </div>
+      </div>
+
+      <div class="weaknesses">
+        <h3 class="section-title">Faiblesses</h3>
+        <hr>
+        <div class="d-flex">
+          <div class="type" *ngFor="let weakness of pokemon?.weaknesses">
+            <img src="../../../../assets/images/types/{{ weakness.color }}.svg" width="40" placement="top" ngbTooltip="{{ weakness.name }}" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="family col-md-6 col-lg-2 mb-4">
+      <h3 class="section-title">Famille</h3>
+      <hr>
+      <p>{{ pokemon?.family }}</p>
+    </div>
+
+    <div class="generation col-md-6 col-lg-2 mb-4">
+      <h3 class="section-title">Génération</h3>
+      <hr>
+      <p>{{ generation }}</p>
     </div>
 
     <!--<div class="evolutions col-8 offset-md-1 mt-5" *ngIf="pokemon?.evolutions.parent || pokemon?.evolutions.children">
