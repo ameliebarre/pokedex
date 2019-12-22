@@ -42,11 +42,11 @@
   }
 
   .fa-pencil-alt {
-    float: left;
+    float: right;
     margin: 6px 14px;
     background: lightgray;
-    padding: 5px;
-    border-radius: 3px;
+    padding: 6px;
+    border-radius: 15px;
     color: darkslategrey;
     cursor: pointer;
   }
@@ -95,7 +95,9 @@
   .catch-rate,
   .talents,
   .egg-group,
-  .sex {
+  .sex,
+  .weight,
+  .height {
     p {
       font-size: 20px;
     }
