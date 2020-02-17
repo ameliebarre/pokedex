@@ -25,12 +25,12 @@ export class AuthService {
     this.helper = new JwtHelperService();
   }
 
-  register(name: string, email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${environment.authUrl}/register`, { name: name, email: email, password: password });
+  register(username: string, email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/auth/register`, { username, email, password });
   }
 
   login(email: string, password: string) {
-    return this.http.post(environment.authUrl + '/login', { email: email, password: password })
+    return this.http.post(`${environment.apiUrl}/auth/login`, { email, password })
       .pipe(
         tap((req) => {
           this.storeUserData(req);

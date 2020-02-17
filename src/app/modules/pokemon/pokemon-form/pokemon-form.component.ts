@@ -106,7 +106,7 @@ export class PokemonFormComponent implements OnInit {
     // Check among the list of all Pokemons if the name value exists
     this.pokemonService.getAllPokemons().subscribe(
       (pokemons: Pokemon[]) => {
-        const index = _.findIndex(pokemons, { name: pokemonName });
+        const index = _.find(pokemons, { name: pokemonName });
 
         this.isExists = index !== -1;
       }
@@ -152,7 +152,7 @@ export class PokemonFormComponent implements OnInit {
 
   setPokemonTalents() {
     if (this.pokemon._id) {
-      this.pokemon.talents.forEach((talent: string) => {
+      this.pokemon.talents.forEach((talent) => {
         this.talents.push(this.fb.control(talent));
       });
     } else {

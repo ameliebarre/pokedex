@@ -95,7 +95,6 @@ export class Pokemon {
     generation: number
   }];
   size: string;
-  catch_rate: number;
   types: Type[] = [];
   weaknesses: Type[] = [];
   next: Pokemon;
@@ -121,7 +120,6 @@ export class Pokemon {
     this.capacities = obj && obj.capacities || [];
     this.localisations = obj && obj.localisations || [];
     this.size = obj && obj.size || null;
-    this.catch_rate = obj && obj.catch_rate || null;
     this.types = obj && obj.types || [];
     this.weaknesses = obj && obj.weaknesses || [];
     this.next = obj && obj.next || null;
