@@ -4,18 +4,6 @@
   background-color: $main-red;
 }
 
-// Override form error text color
-::ng-deep .text-danger {
-  color: darken($main-red, 45%) !important;
-}
-
-::ng-deep .form-errors {
-  color: white;
-  background: $main-red;
-  padding: 10px;
-  text-align: center;
-}
-
 /** Form **/
 ::ng-deep .form-container {
   height:100vh;
@@ -72,10 +60,17 @@
         height: 50px;
       }
 
+      .text-danger {
+        color: $main-red;
+        text-align: left;
+        padding-left: 5px;
+      }
+
       .submit-button {
         background: $main-red;
         font-family: 'Lato', 'Montserrat', Arial, sans-serif;
         color: white;
+        box-shadow: none;
       }
 
       .signup-link,
