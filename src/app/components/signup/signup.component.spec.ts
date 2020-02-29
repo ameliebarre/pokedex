@@ -5,18 +5,18 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { RegisterComponent } from './register.component';
+import { SignUpComponent } from './signup.component';
 import { AuthService } from '../../shared/services/auth.service';
 
 describe('RegisterComponent', () => {
-  let comp: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+  let comp: SignUpComponent;
+  let fixture: ComponentFixture<SignUpComponent>;
   let authService: AuthService;
 
   beforeEach(async(() => {
 
     TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ],
+      declarations: [ SignUpComponent ],
       imports: [
         JwtModule.forRoot({
           config: {
@@ -39,7 +39,7 @@ describe('RegisterComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterComponent);
+    fixture = TestBed.createComponent(SignUpComponent);
     comp = fixture.componentInstance;
 
     authService = fixture.debugElement.injector.get(AuthService);

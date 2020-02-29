@@ -10,13 +10,11 @@ import { AuthService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
+import { SignInComponent } from './components/signin/signin.component';
+import { SignUpComponent } from './components/signup/signup.component';
 import { PublicComponent } from './layouts/public/public.component';
 import { SecureComponent } from './layouts/secure/secure.component';
 import { HomeComponent } from './components/home/home.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HeaderComponent } from './components/header/header.component';
-import { TrainerComponent } from './components/trainer/trainer.component';
 
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,13 +23,11 @@ import { PokemonModule } from './modules/pokemon/pokemon.module';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    SignInComponent,
+    SignUpComponent,
     PublicComponent,
     SecureComponent,
     HomeComponent,
-    RegisterComponent,
-    HeaderComponent,
-    TrainerComponent,
   ],
   imports: [
     BrowserModule,
