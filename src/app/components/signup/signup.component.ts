@@ -9,10 +9,10 @@ import { RegistrationValidator } from '../../shared/validators/registration.vali
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class SignUpComponent implements OnInit {
 
   name: string;
   email: string;

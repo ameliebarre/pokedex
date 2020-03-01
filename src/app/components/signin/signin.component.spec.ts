@@ -4,17 +4,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { LoginComponent } from './login.component';
+import { SignInComponent } from './signin.component';
 import { AuthService } from '../../shared/services/auth.service';
 
 fdescribe('LoginComponent', () => {
-  let comp: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+  let comp: SignInComponent;
+  let fixture: ComponentFixture<SignInComponent>;
   let authService: AuthService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
+      declarations: [ LogiSignInComponentnComponent ],
       imports: [
         JwtModule.forRoot({
           config: {
@@ -33,7 +33,7 @@ fdescribe('LoginComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(SignInComponent);
     comp = fixture.componentInstance;
 
     authService = fixture.debugElement.injector.get(AuthService);

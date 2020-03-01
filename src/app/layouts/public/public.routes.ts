@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
 
-import { LoginComponent } from '../../components/login/login.component';
-import { RegisterComponent } from '../../components/register/register.component';
+import { SignInComponent } from '../../components/signin/signin.component';
+import { SignUpComponent } from '../../components/signup/signup.component';
 
 export const PUBLIC_ROUTES: Routes = [
   {
     path: 'signin',
-    component: LoginComponent
+    component: SignInComponent
   },
   {
     path: 'signup',
-    component: RegisterComponent
+    component: SignUpComponent
   }
 ];
