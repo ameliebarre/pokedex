@@ -11,11 +11,11 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  email: string;
-  password: string;
-  submitted = false;
-  loginForm: FormGroup;
-  errorMessage: string;
+  public email: string;
+  public password: string;
+  public submitted = false;
+  public loginForm: FormGroup;
+  public errorMessage: string;
 
   constructor(
     private authService: AuthService,
@@ -45,10 +45,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
@@ -56,17 +54,6 @@ export class LoginComponent implements OnInit {
     this.email = this.loginForm.controls['email'].value;
     this.password = this.loginForm.controls['password'].value;
 
-    this.authService.login(this.email, this.password).subscribe(
-      (res: any) => {
-        if (res) {
-          location.pathname = '/home'; // Navigate + Reload to home
-        }
-      }, (error) => {
-        if (error.error.message === 'USER_NOT_FOUND') {
-          this.errorMessage = 'L\'adresse mail ou le mot de passe ne semblent pas exister.';
-        }
-        console.log(error);
-      }
-    );
+    this.authService.signin(this.email, this.password);
   }
 }

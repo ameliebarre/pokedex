@@ -11,20 +11,15 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private authService: AuthService,
-    private router: Router,
-    private jwtHelperService: JwtHelperService
+    private router: Router
   ) { }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService.isUserLoggedIn()) {
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (localStorage.getItem('token')) {
       return true;
-    } else {
-      this.authService.logout();
-
-      return false;
     }
+
+    this.router.navigate(['login']);
+    return false;
   }
 }

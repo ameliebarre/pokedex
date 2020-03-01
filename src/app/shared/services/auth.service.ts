@@ -1,41 +1,49 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import {User} from '../models/user.model';
+
+import { environment } from 'src/environments/environment';
+import { User } from '../models/user.model';
+
+interface UserResponse {
+  user: User,
+  token: string
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
-  private headers: Headers;
-  public helper;
-
   constructor(
     private http: HttpClient,
-    private jwtHelperService: JwtHelperService
-  ) {
-    this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
-
-    this.helper = new JwtHelperService();
-  }
+    private jwtHelperService: JwtHelperService,
+    private router: Router
+  ) {}
 
   register(username: string, email: string, password: string): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/auth/register`, { username, email, password });
   }
 
-  login(email: string, password: string) {
-    return this.http.post(`${environment.apiUrl}/auth/login`, { email, password })
+  /**
+   * Signin
+   * @param email
+   * @param password
+   * @returns {Promise<UserResponse>}
+   */
+  signin(email: string, password: string): Promise<UserResponse> {
+    return this.http.post<UserResponse>(`${environment.apiUrl}/auth/signin`, { email, password })
       .pipe(
         tap((req) => {
           this.storeUserData(req);
+          this.router.navigate(['home']);
         })
-      );
+      )
+      .toPromise();
   }
 
   storeUserData(authResult: any) {
